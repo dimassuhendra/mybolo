@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
         /* Konfigurasi Font Global */
@@ -137,6 +138,55 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
+
+        /* Style Testimonial Section */
+        .swiper-pagination-bullet {
+            background: #fff !important;
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            width: 30px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        /* Style Partners Section */
+        /* Keyframes untuk Infinite Scroll */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes marquee2 {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        .animate-marquee2 {
+            animation: marquee2 30s linear infinite;
+        }
+
+        /* Pause animasi saat di-hover agar user bisa melihat logo dengan jelas */
+        .group:hover .animate-marquee,
+        .group:hover .animate-marquee2 {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
@@ -184,6 +234,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         const navbar = document.getElementById('navbar');
         const menuBtn = document.getElementById('menu-btn');
@@ -231,6 +282,29 @@
 
             // Ganti slide setiap 5 detik
             setInterval(nextSlide, 5000);
+        });
+
+        // Script Testimonial Section
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 3
+                },
+            },
         });
     </script>
 

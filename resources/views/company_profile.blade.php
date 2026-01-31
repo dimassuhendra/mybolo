@@ -152,4 +152,177 @@
     </div>
 </section>
 
+<section id="testimonials" class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-brand-blue py-0">
+
+    <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-20">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px] fill-white">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-6 py-32 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 font-title">Apa Kata Klien Kami?</h2>
+            <p class="text-blue-100 font-body opacity-80">Kepercayaan Anda adalah prioritas utama bagi Teknologi Arindama Andra.</p>
+        </div>
+
+        <div class="swiper mySwiper pb-12">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
+                            <div>
+                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
+                            <div>
+                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
+                            <div>
+                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
+                            <div>
+                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
+                            <div>
+                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide h-auto">
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
+                            <div>
+                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="swiper-pagination !bottom-0"></div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px] fill-gray-50">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg>
+    </div>
+</section>
+
+<section id="partners" class="py-20 bg-gray-50 overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Network & Trust</h4>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 font-title">Partner Bisnis Kami</h2>
+            <p class="text-gray-500 mt-4 font-body max-w-xl mx-auto">Kami bekerja sama dengan berbagai vendor dan instansi terkemuka untuk memberikan layanan terbaik bagi Anda.</p>
+        </div>
+
+        <div class="relative flex overflow-x-hidden group">
+            <div class="flex animate-marquee whitespace-nowrap py-12 items-center">
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/pgn.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/greenet.png') }}" alt="Partner 2" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/cgs.jpg') }}" alt="Partner 3" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/lintasarta.png') }}" alt="Partner 4" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/telkom.png') }}" alt="Partner 5" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/varnion.png') }}" alt="Partner 6" class="h-12 md:h-16 object-contain">
+                </div>
+            </div>
+
+            <div class="absolute top-0 flex animate-marquee2 whitespace-nowrap py-12 items-center">
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/pgn.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/greenet.png') }}" alt="Partner 2" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/cgs.jpg') }}" alt="Partner 3" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/lintasarta.png') }}" alt="Partner 4" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/telkom.png') }}" alt="Partner 5" class="h-12 md:h-16 object-contain">
+                </div>
+                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
+                    <img src="{{ asset('img/varnion.png') }}" alt="Partner 6" class="h-12 md:h-16 object-contain">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
