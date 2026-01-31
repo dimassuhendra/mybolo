@@ -44,7 +44,7 @@
     </div>
 </section>
 
-<section id="services" class="py-24 bg-white">
+<section id="services" class="py-24 bg-white" data-aos="fade-up">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">Layanan Unggulan</h2>
@@ -152,7 +152,7 @@
     </div>
 </section>
 
-<section id="testimonials" class="relative overflow-hidden bg-[#0a192f] py-0">
+<section id="testimonials" class="relative overflow-hidden bg-[#0a192f] py-0" data-aos="fade-up">
 
     <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-20">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px] fill-white">
@@ -271,7 +271,7 @@
     </div>
 </section>
 
-<section id="partners" class="py-20 bg-gray-50 overflow-hidden">
+<section id="partners" class="py-20 bg-gray-50 overflow-hidden" data-aos="fade-up">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
             <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Network & Trust</h4>
@@ -325,7 +325,7 @@
     </div>
 </section>
 
-<section id="team" class="py-24 bg-[#0a192f] overflow-hidden">
+<section id="team" class="py-24 bg-[#0a192f] overflow-hidden" data-aos="fade-up">
     <div class="container mx-auto px-6 text-center">
         <div class="mb-20">
             <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">Meet the Experts</h4>
@@ -378,7 +378,7 @@
     </div>
 </section>
 
-<section id="contact" class="py-24 bg-gray-50">
+<section id="contact" class="py-24 bg-gray-50" data-aos="fade-up">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
             <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs mb-3 font-title">Get In Touch</h4>
