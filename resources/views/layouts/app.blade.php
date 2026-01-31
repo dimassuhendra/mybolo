@@ -211,7 +211,7 @@
             <div class="hidden md:flex items-center space-x-8 font-medium tracking-wide">
                 <a href="#home" class="nav-link text-white hover:text-brand-blue transition">Home</a>
                 <a href="#services" class="nav-link text-white hover:text-brand-blue transition">Layanan</a>
-                <a href="#about" class="nav-link text-white hover:text-brand-blue transition">Tentang Kami</a>
+                <a href="#tean" class="nav-link text-white hover:text-brand-blue transition">Tentang Kami</a>
                 <a href="#contact" class="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition shadow-lg">
                     Hubungi Kami
                 </a>
