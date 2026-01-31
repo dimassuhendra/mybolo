@@ -152,7 +152,7 @@
     </div>
 </section>
 
-<section id="testimonials" class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-brand-blue py-0">
+<section id="testimonials" class="relative overflow-hidden bg-[#0a192f] py-0">
 
     <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-20">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px] fill-white">
@@ -321,6 +321,127 @@
                     <img src="{{ asset('img/varnion.png') }}" alt="Partner 6" class="h-12 md:h-16 object-contain">
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<section id="team" class="py-24 bg-[#0a192f] overflow-hidden">
+    <div class="container mx-auto px-6 text-center">
+        <div class="mb-20">
+            <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">Meet the Experts</h4>
+            <h2 class="text-4xl md:text-5xl font-bold text-white font-title">Our Team</h2>
+            <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+            @php
+            $teams = [
+            ['role' => 'General Manager', 'icon' => 'fa-user-tie', 'name' => 'Mrs. Mei Yung'],
+            ['role' => 'Manager IT', 'icon' => 'fa-user-gear', 'name' => 'Mr. Jay'],
+            ['role' => 'CCTV Specialist', 'icon' => 'fa-user-shield', 'name' => 'Mr. Chandra'],
+            ['role' => 'Network Specialist', 'icon' => 'fa-user-secret', 'name' => 'Mr. Ridik'],
+            ['role' => 'GPS Specialist', 'icon' => 'fa-location-crosshairs', 'name' => 'Mr. Gerry'], // Icon diperbaiki
+            ['role' => 'Purchasing & Procurement', 'icon' => 'fa-user-tag', 'name' => 'Ms. Danti'], // Tanda kutip ditutup
+            ['role' => 'Sales Manager', 'icon' => 'fa-user-group', 'name' => 'Ms. Warty'],
+            ['role' => 'Business Operation', 'icon' => 'fa-user-check', 'name' => 'Ms. Venyca'],
+            ];
+            @endphp
+
+            @foreach ($teams as $t)
+            <div class="group relative pt-12">
+                <div class="bg-blue-900/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:bg-brand-blue hover:-translate-y-2 group-hover:shadow-[0_0_40px_rgba(0,174,239,0.2)]">
+
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-[#0a192f] border-4 border-brand-blue rounded-full flex items-center justify-center text-white text-3xl transition-all duration-500 group-hover:bg-white group-hover:text-brand-blue group-hover:scale-110 shadow-xl z-10">
+                        <i class="fa-solid {{ $t['icon'] }}"></i>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold text-white font-title mb-1">{{ $t['name'] }}</h3>
+                        <p class="text-brand-blue font-bold text-xs uppercase tracking-widest font-title group-hover:text-white transition-colors">
+                            {{ $t['role'] }}
+                        </p>
+
+                        <div class="mt-4 pt-4 border-t border-white/10 group-hover:border-white/20">
+                            <p class="text-gray-400 text-sm font-body italic transition-colors group-hover:text-white/90">
+                                "Berkomitmen memberikan solusi teknologi terintegrasi dengan integritas tinggi."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                        <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-white/10 rotate-45 transform transition-transform duration-700 group-hover:translate-x-full"></div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-24 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs mb-3 font-title">Get In Touch</h4>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 font-title">Hubungi Kami</h2>
+            <p class="text-gray-500 mt-4 font-body max-w-2xl mx-auto">Siap meningkatkan keamanan dan konektivitas Anda? Tim kami siap membantu memberikan solusi terbaik.</p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            <div class="w-full lg:w-2/5 grid grid-cols-1 gap-6">
+
+                <div class="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center text-2xl transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 font-title mb-1">Lokasi Kantor</h4>
+                        <p class="text-gray-600 text-sm font-body leading-relaxed">Jl. Ikan Kakap No. 64-66 Teluk Betung, Kota Bandar Lampung</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center text-2xl transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 font-title mb-1">Telepon / WhatsApp</h4>
+                        <p class="text-gray-600 text-sm font-body">0721-5602633</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center text-2xl transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 font-title mb-1">Email Support</h4>
+                        <p class="text-gray-600 text-sm font-body">support@lintasteknologi.id</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-start gap-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                    <div class="w-14 h-14 bg-blue-50 text-brand-blue rounded-xl flex items-center justify-center text-2xl transition-colors duration-300 group-hover:bg-brand-blue group-hover:text-white">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 font-title mb-1">Jam Operasional</h4>
+                        <p class="text-gray-600 text-sm font-body font-bold">Senin - Jumat: <span class="font-normal">08:00 - 17:00</span></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="w-full lg:w-3/5 h-[530px] rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3971.790356292719!2d105.26082707498428!3d-5.448764994530698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNcKwMjYnNTUuNiJTIDEwNcKwMTUnNDguMyJF!5e0!3m2!1sid!2sid!4v1769832804035!5m2!1sid!2sid"
+                    class="w-full h-full border-0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+
         </div>
     </div>
 </section>

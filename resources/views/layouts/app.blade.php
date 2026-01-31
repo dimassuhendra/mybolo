@@ -187,6 +187,16 @@
         .group:hover .animate-marquee2 {
             animation-play-state: paused;
         }
+
+        /* Section Our Team */
+        /* Transisi halus untuk semua elemen */
+        .team-card {
+            backface-visibility: hidden;
+        }
+
+        .team-card * {
+            transition: all 0.5s ease;
+        }
     </style>
 </head>
 
@@ -194,7 +204,7 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#home">
-                <img src="{{ asset('img/logo-text.png') }}" alt="Logo" class="h-10 md:h-12 transition-all duration-300" id="nav-logo">
+                <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-12 transition-all duration-300" id="nav-logo">
             </a>
 
             <div class="hidden md:flex items-center space-x-8 font-medium tracking-wide">
@@ -227,10 +237,8 @@
 
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-6 text-center">
-            <h3 class="text-2xl font-bold mb-4">Teknologi Arindama Andra</h3>
-            <p class="font-light opacity-75 mb-6">Solusi cerdas untuk konektivitas dan keamanan Anda.</p>
             <hr class="border-gray-800 mb-6">
-            <p class="text-sm opacity-50">&copy; 2024 Teknologi Arindama Andra. All Rights Reserved.</p>
+            <p class="text-sm opacity-50">&copy; 2026 MyBolo. All Rights Reserved.</p>
         </div>
     </footer>
 
