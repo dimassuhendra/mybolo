@@ -1,59 +1,43 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌐 PT. Teknologi Arindama Andra - Official Company Profile
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![AOS](https://img.shields.io/badge/AOS_Animation-000000?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## About Laravel
+## 📝 Deskripsi Singkat
+**Arindama Andra Official Website** adalah platform profil perusahaan modern yang dibangun untuk merepresentasikan identitas **PT. Teknologi Arindama Andra** sebagai pemimpin solusi infrastruktur digital di Bandar Lampung.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Website ini bukan sekadar portal informasi, melainkan sebuah instrumen digital yang dirancang untuk membangun kepercayaan klien melalui:
+* **Visual Storytelling**: Menggunakan tipografi yang kontras (Fredoka & Domine) untuk menyeimbangkan kesan teknologi modern dengan kredibilitas bisnis yang kokoh.
+* **High-End Interaction**: Menghadirkan pengalaman pengguna (UX) yang dinamis dengan elemen interaktif seperti *3D hover effects*, *infinite looping marquees*, dan *smooth scroll transitions*.
+* **Performance Driven**: Dibangun di atas stack Laravel dan Tailwind CSS untuk memastikan kecepatan akses yang optimal serta kemudahan skalabilitas kode di masa depan.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Platform ini menjadi etalase utama bagi tiga pilar bisnis perusahaan: **High-Speed Internet**, **Smart Surveillance System**, dan **Precision GPS Tracking**.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Fitur Unggulan
+* **Dynamic Hero Slider**: Transisi visual yang kuat untuk pesan utama perusahaan.
+* **Interactive Services Card**: Fitur *flip-card* yang informatif untuk menjelaskan detail teknis layanan.
+* **Trust Indicators**: Section Partner bisnis dengan animasi *auto-scroll* untuk menunjukkan jaringan kerja yang luas.
+* **Floating Team Profile**: Menampilkan tenaga ahli di balik layar dengan gaya desain kartu timbul yang modern.
+* **Responsive Contact Hub**: Memudahkan klien terhubung langsung melalui WhatsApp dan navigasi Google Maps yang terintegrasi.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Tech Stack & Library
+- **Core**: [Laravel 10+](https://laravel.com)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) (Custom Brand Colors)
+- **Animations**: [AOS.js](https://michalsnik.github.io/aos/) (Scroll Reveal) & [Swiper.js](https://swiperjs.com/) (Testimonials)
+- **Icons**: [Font Awesome 6 Pro](https://fontawesome.com)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Instalasi Cepat
+1. `git clone https://github.com/username-anda/arindama-andra.git`
+2. `composer install`
+3. `npm install && npm run dev`
+4. `cp .env.example .env && php artisan key:generate`
+5. `php artisan serve`
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+## 📞 Kontak & Informasi
+- **Website**: [www.arindamaandra.com](http://www.arindamaandra.com)
+- **Lokasi**: Jl. Ikan Kakap No. 64-66, Teluk Betung, Bandar Lampung.
+- **Support**: support@lintasteknologi.id
