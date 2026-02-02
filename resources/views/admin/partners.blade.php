@@ -45,13 +45,13 @@
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
                 <div>
-                    <h1 class="text-3xl font-extrabold text-white tracking-tight">Partner <span class="text-emerald-400">&</span> Client</h1>
+                    <h1 class="text-3xl font-extrabold text-white tracking-tight">Partner <span class="text-indigo-600">&</span> Client</h1>
                     <p class="text-white/50 text-sm font-medium">Manajemen kolaborasi strategis PT Teknologi Arindama Andra.</p>
                 </div>
             </div>
 
             <button @click="openModal = true; editMode = false; currentPartner = {}"
-                class="group bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-emerald-600/30 transition-all flex items-center gap-3">
+                class="group bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-3">
                 <div class="bg-white/20 rounded-lg p-1 group-hover:rotate-90 transition-transform">
                     <i class="fa-solid fa-plus text-xs"></i>
                 </div>
@@ -103,7 +103,7 @@
                     <h3 class="font-extrabold text-slate-800 text-[11px] uppercase tracking-widest leading-tight truncate px-2">
                         {{ $p->name }}
                     </h3>
-                    <div class="h-1 w-8 bg-emerald-500 mx-auto mt-3 rounded-full opacity-0 group-hover:opacity-100 group-hover:w-16 transition-all duration-500"></div>
+                    <div class="h-1 w-8 bg-indigo-500 mx-auto mt-3 rounded-full opacity-0 group-hover:opacity-100 group-hover:w-16 transition-all duration-500"></div>
                 </div>
             </div>
             @endforeach
@@ -139,7 +139,7 @@
 
             <div class="p-8 border-b flex justify-between items-center bg-slate-50/50">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg shadow-emerald-600/20">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-600/20">
                         <i :class="editMode ? 'fa-solid fa-pen-nib' : 'fa-solid fa-handshake-alt'"></i>
                     </div>
                     <div>
@@ -165,19 +165,19 @@
 
                 <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1">Unggah Logo</label>
-                    <div class="p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200 text-center group transition-colors hover:border-emerald-400">
+                    <div class="p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200 text-center group transition-colors hover:border-indigo-400">
                         <template x-if="editMode && currentPartner.logo_path">
                             <div class="mb-4">
                                 <img :src="'/storage/' + currentPartner.logo_path" class="h-16 mx-auto object-contain drop-shadow-sm">
                                 <p class="text-[9px] text-amber-600 font-bold uppercase mt-2 italic">Ganti logo lama di bawah</p>
                             </div>
                         </template>
-                        <input type="file" name="logo_path" class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:uppercase file:bg-emerald-600 file:text-white hover:file:bg-emerald-700 transition-all cursor-pointer">
+                        <input type="file" name="logo_path" class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:uppercase file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 transition-all cursor-pointer">
                     </div>
                 </div>
 
                 <div class="pt-4 flex flex-col gap-3">
-                    <button type="submit" class="w-full py-4 bg-slate-900 hover:bg-emerald-600 text-white text-sm font-black rounded-2xl shadow-xl shadow-slate-900/20 transition-all uppercase tracking-[0.2em]">
+                    <button type="submit" class="w-full py-4 bg-slate-900 hover:bg-indigo-600 text-white text-sm font-black rounded-2xl shadow-xl shadow-slate-900/20 transition-all uppercase tracking-[0.2em]">
                         Simpan Data Partner
                     </button>
                     <button type="button" @click="openModal = false" class="w-full py-3 text-[10px] font-black text-slate-400 hover:text-rose-500 transition-all uppercase tracking-widest">
