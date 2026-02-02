@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ServiceController;
@@ -11,10 +12,10 @@ use App\Http\Controllers\TestimonialController;
 
 use App\Http\Controllers\PublicTestimonialController;
 
-
-Route::get('/', function () {
-    return view('company_profile');
-});
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
+// Route::get('/', function () {
+//     return view('company_profile');
+// });
 Route::get('/testimoni-mybolo', [PublicTestimonialController::class, 'create'])->name('testimonial.create');
 Route::post('/testimonial/store', [PublicTestimonialController::class, 'store'])->name('testimonial.store');
 

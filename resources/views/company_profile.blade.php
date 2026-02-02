@@ -52,30 +52,38 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-10">
+            @foreach($services as $service)
             <div class="flip-card">
                 <div class="flip-card-inner shadow-2xl">
+                    {{-- Front --}}
                     <div class="flip-card-front">
-                        <img src="{{ asset('img/1.jpg') }}" class="w-full h-full object-cover" alt="Internet">
+                        <img src="{{ asset('storage/' . $service->image_path) }}" class="w-full h-full object-cover" alt="{{ $service->title }}">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
                             <div class="mb-4 text-4xl text-brand-blue">
-                                <i class="fa-solid fa-wifi"></i>
+                                <i class="fa-solid {{ $service->icon }}"></i>
                             </div>
-                            <h3 class="text-2xl font-bold font-title uppercase tracking-wider mb-2">Internet Solution</h3>
-                            <p class="text-sm opacity-90 font-body">Koneksi stabil tanpa buffering untuk bisnis Anda.</p>
-                            <div class="mt-4 text-xs font-bold uppercase tracking-widest text-brand-blue animate-pulse">
-                                Hover untuk detail <i class="fa-solid fa-arrow-right ml-1"></i>
-                            </div>
+                            <h3 class="text-2xl font-bold font-title uppercase tracking-wider mb-2">{{ $service->title }}</h3>
+                            <p class="text-sm opacity-90 font-body">{{ $service->short_description }}</p>
                         </div>
                     </div>
 
+                    {{-- Back --}}
                     <div class="flip-card-back border-4 border-white/20">
-                        <h3 class="text-2xl font-bold mb-4 font-title">Dedicated Fiber Optic</h3>
+                        <h3 class="text-2xl font-bold mb-4 font-title">{{ $service->title }}</h3>
                         <ul class="text-left text-sm space-y-3 font-body mb-8">
-                            <li><i class="fa-solid fa-check mr-2"></i> Bandwidth Simetris 1:1</li>
-                            <li><i class="fa-solid fa-check mr-2"></i> Uptime SLA 99.9%</li>
-                            <li><i class="fa-solid fa-check mr-2"></i> Support Teknikal 24/7</li>
+                            @php
+                            $features = json_decode($service->features, true);
+                            if (is_string($features)) $features = json_decode($features, true);
+                            @endphp
+                            @if(is_array($features))
+                            @foreach($features as $feature)
+                            @if(!empty($feature))
+                            <li><i class="fa-solid fa-check mr-2"></i> {{ $feature }}</li>
+                            @endif
+                            @endforeach
+                            @endif
                         </ul>
-                        <a href="https://wa.me/6282340336561?text=Halo%20Arindama%2C%20saya%20tertarik%20dengan%20layanan%20Internet"
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['phone'] ?? '') }}"
                             target="_blank"
                             class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition transform hover:scale-105 shadow-lg">
                             <i class="fa-brands fa-whatsapp text-xl"></i>
@@ -84,70 +92,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="flip-card text-white">
-                <div class="flip-card-inner shadow-2xl">
-                    <div class="flip-card-front">
-                        <img src="{{ asset('img/2.jpg') }}" class="w-full h-full object-cover" alt="CCTV">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-black/20 to-transparent flex flex-col justify-end p-8">
-                            <div class="mb-4 text-4xl text-brand-blue">
-                                <i class="fa-solid fa-video"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold font-title uppercase tracking-wider mb-2">Security System</h3>
-                            <p class="text-sm opacity-90 font-body">Pantau keamanan aset Anda dari mana saja, kapan saja.</p>
-                            <div class="mt-4 text-xs font-bold uppercase tracking-widest text-brand-blue animate-pulse">
-                                Hover untuk detail <i class="fa-solid fa-arrow-right ml-1"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card-back border-4 border-white/20">
-                        <h3 class="text-2xl font-bold mb-4 font-title">Smart Surveillance</h3>
-                        <ul class="text-left text-sm space-y-3 font-body mb-8">
-                            <li><i class="fa-solid fa-check mr-2"></i> Kualitas Gambar Ultra HD</li>
-                            <li><i class="fa-solid fa-check mr-2"></i> Motion Detection & Alarm</li>
-                            <li><i class="fa-solid fa-check mr-2"></i> Akses Cloud via Smartphone</li>
-                        </ul>
-                        <a href="https://wa.me/6282340336561?text=Halo%20Arindama%2C%20saya%20tertarik%20dengan%20layanan%20CCTV"
-                            target="_blank"
-                            class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition transform hover:scale-105 shadow-lg">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                            Tanya Harga
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card text-white">
-                <div class="flip-card-inner shadow-2xl">
-                    <div class="flip-card-front">
-                        <img src="{{ asset('img/3.jpg') }}" class="w-full h-full object-cover" alt="GPS">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-black/20 to-transparent flex flex-col justify-end p-8">
-                            <div class="mb-4 text-4xl text-brand-blue">
-                                <i class="fa-solid fa-location-crosshairs"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold font-title uppercase tracking-wider mb-2">GPS Tracking</h3>
-                            <p class="text-sm opacity-90 font-body">Kendali penuh atas armada dan kendaraan operasional.</p>
-                            <div class="mt-4 text-xs font-bold uppercase tracking-widest text-brand-blue animate-pulse">
-                                Hover untuk detail <i class="fa-solid fa-arrow-right ml-1"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flip-card-back border-4 border-white/20">
-                        <h3 class="text-2xl font-bold mb-4 font-title">Fleet Management</h3>
-                        <ul class="text-left text-sm space-y-3 font-body mb-8">
-                            <li><i class="fa-solid fa-check mr-2"></i> Pelacakan Real-time Presisi</li>
-                            <li><i class="fa-solid fa-check mr-2"></i> History Perjalanan 30 Hari</li>
-                            <li><i class="fa-solid fa-check mr-2"></i> Laporan Konsumsi BBM</li>
-                        </ul>
-                        <a href="https://wa.me/6282340336561?text=Halo%20Arindama%2C%20saya%20tertarik%20dengan%20layanan%20GPS"
-                            target="_blank"
-                            class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition transform hover:scale-105 shadow-lg">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                            Pasang Sekarang
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -169,95 +114,30 @@
         <div class="swiper mySwiper pb-12">
             <div class="swiper-wrapper">
 
+                @foreach($testimonials as $testi)
                 <div class="swiper-slide h-auto">
                     <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
                         <div>
-                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
+                            <div class="flex text-yellow-400 mb-6 text-sm">
+                                @for($i=0; $i < ($testi->stars ?? 5); $i++)
+                                    <i class="fas fa-star"></i>
+                                    @endfor
+                            </div>
+                            <p class="text-white font-body italic text-justify mb-8">"{{ $testi->body }}"</p>
                         </div>
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
+                            {{-- Sesuai DB: Tidak ada image_path, gunakan icon --}}
+                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50 flex items-center justify-center text-white">
+                                <i class="fas fa-user"></i>
+                            </div>
                             <div>
-                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
+                                <h4 class="text-white font-bold font-title">{{ $testi->client_name }}</h4>
+                                <p class="text-blue-200 text-xs">{{ $testi->position }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="swiper-slide h-auto">
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
-                            <div>
-                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide h-auto">
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
-                            <div>
-                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide h-auto">
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
-                            <div>
-                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide h-auto">
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
-                            <div>
-                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-slide h-auto">
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 h-full flex flex-col justify-between">
-                        <div>
-                            <div class="flex text-yellow-400 mb-6 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            <p class="text-white font-body italic text-justify mb-8">"PT. Teknologi Arindama Andra provided us with a seamless Network installation across our hotel property. Their professionalism and after-sales support are exceptional."</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue border-2 border-white/50"></div>
-                            <div>
-                                <h4 class="text-white font-bold font-title">Hotel Golden Tulip Springhill Lampung</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
             <div class="swiper-pagination !bottom-0"></div>
@@ -281,45 +161,19 @@
 
         <div class="relative flex overflow-x-hidden group">
             <div class="flex animate-marquee whitespace-nowrap py-12 items-center">
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/pgn.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain">
+                @foreach($partners as $partner)
+                <div class="mx-8 w-40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
+                    <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-12 object-contain mx-auto">
                 </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/greenet.png') }}" alt="Partner 2" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/cgs.jpg') }}" alt="Partner 3" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/lintasarta.png') }}" alt="Partner 4" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/telkom.png') }}" alt="Partner 5" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/varnion.png') }}" alt="Partner 6" class="h-12 md:h-16 object-contain">
-                </div>
+                @endforeach
             </div>
 
             <div class="absolute top-0 flex animate-marquee2 whitespace-nowrap py-12 items-center">
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/pgn.png') }}" alt="Partner 1" class="h-12 md:h-16 object-contain">
+                @foreach($partners as $partner)
+                <div class="mx-8 w-40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
+                    <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-12 object-contain mx-auto">
                 </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/greenet.png') }}" alt="Partner 2" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/cgs.jpg') }}" alt="Partner 3" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/lintasarta.png') }}" alt="Partner 4" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/telkom.png') }}" alt="Partner 5" class="h-12 md:h-16 object-contain">
-                </div>
-                <div class="mx-8 w-40 md:w-48 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500 flex justify-center">
-                    <img src="{{ asset('img/varnion.png') }}" alt="Partner 6" class="h-12 md:h-16 object-contain">
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -395,7 +249,7 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-gray-900 font-title mb-1">Lokasi Kantor</h4>
-                        <p class="text-gray-600 text-sm font-body leading-relaxed">Jl. Ikan Kakap No. 64-66 Teluk Betung, Kota Bandar Lampung</p>
+                        <p class="text-gray-600 text-sm font-body leading-relaxed">{{ $settings['address'] }}</p>
                     </div>
                 </div>
 
@@ -405,7 +259,7 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-gray-900 font-title mb-1">Telepon / WhatsApp</h4>
-                        <p class="text-gray-600 text-sm font-body">0721-5602633</p>
+                        <p class="text-gray-600 text-sm font-body">{{ $settings['phone'] }}</p>
                     </div>
                 </div>
 
@@ -415,7 +269,7 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-gray-900 font-title mb-1">Email Support</h4>
-                        <p class="text-gray-600 text-sm font-body">support@lintasteknologi.id</p>
+                        <p class="text-gray-600 text-sm font-body">{{ $settings['email'] }}</p>
                     </div>
                 </div>
 
@@ -425,7 +279,7 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-gray-900 font-title mb-1">Jam Operasional</h4>
-                        <p class="text-gray-600 text-sm font-body font-bold">Senin - Jumat: <span class="font-normal">08:00 - 17:00</span></p>
+                        <p class="text-gray-600 text-sm font-body font-bold">{{ $settings['working_hours'] }}</p>
                     </div>
                 </div>
 
@@ -433,7 +287,7 @@
 
             <div class="w-full lg:w-3/5 h-[530px] rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3971.790356292719!2d105.26082707498428!3d-5.448764994530698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNcKwMjYnNTUuNiJTIDEwNcKwMTUnNDguMyJF!5e0!3m2!1sid!2sid!4v1769832804035!5m2!1sid!2sid"
+                    src="{{ $settings['maps_url'] }}"
                     class="w-full h-full border-0"
                     allowfullscreen=""
                     loading="lazy"
