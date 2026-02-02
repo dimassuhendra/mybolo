@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\TeamController;
 
 Route::get('/', function () {
     return view('company_profile');
@@ -29,4 +30,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
     Route::resource('partners', PartnerController::class)->except(['create', 'show', 'edit']);
+
+    Route::resource('teams', TeamController::class);
 });

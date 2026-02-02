@@ -4,11 +4,11 @@
 
 <section id="home" class="relative h-screen w-full overflow-hidden flex items-center">
     <div class="absolute inset-0 z-0">
-        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100">
-            <img src="{{ asset('img/2.jpg') }}" class="w-full h-full object-cover" alt="Internet Solution">
+        <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+            <img src="{{ asset('img/2.jpg') }}" class="w-full h-full object-cover" alt="CCTV Security">
         </div>
         <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-            <img src="{{ asset('img/1.jpg') }}" class="w-full h-full object-cover" alt="CCTV Security">
+            <img src="{{ asset('img/5.jpg') }}" class="w-full h-full object-cover" alt="Internet Solution">
         </div>
         <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0">
             <img src="{{ asset('img/3.jpg') }}" class="w-full h-full object-cover" alt="GPS Tracking">
