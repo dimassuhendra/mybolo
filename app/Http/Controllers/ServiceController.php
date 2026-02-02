@@ -51,9 +51,9 @@ class ServiceController extends Controller
             'updated_at' => now()
         ];
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image_path')) {
             Storage::disk('public')->delete($service->image_path);
-            $updateData['image_path'] = $request->file('image')->store('services', 'public');
+            $updateData['image_path'] = $request->file('image_path')->store('services', 'public');
         }
 
         DB::table('services')->where('id', $id)->update($updateData);

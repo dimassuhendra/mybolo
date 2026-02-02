@@ -188,36 +188,23 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-            @php
-            $teams = [
-            ['role' => 'General Manager', 'icon' => 'fa-user-tie', 'name' => 'Mrs. Mei Yung'],
-            ['role' => 'Manager IT', 'icon' => 'fa-user-gear', 'name' => 'Mr. Jay'],
-            ['role' => 'CCTV Specialist', 'icon' => 'fa-user-shield', 'name' => 'Mr. Chandra'],
-            ['role' => 'Network Specialist', 'icon' => 'fa-user-secret', 'name' => 'Mr. Ridik'],
-            ['role' => 'GPS Specialist', 'icon' => 'fa-location-crosshairs', 'name' => 'Mr. Gerry'], // Icon diperbaiki
-            ['role' => 'Purchasing & Procurement', 'icon' => 'fa-user-tag', 'name' => 'Ms. Danti'], // Tanda kutip ditutup
-            ['role' => 'Sales Manager', 'icon' => 'fa-user-group', 'name' => 'Ms. Warty'],
-            ['role' => 'Business Operation', 'icon' => 'fa-user-check', 'name' => 'Ms. Venyca'],
-            ];
-            @endphp
-
-            @foreach ($teams as $t)
+            @foreach($teams as $t)
             <div class="group relative pt-12">
                 <div class="bg-blue-900/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:bg-brand-blue hover:-translate-y-2 group-hover:shadow-[0_0_40px_rgba(0,174,239,0.2)]">
 
                     <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-[#0a192f] border-4 border-brand-blue rounded-full flex items-center justify-center text-white text-3xl transition-all duration-500 group-hover:bg-white group-hover:text-brand-blue group-hover:scale-110 shadow-xl z-10">
-                        <i class="fa-solid {{ $t['icon'] }}"></i>
+                        <i class="fa-solid {{ $t->icon }}"></i>
                     </div>
 
                     <div class="mt-8">
-                        <h3 class="text-xl font-bold text-white font-title mb-1">{{ $t['name'] }}</h3>
+                        <h3 class="text-xl font-bold text-white font-title mb-1">{{ $t->name }}</h3>
                         <p class="text-brand-blue font-bold text-xs uppercase tracking-widest font-title group-hover:text-white transition-colors">
-                            {{ $t['role'] }}
+                            {{ $t->role }}
                         </p>
 
                         <div class="mt-4 pt-4 border-t border-white/10 group-hover:border-white/20">
                             <p class="text-gray-400 text-sm font-body italic transition-colors group-hover:text-white/90">
-                                "Berkomitmen memberikan solusi teknologi terintegrasi dengan integritas tinggi."
+                                "{{ $t->quote }}"
                             </p>
                         </div>
                     </div>
