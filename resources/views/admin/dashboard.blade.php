@@ -163,7 +163,7 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Ubah alamat maps, nomor telepon kantor, dan koordinat WhatsApp admin.</p>
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold bg-rose-100 text-rose-700 px-3 py-1 rounded-full uppercase tracking-widest">Global Settings</span>
-                    <a href="#" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-rose-600 transition-colors">
+                    <a href="{{ route('settings.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-rose-600 transition-colors">
                         Configure <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>

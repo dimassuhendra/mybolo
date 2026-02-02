@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\SettingController;
 
 Route::get('/', function () {
     return view('company_profile');
@@ -32,4 +33,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('partners', PartnerController::class)->except(['create', 'show', 'edit']);
 
     Route::resource('teams', TeamController::class);
+
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::patch('/settings', [SettingController::class, 'update'])->name('settings.update');
 });
