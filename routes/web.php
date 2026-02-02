@@ -7,10 +7,16 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TestimonialController;
+
+use App\Http\Controllers\PublicTestimonialController;
+
 
 Route::get('/', function () {
     return view('company_profile');
 });
+Route::get('/testimoni-mybolo', [PublicTestimonialController::class, 'create'])->name('testimonial.create');
+Route::post('/testimonial/store', [PublicTestimonialController::class, 'store'])->name('testimonial.store');
 
 // Auth Routes
 Route::middleware('guest')->group(function () {
@@ -36,4 +42,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::patch('/settings', [SettingController::class, 'update'])->name('settings.update');
+
+    Route::resource('testimonials', TestimonialController::class);
+    Route::patch('/testimonials/{id}/status', [TestimonialController::class, 'updateStatus'])->name('testimonials.updateStatus');
 });

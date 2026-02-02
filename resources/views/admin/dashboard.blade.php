@@ -71,99 +71,107 @@
                 </h1>
                 <p class="text-blue-100/60 mt-2 font-medium">Panel kendali ekosistem digital Teknologi Arindama Andra.</p>
             </div>
-            <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md">
-                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span class="text-white/80 uppercase tracking-tighter font-bold">Server Status: Optimal</span>
-            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <i class="fa-solid fa-images text-6xl"></i>
+                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+                    <i class="fa-solid fa-images text-7xl text-blue-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-blue-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-desktop"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2">Hero Slider</h3>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Hero <span class="text-blue-600">Slider</span></h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Ubah visual utama, headline, dan promosi yang muncul pertama kali di mata pengunjung.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold bg-blue-100 text-blue-700 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['sliders'] }} Item</span>
-                    <a href="#" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-blue-600 transition-colors">
+                    <span class="text-[10px] font-black bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['sliders'] }} Item</span>
+                    <a href="#" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-blue-600 transition-all shadow-lg shadow-slate-900/10">
                         Edit Section <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
             <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20">
-                    <i class="fa-solid fa-server text-6xl text-emerald-600"></i>
+                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+                    <i class="fa-solid fa-server text-7xl text-emerald-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg mb-6 group-hover:scale-110 transition-transform duration-500">
+                <div class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-gears"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2">Services Portal</h3>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Services <span class="text-emerald-600">Portal</span></h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Kustomisasi detail paket Internet, spesifikasi CCTV, dan fitur GPS Tracking terbaru.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['services'] }} Layanan</span>
-                    <a href="{{ route('services.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-emerald-600 transition-colors">
+                    <span class="text-[10px] font-black bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['services'] }} Layanan</span>
+                    <a href="{{ route('services.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-emerald-600 transition-all shadow-lg shadow-slate-900/10">
                         Update <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
             <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg mb-6">
-                    <i class="fa-solid fa-comment-nodes"></i>
+                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+                    <i class="fa-solid fa-quote-right text-7xl text-amber-600"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2">Klien & Review</h3>
+                <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-amber-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Klien & <span class="text-amber-600">Review</span></h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Moderasi kata-kata klien dan tampilkan kepercayaan publik di halaman depan.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold bg-amber-100 text-amber-700 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['testimonials'] }} Feedback</span>
-                    <a href="#" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-amber-600 transition-colors">
+                    <span class="text-[10px] font-black bg-amber-50 text-amber-700 border border-amber-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['testimonials'] }} Feedback</span>
+                    <a href="{{ route('testimonials.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-amber-600 transition-all shadow-lg shadow-slate-900/10">
                         Moderate <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] transition-all duration-500 group text-slate-800">
-                <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg mb-6">
+            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+                    <i class="fa-solid fa-handshake text-7xl text-indigo-600"></i>
+                </div>
+                <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-handshake-angle"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2">Partnership</h3>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Partner<span class="text-indigo-600">ship</span></h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Manajemen logo kolaborasi. Tambahkan vendor baru seperti Telkom atau PGN.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['partners'] }} Brand</span>
-                    <a href="{{ route('partners.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-indigo-600 transition-colors">
+                    <span class="text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['partners'] }} Brand</span>
+                    <a href="{{ route('partners.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-indigo-600 transition-all shadow-lg shadow-slate-900/10">
                         Manage <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] transition-all duration-500 group text-slate-800">
-                <div class="w-14 h-14 bg-violet-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg mb-6">
+            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+                    <i class="fa-solid fa-id-card text-7xl text-violet-600"></i>
+                </div>
+                <div class="w-14 h-14 bg-violet-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-violet-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-user-group"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2">Team Experts</h3>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Team <span class="text-violet-600">Experts</span></h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Perbarui daftar staf ahli, jabatan, dan foto profil tim manajemen Anda.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold bg-violet-100 text-violet-700 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['teams'] }} Member</span>
-                    <a href="{{ route('teams.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-violet-600 transition-colors">
+                    <span class="text-[10px] font-black bg-violet-50 text-violet-700 border border-violet-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['teams'] }} Member</span>
+                    <a href="{{ route('teams.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-violet-600 transition-all shadow-lg shadow-slate-900/10">
                         Update <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] transition-all duration-500 group text-slate-800">
-                <div class="w-14 h-14 bg-rose-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg mb-6">
+            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-rose-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+                    <i class="fa-solid fa-gears text-7xl text-rose-600"></i>
+                </div>
+                <div class="w-14 h-14 bg-rose-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-rose-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-headset"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2">Contact Center</h3>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">System <span class="text-rose-600">Settings</span></h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Ubah alamat maps, nomor telepon kantor, dan koordinat WhatsApp admin.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold bg-rose-100 text-rose-700 px-3 py-1 rounded-full uppercase tracking-widest">Global Settings</span>
-                    <a href="{{ route('settings.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-rose-600 transition-colors">
+                    <span class="text-[10px] font-black bg-rose-50 text-rose-700 border border-rose-100 px-3 py-1 rounded-full uppercase tracking-widest">Global Config</span>
+                    <a href="{{ route('settings.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-slate-900/10">
                         Configure <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
