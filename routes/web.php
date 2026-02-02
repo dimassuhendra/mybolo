@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\PartnerController;
 
 Route::get('/', function () {
     return view('company_profile');
@@ -26,4 +27,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
     Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update');
     Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+    Route::resource('partners', PartnerController::class)->except(['create', 'show', 'edit']);
 });

@@ -135,7 +135,7 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-8">Manajemen logo kolaborasi. Tambahkan vendor baru seperti Telkom atau PGN.</p>
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['partners'] }} Brand</span>
-                    <a href="#" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-indigo-600 transition-colors">
+                    <a href="{{ route('partners.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-indigo-600 transition-colors">
                         Manage <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
