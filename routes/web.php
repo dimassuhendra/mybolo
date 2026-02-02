@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ServiceController;
 
 Route::get('/', function () {
     return view('company_profile');
@@ -21,6 +22,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Dashboard Utama dengan statistik dinamis
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
-    // Nanti rute CRUD CMS lainnya ditaruh di sini, contoh:
-    // Route::resource('services', ServiceController::class);
+    Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+    Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+    Route::put('/services/{id}', [ServiceController::class, 'update'])->name('services.update');
+    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
 });
