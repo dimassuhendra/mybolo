@@ -15,9 +15,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+
         /* Konfigurasi Font Global */
         :root {
-            --font-title: 'Fredoka', sans-serif;
+            --font-title: 'Plus Jakarta Sans', sans-serif;
             --font-body: 'Domine', serif;
         }
 
