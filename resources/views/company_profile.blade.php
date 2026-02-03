@@ -209,14 +209,19 @@
             @foreach($teams as $t)
             <div class="group relative pt-12">
                 <div class="bg-blue-900/20 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:bg-brand-blue hover:-translate-y-2 group-hover:shadow-[0_0_40px_rgba(0,174,239,0.2)]">
-                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-[#0a192f] border-4 border-brand-blue rounded-full flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-110 shadow-xl z-10">
-                        @if($t->image_path)
-                        <img src="{{ asset('storage/' . $t->image_path) }}"
-                            alt="{{ $t->name }}"
-                            class="w-full h-full object-cover">
-                        @else
-                        <i class="fa-solid fa-user text-white text-3xl"></i>
-                        @endif
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 group">
+                        <div class="absolute -inset-2 border-2 border-dashed border-brand-blue rounded-full animate-[spin_10s_linear_infinite] z-0 opacity-70"></div>
+
+                        <div class="absolute inset-0 bg-[#0a192f] border-4 border-brand-blue rounded-full flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-110 shadow-xl z-10">
+                            @if($t->image_path)
+                            <img src="{{ asset('storage/' . $t->image_path) }}"
+                                alt="{{ $t->name }}"
+                                class="w-full h-full object-cover">
+                            @else
+                            <i class="fa-solid fa-user text-white text-3xl"></i>
+                            @endif
+                        </div>
+
                     </div>
 
                     <div class="mt-8">
