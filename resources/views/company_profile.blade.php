@@ -31,7 +31,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%) scale(1.1); /* Zoom 10% untuk membuang frame hitam YouTube */
             "
-                src="https://www.youtube.com/embed/vu4TUHOP4fA?autoplay=1&mute=1&loop=1&playlist=vu4TUHOP4fA&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&start=0&end=35&enablejsapi=1"
+                src="https://www.youtube.com/embed/vu4TUHOP4fA?autoplay=1&mute=1&loop=1&playlist=vu4TUHOP4fA&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&start=0&end=30&enablejsapi=1"
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
@@ -45,7 +45,7 @@
         <div class="max-w-3xl">
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 transform transition duration-700 translate-y-0">
                 Koneksi Tanpa Batas, <br>
-                <span class="text-brand-blue">Keamanan Tanpa Celah.</span>
+                <span class="text-brand-white">Keamanan Tanpa Celah.</span>
             </h1>
             <p class="text-lg md:text-2xl mb-10 text-gray-200">
                 Teknologi Arindama Andra menyediakan solusi High-Speed Internet, Sistem Keamanan CCTV, dan Pelacakan GPS terbaik untuk bisnis dan rumah Anda.
