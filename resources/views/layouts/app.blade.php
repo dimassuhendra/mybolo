@@ -205,7 +205,7 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#home">
-                <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-12 transition-all duration-300" id="nav-logo">
+                <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-14 transition-all duration-300" id="nav-logo">
             </a>
 
             <div class="hidden md:flex items-center space-x-8 font-medium tracking-wide">

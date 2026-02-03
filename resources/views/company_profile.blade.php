@@ -3,7 +3,7 @@
 @section('content')
 
 <section id="home" class="relative h-screen w-full overflow-hidden flex items-center">
-    <div class="absolute inset-0 z-0">
+    <!-- <div class="absolute inset-0 z-0">
         <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0">
             <img src="{{ asset('img/2.jpg') }}" class="w-full h-full object-cover" alt="CCTV Security">
         </div>
@@ -15,6 +15,30 @@
         </div>
 
         <div class="absolute inset-0 bg-blue-900/60 mix-blend-multiply"></div>
+    </div> -->
+
+    <div class="absolute inset-0 z-0 overflow-hidden" style="background-color: #1a0b2e;">
+        <div class="absolute inset-0 w-full h-full flex items-center justify-center">
+            <iframe
+                class="pointer-events-none absolute"
+                style="
+                width: 100vw; 
+                height: 56.25vw; 
+                min-height: 150vh; /* Saya naikkan sedikit dari 100 ke 105 untuk ekstra safety */
+                min-width: 205vh;   /* Saya naikkan rasionya agar lebih lebar dari layar HP manapun */
+                object-fit: cover;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1.1); /* Zoom 10% untuk membuang frame hitam YouTube */
+            "
+                src="https://www.youtube.com/embed/vu4TUHOP4fA?autoplay=1&mute=1&loop=1&playlist=vu4TUHOP4fA&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&start=0&end=35&enablejsapi=1"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="absolute inset-0 bg-indigo-950/60 mix-blend-multiply"></div>
     </div>
 
     <div class="container mx-auto px-6 relative z-10 text-white">
@@ -35,12 +59,6 @@
                 </a>
             </div>
         </div>
-    </div>
-
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
-        <div class="w-12 h-1 bg-white opacity-100"></div>
-        <div class="w-12 h-1 bg-white opacity-30"></div>
-        <div class="w-12 h-1 bg-white opacity-30"></div>
     </div>
 </section>
 
