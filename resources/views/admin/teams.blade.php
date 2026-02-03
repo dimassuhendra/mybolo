@@ -78,8 +78,14 @@
                 </div>
 
                 <div class="relative mb-6">
-                    <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[2rem] flex items-center justify-center text-white text-4xl shadow-xl shadow-indigo-500/30 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                        <i class="fa-solid {{ $t->icon }}"></i>
+                    <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full overflow-hidden flex items-center justify-center text-white text-4xl shadow-xl shadow-indigo-500/30 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                        @if($t->image_path)
+                        <img src="{{ asset('storage/' . $t->image_path) }}"
+                            alt="{{ $t->name }}"
+                            class="w-full h-full object-cover">
+                        @else
+                        <i class="fa-solid fa-user text-white text-3xl"></i>
+                        @endif
                     </div>
                     <div class="absolute -inset-2 border-2 border-dashed border-indigo-500/20 rounded-[2.5rem] animate-[spin_10s_linear_infinite]"></div>
                 </div>
@@ -141,9 +147,14 @@
                 <button @click="openModal = false" class="bg-white hover:bg-rose-500 hover:text-white w-10 h-10 rounded-full transition-all text-xl font-bold leading-none shadow-sm">&times;</button>
             </div>
 
-            <form :action="editMode ? '/admin/teams/' + currentTeam.id : '{{ route('teams.store') }}'" method="POST" class="p-8 space-y-6 text-left">
+            <form :action="editMode ? '/admin/teams/' + currentTeam.id : '{{ route('teams.store') }}'"
+                method="POST"
+                enctype="multipart/form-data"
+                class="p-8 space-y-6 text-left">
                 @csrf
-                <template x-if="editMode"><input type="hidden" name="_method" value="PUT"></template>
+                <template x-if="editMode">
+                    <input type="hidden" name="_method" value="PUT">
+                </template>
 
                 <div class="grid grid-cols-2 gap-5">
                     <div class="col-span-2">
@@ -154,7 +165,7 @@
 
                     <div>
                         <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1">Jabatan / Peran</label>
-                        <input type="text" name="role" x-model="currentTeam.role" required placeholder="CEO, Designer, etc"
+                        <input type="text" name="role" x-model="currentTeam.role" required
                             class="w-full bg-slate-50 border-transparent focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 p-4 rounded-2xl outline-none transition-all font-bold text-slate-700 shadow-inner text-sm">
                     </div>
 
@@ -166,10 +177,17 @@
                 </div>
 
                 <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1">Foto Profil</label>
+                    <input type="file" name="image_path" :required="!editMode"
+                        class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                    <p x-show="editMode" class="text-[9px] text-amber-500 mt-1">*Kosongkan jika tidak ingin mengubah foto</p>
+                </div>
+
+                <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1">Ikon FontAwesome</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-500"><i class="fa-solid fa-icons"></i></span>
-                        <input type="text" name="icon" x-model="currentTeam.icon" required placeholder="fa-user-tie"
+                        <input type="text" name="icon" x-model="currentTeam.icon" required
                             class="w-full bg-slate-50 border-transparent focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 p-4 pl-12 rounded-2xl outline-none transition-all font-mono text-xs text-indigo-600 shadow-inner">
                     </div>
                 </div>
@@ -180,11 +198,9 @@
                         class="w-full bg-slate-50 border-transparent focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 p-4 rounded-2xl outline-none transition-all font-medium text-slate-600 shadow-inner text-sm"></textarea>
                 </div>
 
-                <div class="pt-4 flex flex-col gap-3">
-                    <button type="submit" class="w-full py-4 bg-slate-900 hover:bg-indigo-600 text-white text-sm font-black rounded-2xl shadow-xl shadow-slate-900/20 transition-all uppercase tracking-[0.2em]">
-                        Simpan Profil Anggota
-                    </button>
-                </div>
+                <button type="submit" class="w-full py-4 bg-slate-900 hover:bg-indigo-600 text-white text-sm font-black rounded-2xl shadow-xl transition-all uppercase tracking-[0.2em]">
+                    Simpan Profil Anggota
+                </button>
             </form>
         </div>
     </div>

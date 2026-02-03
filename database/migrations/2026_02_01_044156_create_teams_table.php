@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('role');
             $table->string('icon');
+            $table->string('image_path');
             $table->text('quote')->nullable();
             $table->integer('order')->default(0);
             $table->timestamps();
