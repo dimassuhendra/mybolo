@@ -30,13 +30,13 @@
         <div class="max-w-3xl">
             <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
                 Koneksi Tanpa Batas, <br>
-                <span class="text-blue-500">Keamanan Tanpa Celah.</span>
+                <span class="text-white-500">Keamanan Tanpa Celah.</span>
             </h1>
             <p class="text-lg md:text-2xl mb-10 text-gray-300">
                 Teknologi Arindama Andra menyediakan solusi High-Speed Internet, Sistem Keamanan CCTV, dan Pelacakan GPS profesional.
             </p>
             <div class="flex flex-wrap gap-4">
-                <a href="#services" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-md transition duration-300">
+                <a href="#services" class="bg-brand-blue hover:bg-white text-white hover:text-black font-bold px-8 py-4 rounded-md transition duration-300">
                     Eksplor Layanan
                 </a>
                 <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-bold px-8 py-4 rounded-md transition duration-300">
@@ -49,39 +49,52 @@
 
 <section id="services" class="py-24 bg-white" data-aos="fade-up">
     <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-black">Layanan Unggulan</h2>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p class="text-gray-500 max-w-2xl mx-auto">Solusi teknologi terintegrasi untuk keamanan dan konektivitas bisnis Anda.</p>
+        <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-black tracking-tight">Layanan Unggulan</h2>
+            <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
+            <p class="text-gray-500 mt-6 max-w-2xl mx-auto font-body">Solusi teknologi terintegrasi untuk keamanan dan konektivitas tanpa batas.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-10">
+        <div class="grid md:grid-cols-3 gap-8">
             @foreach($services as $service)
-            <div class="group bg-gray-50 border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-blue-600">
-                <div class="relative h-64 overflow-hidden">
-                    <img src="{{ asset('storage/' . $service->image_path) }}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" alt="{{ $service->title }}">
-                    <div class="absolute inset-0 bg-black/40"></div>
-                    <div class="absolute bottom-6 left-6 text-white">
-                        <i class="fa-solid {{ $service->icon }} text-3xl mb-2 text-blue-500"></i>
-                        <h3 class="text-xl font-bold uppercase">{{ $service->title }}</h3>
+            <div class="group relative overflow-hidden bg-black rounded-xl h-[450px] cursor-pointer shadow-xl">
+                <img src="{{ asset('storage/' . $service->image_path) }}"
+                    class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:blur-sm opacity-60"
+                    alt="{{ $service->title }}">
+
+                <div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-0">
+                    <div class="mb-4 text-4xl text-white">
+                        <i class="fa-solid {{ $service->icon }}"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-white uppercase tracking-wider mb-2">{{ $service->title }}</h3>
+                    <p class="text-gray-300 text-sm line-clamp-2">{{ $service->short_description }}</p>
                 </div>
-                <div class="p-8">
-                    <p class="text-gray-600 text-sm mb-6">{{ $service->short_description }}</p>
-                    <ul class="text-sm space-y-2 mb-8 text-gray-700">
+
+                <div class="absolute inset-0 bg-brand-blue translate-y-full transition-transform duration-1000 ease-in-out group-hover:translate-y-0 p-8 flex flex-col justify-center text-white">
+                    <h3 class="text-2xl font-bold mb-6 border-b border-white/30 pb-4">{{ $service->title }}</h3>
+
+                    <ul class="space-y-3 mb-8">
                         @php
                         $features = json_decode($service->features, true);
                         if (is_string($features)) $features = json_decode($features, true);
                         @endphp
                         @if(is_array($features))
                         @foreach($features as $feature)
-                        <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2"></i> {{ $feature }}</li>
+                        @if(!empty($feature))
+                        <li class="flex items-center text-sm font-medium">
+                            <i class="fa-solid fa-circle-check mr-3 text-white/80"></i>
+                            {{ $feature }}
+                        </li>
+                        @endif
                         @endforeach
                         @endif
                     </ul>
+
                     <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['phone'] ?? '') }}"
-                        class="block text-center border-2 border-black hover:bg-black hover:text-white text-black font-bold py-3 rounded-md transition">
-                        Hubungi Admin
+                        target="_blank"
+                        class="inline-flex items-center justify-center gap-2 bg-white text-brand-blue font-bold py-3 px-6 rounded-lg transition-all hover:bg-black hover:text-white">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        Konsultasi Sekarang
                     </a>
                 </div>
             </div>
@@ -102,7 +115,7 @@
                 @foreach($testimonials as $testi)
                 <div class="swiper-slide">
                     <div class="bg-zinc-900 p-10 border border-zinc-800 rounded-lg">
-                        <div class="flex text-blue-600 mb-6">
+                        <div class="flex text-brand-blue mb-6">
                             @for($i=0; $i < ($testi->stars ?? 5); $i++)
                                 <i class="fas fa-star text-xs"></i>
                                 @endfor
@@ -125,12 +138,30 @@
     </div>
 </section>
 
-<section id="partners" class="py-16 bg-white border-y border-gray-100">
+<section id="partners" class="py-20 bg-gray-50 overflow-hidden" data-aos="fade-up">
     <div class="container mx-auto px-6">
-        <div class="flex flex-wrap justify-center items-center gap-12 opacity-50">
-            @foreach($partners as $partner)
-            <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-8 grayscale hover:grayscale-0 transition duration-300">
-            @endforeach
+        <div class="text-center mb-12">
+            <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Network & Trust</h4>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 font-title">Partner Bisnis Kami</h2>
+            <p class="text-gray-500 mt-4 font-body max-w-xl mx-auto">Kami bekerja sama dengan berbagai vendor dan instansi terkemuka untuk memberikan layanan terbaik bagi Anda.</p>
+        </div>
+
+        <div class="relative flex overflow-x-hidden group">
+            <div class="flex animate-marquee whitespace-nowrap py-12 items-center">
+                @foreach($partners as $partner)
+                <div class="mx-8 w-40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
+                    <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-12 object-contain mx-auto">
+                </div>
+                @endforeach
+            </div>
+
+            <div class="absolute top-0 flex animate-marquee2 whitespace-nowrap py-12 items-center">
+                @foreach($partners as $partner)
+                <div class="mx-8 w-40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
+                    <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-12 object-contain mx-auto">
+                </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>
