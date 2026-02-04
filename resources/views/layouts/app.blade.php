@@ -96,11 +96,11 @@
         }
 
         .animate-marquee {
-            animation: marquee 30s linear infinite;
+            animation: marquee 40s linear infinite;
         }
 
         .animate-marquee2 {
-            animation: marquee2 30s linear infinite;
+            animation: marquee2 40s linear infinite;
         }
     </style>
 </head>
@@ -143,81 +143,6 @@
     <main>
         @yield('content')
 
-        <div class="w-full rotate-180 bg-black -mb-1">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px] fill-gray-50">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-            </svg>
-        </div>
-
-        <section id="partners" class="py-16 bg-gray-50 overflow-hidden relative">
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2">Network & Trust</h4>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Partner Bisnis Kami</h2>
-                <div class="w-12 h-1 bg-brand-blue mx-auto mt-4 mb-10"></div>
-
-                <div class="relative flex overflow-x-hidden group">
-                    <div class="flex animate-marquee whitespace-nowrap py-12 items-center">
-                        @foreach($partners as $partner)
-                        <div class="mx-8 w-40 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition duration-500">
-                            <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-10 object-contain mx-auto">
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="absolute top-0 flex animate-marquee2 whitespace-nowrap py-12 items-center">
-                        @foreach($partners as $partner)
-                        <div class="mx-8 w-40 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition duration-500">
-                            <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-10 object-contain mx-auto">
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="w-full bg-gray-50 -mb-1">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px] fill-white">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-            </svg>
-        </div>
-
-        <section id="contact" class="pb-24 pt-10 bg-white" data-aos="fade-up">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">Get In Touch</h4>
-                    <h2 class="text-4xl md:text-5xl font-bold text-black font-title">Hubungi Kami</h2>
-                    <p class="text-gray-500 mt-6 font-body max-w-2xl mx-auto italic">Tim kami siap membantu memberikan solusi terbaik.</p>
-                </div>
-
-                <div class="flex flex-col lg:flex-row gap-12">
-                    <div class="w-full lg:w-2/5 grid grid-cols-1 gap-4">
-                        @php
-                        $contactInfo = [
-                        ['icon' => 'fa-location-dot', 'title' => 'Lokasi Kantor', 'val' => $settings['address']],
-                        ['icon' => 'fa-phone-volume', 'title' => 'Telepon / WA', 'val' => $settings['phone']],
-                        ['icon' => 'fa-envelope-open-text', 'title' => 'Email Support', 'val' => $settings['email']],
-                        ['icon' => 'fa-clock', 'title' => 'Operasional', 'val' => $settings['working_hours']]
-                        ];
-                        @endphp
-
-                        @foreach($contactInfo as $info)
-                        <div class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black">
-                            <div class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-white group-hover:rotate-[360deg]">
-                                <i class="fa-solid {{ $info['icon'] }}"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">{{ $info['title'] }}</h4>
-                                <p class="text-gray-600 text-sm font-body leading-relaxed group-hover:text-gray-300 transition-colors">{{ $info['val'] }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-
-                    <div class="w-full lg:w-3/5 min-h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-100 relative group">
-                        <iframe src="{{ $settings['maps_url'] }}" class="w-full h-full border-0 grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="bg-black text-white py-12">
