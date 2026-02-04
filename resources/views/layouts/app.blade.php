@@ -109,7 +109,7 @@
 
     <nav id="navbar" class="fixed w-full z-50 py-6 px-6">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#home">
+            <a href="/">
                 <img src="{{ asset('img/mybolo.png') }}"
                     alt="Logo"
                     class="h-10 md:h-12 brightness-0 opacity-80 hover:opacity-100 transition-all duration-300"

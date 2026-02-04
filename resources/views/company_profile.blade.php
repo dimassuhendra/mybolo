@@ -38,30 +38,39 @@
     </div>
 </section>
 
-<section id="services" class="py-32 bg-white overflow-hidden" data-aos="fade-up">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-4">
-            <div class="max-w-2xl">
+<section id="services" class="py-32 bg-white overflow-hidden relative" data-aos="fade-up">
+    <div class="absolute -top-10 -left-10 text-[12rem] font-black text-gray-100/60 select-none pointer-events-none leading-none z-0 font-title tracking-tighter">
+        SOLUTIONS
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-24 gap-6">
+            <p class="text-gray-500 max-w-xs text-center md:text-left font-body text-sm order-2 md:order-1">
+                Integrasi teknologi mutakhir untuk menunjang produktivitas dan keamanan aset Anda secara real-time.
+            </p>
+
+            <div class="h-px flex-grow bg-gray-200 mx-8 hidden md:block order-2"></div>
+
+            <div class="text-center md:text-right order-1 md:order-3">
                 <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">What We Do</h4>
-                <h2 class="text-4xl md:text-5xl font-bold text-black tracking-tight font-title">Layanan Kami</h2>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-black tracking-tight font-title">Layanan Kami</h2>
             </div>
-            <div class="hidden md:block h-px w-32 bg-gray-200 mb-4"></div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
             @foreach($services as $service)
-            <div class="group relative bg-black rounded-2xl h-[500px] overflow-hidden transition-all duration-700">
+            <div class="group relative bg-black rounded-[2rem] h-[520px] overflow-hidden transition-all duration-700 shadow-xl">
                 <img src="{{ asset('storage/' . $service->image_path) }}"
                     class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0 group-hover:opacity-40"
                     alt="{{ $service->title }}">
 
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
 
-                <div class="absolute top-6 right-6 w-12 h-12 bg-brand-blue text-white rounded-full flex items-center justify-center text-xl shadow-lg z-20">
+                <div class="absolute top-8 right-8 w-14 h-14 bg-brand-blue text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg z-20 transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
                     <i class="fa-solid {{ $service->icon }}"></i>
                 </div>
 
-                <div class="absolute inset-x-0 bottom-0 p-8 z-20 transition-transform duration-500 translate-y-[160px] group-hover:translate-y-0">
+                <div class="absolute inset-x-0 bottom-0 p-8 z-20 transition-all duration-500 translate-y-[180px] group-hover:translate-y-0">
                     <h3 class="text-2xl font-bold text-white mb-4 font-title">{{ $service->title }}</h3>
 
                     <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
@@ -76,7 +85,7 @@
                             @endphp
                             @if(is_array($features))
                             @foreach(array_slice($features, 0, 3) as $feature)
-                            <span class="text-[10px] uppercase tracking-widest bg-white/10 backdrop-blur-md text-white px-3 py-1 rounded-full border border-white/20">
+                            <span class="text-[9px] uppercase tracking-widest bg-white/10 backdrop-blur-md text-white px-3 py-1.5 rounded-lg border border-white/10">
                                 {{ $feature }}
                             </span>
                             @endforeach
@@ -84,7 +93,7 @@
                         </div>
 
                         <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['phone'] ?? '') }}"
-                            class="inline-block w-full text-center bg-brand-blue text-white font-bold py-4 rounded-xl transition-all hover:bg-white hover:text-black">
+                            class="inline-block w-full text-center bg-white text-black font-bold py-4 rounded-xl transition-all hover:bg-brand-blue hover:text-white shadow-lg">
                             Mulai Konsultasi
                         </a>
                     </div>
@@ -95,7 +104,7 @@
     </div>
 </section>
 
-<section id="testimonials" class="bg-[#fafafa] py-32 overflow-hidden relative">
+<section id="testimonials" class="bg-[#fafafa] py-32 overflow-hidden relative" data-aos="fade-up">
     <div class="absolute inset-0 opacity-[0.4]" style="background-image: radial-gradient(#00AEEF 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
 
     <div class="absolute -top-10 -right-10 text-[15rem] font-black text-gray-200/40 select-none pointer-events-none leading-none z-0 font-title tracking-tighter">
@@ -162,7 +171,7 @@
     </div>
 </section>
 
-<section id="partners" class="py-24 bg-gray-50 overflow-hidden relative border-y border-gray-100">
+<section id="partners" class="py-24 bg-gray-50 overflow-hidden relative border-y border-gray-100" data-aos="fade-up">
     <div class="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none select-none uppercase font-black text-[10vw] leading-none flex flex-col justify-around overflow-hidden">
         <span class="whitespace-nowrap -ml-20">Network Trust Network Trust</span>
         <span class="whitespace-nowrap -ml-60">Reliable Partner Reliable Partner</span>
@@ -279,7 +288,7 @@
 
                 @foreach($contactInfo as $info)
                 <div class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black">
-                    <div class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-white group-hover:rotate-[360deg]">
+                    <div class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
                         <i class="fa-solid {{ $info['icon'] }}"></i>
                     </div>
                     <div>
