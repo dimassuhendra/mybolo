@@ -138,6 +138,11 @@
     </div>
 </section>
 
+<div class="w-full rotate-180 bg-black">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px] fill-gray-50">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+    </svg>
+</div>
 <section id="partners" class="py-20 bg-gray-50 overflow-hidden" data-aos="fade-up">
     <div class="container mx-auto px-6">
         <div class="text-center mb-12">
@@ -166,39 +171,122 @@
     </div>
 </section>
 
-<section id="contact" class="py-24 bg-white" data-aos="fade-up">
-    <div class="container mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h4 class="text-brand-blue font-bold uppercase tracking-widest text-sm mb-4">Kontak Kami</h4>
-                <h2 class="text-4xl md:text-5xl font-bold text-black mb-8">Mari Mulai Kerjasama.</h2>
+<section id="team" class="py-24 bg-black overflow-hidden" data-aos="fade-up">
+    <div class="container mx-auto px-6 text-center">
+        <div class="mb-20">
+            <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">Meet the Experts</h4>
+            <h2 class="text-4xl md:text-5xl font-bold text-white font-title">Our Team</h2>
+            <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+        </div>
 
-                <div class="space-y-8">
-                    <div class="flex gap-6">
-                        <div class="text-brand-blue text-2xl"><i class="fa-solid fa-location-dot"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg">Alamat</h4>
-                            <p class="text-gray-600">{{ $settings['address'] }}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+            @foreach($teams as $t)
+            <div class="group relative pt-12">
+                <div class="bg-zinc-900/40 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:bg-brand-blue hover:-translate-y-2 group-hover:shadow-[0_0_40px_rgba(0,174,239,0.2)]">
+
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 group">
+                        <div class="absolute -inset-2 border-2 border-dashed border-brand-blue rounded-xl animate-[spin_15s_linear_infinite] z-0 opacity-60"></div>
+                        <div class="absolute -inset-2 border-2 border-dashed border-brand-blue rounded-xl animate-[spin_8s_linear_infinite] z-0 opacity-60"></div>
+
+                        <div class="absolute inset-0 bg-zinc-900 border-4 border-brand-blue rounded-xl flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-110 shadow-xl z-10">
+                            @if($t->image_path)
+                            <img src="{{ asset('storage/' . $t->image_path) }}"
+                                alt="{{ $t->name }}"
+                                class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0">
+                            @else
+                            <i class="fa-solid fa-user text-white text-3xl"></i>
+                            @endif
                         </div>
                     </div>
-                    <div class="flex gap-6">
-                        <div class="text-brand-blue text-2xl"><i class="fa-solid fa-phone"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg">Telepon</h4>
-                            <p class="text-gray-600">{{ $settings['phone'] }}</p>
+
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold text-white font-title mb-1">{{ $t->name }}</h3>
+                        <p class="text-brand-blue font-bold text-xs uppercase tracking-widest font-title group-hover:text-white transition-colors">
+                            {{ $t->role }}
+                        </p>
+
+                        <div class="mt-4 pt-4 border-t border-white/10 group-hover:border-white/20">
+                            <p class="text-gray-400 text-sm font-body italic transition-colors group-hover:text-white/90">
+                                "{{ $t->quote }}"
+                            </p>
                         </div>
+                    </div>
+
+                    <div class="absolute inset-0 rounded-2xl overflow-hidden opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                        <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-white/10 rotate-45 transform transition-transform duration-700 group-hover:translate-x-full"></div>
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
-            <div class="h-[400px] rounded-2xl overflow-hidden grayscale contrast-125 border border-gray-200">
+<section id="contact" class="py-24 bg-white" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+            <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">Get In Touch</h4>
+            <h2 class="text-4xl md:text-5xl font-bold text-black font-title">Hubungi Kami</h2>
+            <div class="w-16 h-1 bg-brand-blue mx-auto mt-6"></div>
+            <p class="text-gray-500 mt-6 font-body max-w-2xl mx-auto italic">Siap meningkatkan keamanan dan konektivitas Anda? Tim kami siap membantu memberikan solusi terbaik.</p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-12 items-stretch">
+            <div class="w-full lg:w-2/5 grid grid-cols-1 gap-4">
+
+                <div class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                    <div class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Lokasi Kantor</h4>
+                        <p class="text-gray-600 text-sm font-body leading-relaxed group-hover:text-gray-300 transition-colors">{{ $settings['address'] }}</p>
+                    </div>
+                </div>
+
+                <div class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                    <div class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Telepon / WhatsApp</h4>
+                        <p class="text-gray-600 text-sm font-body group-hover:text-gray-300 transition-colors">{{ $settings['phone'] }}</p>
+                    </div>
+                </div>
+
+                <div class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                    <div class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Email Support</h4>
+                        <p class="text-gray-600 text-sm font-body group-hover:text-gray-300 transition-colors">{{ $settings['email'] }}</p>
+                    </div>
+                </div>
+
+                <div class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                    <div class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Jam Operasional</h4>
+                        <p class="text-gray-600 text-sm font-body font-bold group-hover:text-gray-300 transition-colors">{{ $settings['working_hours'] }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="w-full lg:w-3/5 min-h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-50 relative group">
                 <iframe
                     src="{{ $settings['maps_url'] }}"
-                    class="w-full h-full border-0"
+                    class="w-full h-full border-0 grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0"
                     allowfullscreen=""
-                    loading="lazy">
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
+                <div class="absolute inset-0 bg-brand-blue/5 pointer-events-none group-hover:opacity-0 transition-opacity"></div>
             </div>
+
         </div>
     </div>
 </section>
