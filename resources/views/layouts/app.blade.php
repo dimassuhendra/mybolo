@@ -200,6 +200,30 @@
         .team-card * {
             transition: all 0.5s ease;
         }
+
+        #navbar {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+
+        /* Class untuk menghilangkan Navbar saat scroll lewat Hero */
+        .nav-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+            /* Agar link tidak bisa diklik saat hilang */
+        }
+
+        .logo-bw {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .logo-bw:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -254,20 +278,23 @@
             offset: 200, // Animasi baru jalan setelah scroll 200px
         });
 
-        const navbar = document.getElementById('navbar');
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelectorAll('.nav-link');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // 1. Efek Scroll
+        const navbar = document.getElementById('navbar');
+        const heroSection = document.getElementById('home');
+
         window.onscroll = () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
-                // Jika Anda ingin logo berubah warna saat scroll, ganti src di sini
-                // document.getElementById('nav-logo').src = '{{ asset("img/logo-dark.png") }}';
+            // Ambil tinggi section hero
+            const heroHeight = heroSection.offsetHeight;
+
+            // Jika scroll sudah melebihi tinggi hero (dikurangi sedikit buffer 100px)
+            if (window.scrollY > (heroHeight - 100)) {
+                navbar.classList.add('nav-hidden');
             } else {
-                navbar.classList.remove('nav-scrolled');
+                navbar.classList.remove('nav-hidden');
             }
         };
 

@@ -51,7 +51,7 @@
     <div class="container mx-auto px-6">
         <div class="text-center mb-20">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-black tracking-tight">Layanan Unggulan</h2>
-            <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
+            <div class="w-16 h-1 bg-brand-blue mx-auto"></div>
             <p class="text-gray-500 mt-6 max-w-2xl mx-auto font-body">Solusi teknologi terintegrasi untuk keamanan dan konektivitas tanpa batas.</p>
         </div>
 
@@ -170,19 +170,19 @@
     <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-                <h4 class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">Kontak Kami</h4>
+                <h4 class="text-brand-blue font-bold uppercase tracking-widest text-sm mb-4">Kontak Kami</h4>
                 <h2 class="text-4xl md:text-5xl font-bold text-black mb-8">Mari Mulai Kerjasama.</h2>
 
                 <div class="space-y-8">
                     <div class="flex gap-6">
-                        <div class="text-blue-600 text-2xl"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="text-brand-blue text-2xl"><i class="fa-solid fa-location-dot"></i></div>
                         <div>
                             <h4 class="font-bold text-lg">Alamat</h4>
                             <p class="text-gray-600">{{ $settings['address'] }}</p>
                         </div>
                     </div>
                     <div class="flex gap-6">
-                        <div class="text-blue-600 text-2xl"><i class="fa-solid fa-phone"></i></div>
+                        <div class="text-brand-blue text-2xl"><i class="fa-solid fa-phone"></i></div>
                         <div>
                             <h4 class="font-bold text-lg">Telepon</h4>
                             <p class="text-gray-600">{{ $settings['phone'] }}</p>
