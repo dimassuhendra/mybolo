@@ -95,36 +95,58 @@
     </div>
 </section>
 
-<section id="testimonials" class="bg-white py-32 border-y border-gray-100">
-    <div class="container mx-auto px-6">
+<section id="testimonials" class="bg-[#fafafa] py-32 overflow-hidden relative">
+    <div class="absolute inset-0 opacity-[0.4]" style="background-image: radial-gradient(#00AEEF 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-20">
-            <span class="text-brand-blue font-bold tracking-widest uppercase text-xs">Testimonials</span>
-            <h2 class="text-4xl font-bold mt-2 text-black">Kepercayaan Klien Kami</h2>
+            <span class="text-brand-blue font-bold tracking-[0.4em] uppercase text-[10px] bg-blue-50 px-4 py-2 rounded-full">Testimonials</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-6 text-black font-title tracking-tight">Apa Kata Klien Kami</h2>
+            <div class="w-12 h-1 bg-black mx-auto mt-6"></div>
         </div>
 
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
+        <div class="swiper mySwiper !overflow-visible">
+            <div class="swiper-wrapper py-10">
                 @foreach($testimonials as $testi)
-                <div class="swiper-slide">
-                    <div class="bg-gray-50 p-12 rounded-[2rem] relative">
-                        <div class="text-brand-blue mb-6 flex gap-1">
+                <div class="swiper-slide transition-all duration-500 opacity-40 scale-90 grayscale hover:grayscale-0">
+                    <div class="bg-white p-10 md:p-14 rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.04)] border border-gray-100 relative">
+                        <div class="absolute top-10 right-10 opacity-5">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V13C14.017 13.5523 13.5693 14 13.017 14H12.017V21H14.017ZM6.01701 21L6.01701 18C6.01701 16.8954 6.91244 16 8.01701 16H11.017C11.5693 16 12.017 15.5523 12.017 15V9C12.017 8.44772 11.5693 8 11.017 8H7.01701C6.46473 8 6.01701 8.44772 6.01701 9V13C6.01701 13.5523 5.5693 14 5.01701 14H4.01701V21H6.01701Z" />
+                            </svg>
+                        </div>
+
+                        <div class="flex gap-1 mb-8 text-brand-blue">
                             @for($i=0; $i < ($testi->stars ?? 5); $i++)
-                                <i class="fas fa-star text-sm"></i>
+                                <i class="fas fa-star text-xs"></i>
                                 @endfor
                         </div>
-                        <p class="text-gray-700 text-lg leading-relaxed mb-10 font-medium italic">"{{ $testi->body }}"</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden">
-                                <i class="fas fa-user text-gray-300"></i>
+
+                        <p class="text-gray-700 text-xl leading-relaxed mb-12 font-medium">
+                            "{{ $testi->body }}"
+                        </p>
+
+                        <div class="flex items-center gap-5">
+                            <div class="w-14 h-14 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden ring-4 ring-gray-50">
+                                <i class="fas fa-user text-gray-300 text-2xl mt-4 ml-3"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-black">{{ $testi->client_name }}</h4>
-                                <p class="text-gray-400 text-xs uppercase tracking-widest">{{ $testi->position }}</p>
+                                <h4 class="font-bold text-black text-lg">{{ $testi->client_name }}</h4>
+                                <p class="text-brand-blue text-xs font-bold uppercase tracking-widest">{{ $testi->position }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
+            </div>
+
+            <div class="flex justify-center gap-4 mt-12">
+                <div class="swiper-button-prev-custom w-12 h-12 rounded-full border border-black flex items-center justify-center cursor-pointer hover:bg-black hover:text-white transition-all">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div class="swiper-button-next-custom w-12 h-12 rounded-full border border-black flex items-center justify-center cursor-pointer hover:bg-black hover:text-white transition-all">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
             </div>
         </div>
     </div>

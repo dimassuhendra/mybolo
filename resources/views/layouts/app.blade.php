@@ -253,6 +253,44 @@
             mobileMenu.classList.toggle('translate-x-full');
             document.body.classList.toggle('overflow-hidden');
         });
+
+        // Script untuk testimonial slider
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            centeredSlides: true,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next-custom",
+                prevEl: ".swiper-button-prev-custom",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 2.5
+                },
+            },
+            on: {
+                slideChangeTransitionStart: function() {
+                    // Menambahkan efek fokus pada slide aktif
+                    document.querySelectorAll('.swiper-slide').forEach(slide => {
+                        slide.classList.add('opacity-40', 'scale-90', 'grayscale');
+                        slide.classList.remove('opacity-100', 'scale-105', 'grayscale-0');
+                    });
+                    const activeSlide = document.querySelector('.swiper-slide-active');
+                    if (activeSlide) {
+                        activeSlide.classList.remove('opacity-40', 'scale-90', 'grayscale');
+                        activeSlide.classList.add('opacity-100', 'scale-105', 'grayscale-0');
+                    }
+                },
+            }
+        });
     </script>
 </body>
 
