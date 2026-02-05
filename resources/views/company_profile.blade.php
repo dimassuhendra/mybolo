@@ -47,8 +47,10 @@
     </div>
 </section>
 
-<section id="services" class="py-24 bg-white" data-aos="fade-up">
-    <div class="container mx-auto px-6">
+<section id="services" class="py-32 bg-white overflow-hidden relative" data-aos="fade-up">
+
+
+    <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-20">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-black tracking-tight">Layanan Unggulan</h2>
             <div class="w-16 h-1 bg-brand-blue mx-auto"></div>
@@ -57,32 +59,60 @@
 
         <div class="grid md:grid-cols-3 gap-8">
             @foreach($services as $service)
-            <div class="group relative overflow-hidden bg-black rounded-xl h-[450px] cursor-pointer shadow-xl">
-                <img src="{{ asset('storage/' . $service->image_path) }}"
-                    class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:blur-sm opacity-60"
-                    alt="{{ $service->title }}">
+            <div class="group relative overflow-hidden bg-black rounded-[2rem] h-[500px] cursor-pointer shadow-2xl transition-all duration-500">
 
-                <div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-0">
-                    <div class="mb-4 text-4xl text-white">
-                        <i class="fa-solid {{ $service->icon }}"></i>
+                @php
+                $videoId = "";
+                if(!empty($service->file_path)) {
+                // Regex untuk mengambil ID video YouTube dari berbagai format link
+                preg_match('/(v=|shared|be\/|shorts\/)([a-zA-Z0-9_-]{11})/', $service->file_path, $matches);
+                $videoId = $matches[2] ?? "";
+                }
+                @endphp
+
+                <div class="absolute inset-0 w-full h-full z-0 transition-all duration-700 group-hover:scale-110">
+                    @if($videoId)
+                    <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-700">
+                        <iframe
+                            src="https://www.youtube.com/embed/{{ $videoId }}?autoplay=1&mute=1&loop=1&playlist={{ $videoId }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
+                            class="absolute top-1/2 left-1/2 min-w-full min-h-full w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                            frameborder="0"
+                            allow="autoplay; fullscreen">
+                        </iframe>
                     </div>
-                    <h3 class="text-2xl font-bold text-white uppercase tracking-wider mb-2">{{ $service->title }}</h3>
-                    <p class="text-gray-300 text-sm line-clamp-2">{{ $service->short_description }}</p>
+                    @else
+                    <img src="{{ asset('storage/' . $service->image_path) }}"
+                        class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-700"
+                        alt="{{ $service->title }}">
+                    @endif
                 </div>
 
-                <div class="absolute inset-0 bg-brand-blue translate-y-full transition-transform duration-1000 ease-in-out group-hover:translate-y-0 p-8 flex flex-col justify-center text-white">
-                    <h3 class="text-2xl font-bold mb-6 border-b border-white/30 pb-4">{{ $service->title }}</h3>
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10 transition-opacity duration-500 group-hover:opacity-0"></div>
 
-                    <ul class="space-y-3 mb-8">
+                <div class="absolute inset-0 p-10 flex flex-col justify-end z-20 transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-10">
+                    <div class="mb-6 w-16 h-16 bg-brand-blue/90 backdrop-blur-md rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg transform -rotate-3 group-hover:rotate-0 transition-transform">
+                        <i class="fa-solid {{ $service->icon }}"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white uppercase tracking-wider mb-3 font-title">{{ $service->title }}</h3>
+                    <p class="text-gray-300 text-sm font-body line-clamp-2 leading-relaxed">{{ $service->short_description }}</p>
+                </div>
+
+                <div class="absolute inset-0 bg-brand-blue/95 backdrop-blur-sm translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0 p-10 flex flex-col justify-center text-white z-30">
+                    <h3 class="text-2xl font-bold mb-2 font-title">{{ $service->title }}</h3>
+                    <div class="w-12 h-1 bg-white/40 mb-6"></div>
+
+                    <ul class="space-y-4 mb-10">
                         @php
                         $features = json_decode($service->features, true);
                         if (is_string($features)) $features = json_decode($features, true);
                         @endphp
                         @if(is_array($features))
-                        @foreach($features as $feature)
+                        @foreach(array_slice($features, 0, 4) as $feature)
                         @if(!empty($feature))
-                        <li class="flex items-center text-sm font-medium">
-                            <i class="fa-solid fa-circle-check mr-3 text-white/80"></i>
+                        <li class="flex items-center text-sm font-semibold tracking-wide">
+                            <div class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fa-solid fa-check text-[10px]"></i>
+                            </div>
                             {{ $feature }}
                         </li>
                         @endif
@@ -92,9 +122,9 @@
 
                     <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['phone'] ?? '') }}"
                         target="_blank"
-                        class="inline-flex items-center justify-center gap-2 bg-white text-brand-blue font-bold py-3 px-6 rounded-lg transition-all hover:bg-black hover:text-white">
+                        class="inline-flex items-center justify-center gap-3 bg-white text-brand-blue font-black py-4 px-6 rounded-2xl transition-all hover:bg-black hover:text-white shadow-2xl active:scale-95">
                         <i class="fa-brands fa-whatsapp text-xl"></i>
-                        Konsultasi Sekarang
+                        KONSULTASI SEKARANG
                     </a>
                 </div>
             </div>

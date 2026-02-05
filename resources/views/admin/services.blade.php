@@ -68,7 +68,8 @@
                 <table class="w-full text-left">
                     <thead>
                         <tr class="border-b border-slate-100">
-                            <th class="p-6 text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold">Preview</th>
+                            <th class="p-6 text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold">Preview Foto</th>
+                            <th class="p-6 text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold">Preview Video</th>
                             <th class="p-6 text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold text-center">Ikon</th>
                             <th class="p-6 text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold">Informasi Layanan</th>
                             <th class="p-6 text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold">Deskripsi</th>
@@ -84,6 +85,30 @@
                                     <img src="{{ asset('storage/' . $s->image_path) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                     @else
                                     <div class="flex items-center justify-center h-full text-[9px] text-slate-400 uppercase font-bold italic">No Media</div>
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="p-6">
+                                <div class="relative w-24 h-14 rounded-xl overflow-hidden shadow-inner bg-slate-100 border border-slate-200 flex items-center justify-center">
+                                    @if($s->file_path)
+                                    @php
+                                    // Trik mengambil ID video dari URL YouTube
+                                    $videoId = "";
+                                    if(preg_match('/(v=|shared|be\/)([a-zA-Z0-9_-]{11})/', $s->file_path, $matches)) {
+                                    $videoId = $matches[2];
+                                    }
+                                    @endphp
+
+                                    @if($videoId)
+                                    <img src="https://img.youtube.com/vi/{{ $videoId }}/mqdefault.jpg" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center text-white text-xs">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </div>
+                                    @else
+                                    <div class="text-[8px] text-rose-500 font-bold p-1 text-center">Invalid Link</div>
+                                    @endif
+                                    @else
+                                    <div class="flex items-center justify-center h-full text-[9px] text-slate-400 uppercase font-bold italic text-center">No Video</div>
                                     @endif
                                 </div>
                             </td>
@@ -215,6 +240,19 @@
                     </div>
                 </div>
 
+                <div class="bg-blue-50/50 p-6 rounded-3xl border border-blue-100 mb-6">
+                    <label class="block text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-2 ml-1">
+                        <i class="fa-brands fa-youtube mr-1"></i> Link Video YouTube (Latar Belakang)
+                    </label>
+                    <div class="relative">
+                        <input type="url" name="file_path" x-model="currentService.file_path"
+                            placeholder="https://www.youtube.com/watch?v=..."
+                            class="w-full bg-white border border-blue-100 p-4 rounded-2xl outline-none transition-all font-medium text-slate-700 focus:ring-4 focus:ring-blue-500/10 shadow-sm pl-12">
+                        <i class="fa-solid fa-link absolute left-4 top-1/2 -translate-y-1/2 text-blue-300"></i>
+                    </div>
+                    <p class="text-[9px] text-slate-400 mt-2 ml-1 italic">*Kosongkan jika hanya ingin menggunakan gambar statis.</p>
+                </div>
+
                 <div class="pt-8 flex justify-end gap-4 sticky bottom-0 bg-white pb-2">
                     <button type="button" @click="openModal = false" class="px-8 py-3 text-sm font-black text-slate-400 hover:text-slate-800 transition-all uppercase tracking-widest">Batal</button>
                     <button type="submit" class="px-10 py-3 bg-slate-900 hover:bg-emerald-600 text-white text-sm font-black rounded-2xl shadow-xl shadow-slate-900/20 transition-all uppercase tracking-widest">Simpan Perubahan</button>
@@ -236,7 +274,8 @@
                         title: '',
                         icon: '',
                         short_description: '',
-                        wa_link: ''
+                        wa_link: '',
+                        file_path: ''
                     };
                     this.features = [''];
                     this.openModal = true;
