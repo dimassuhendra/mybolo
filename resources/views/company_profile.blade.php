@@ -48,13 +48,12 @@
 </section>
 
 <section id="services" class="py-32 bg-white overflow-hidden relative" data-aos="fade-up">
-
-
     <div class="container mx-auto px-6 relative z-10">
-        <div class="text-center mb-20">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-black tracking-tight">Layanan Unggulan</h2>
-            <div class="w-16 h-1 bg-brand-blue mx-auto"></div>
-            <p class="text-gray-500 mt-6 max-w-2xl mx-auto font-body">Solusi teknologi terintegrasi untuk keamanan dan konektivitas tanpa batas.</p>
+        <div class="text-center mb-12">
+            <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Solutions & Expertise</h4>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 font-title">Layanan Kami</h2>
+            <p class="text-gray-500 mt-4 font-body max-w-xl mx-auto">Kami menghadirkan berbagai layanan teknologi terintegrasi yang dirancang untuk mendukung efisiensi dan keamanan bisnis Anda.</p>
+            <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -135,9 +134,11 @@
 
 <section id="testimonials" class="bg-black py-24 text-white">
     <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4">Kepercayaan Klien</h2>
-            <p class="text-gray-400">Apa yang mereka katakan tentang layanan kami.</p>
+        <div class="text-center mb-12">
+            <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Testimonials</h4>
+            <h2 class="text-3xl md:text-4xl font-bold text-white font-title">Kepercayaan Klien</h2>
+            <p class="text-white mt-4 font-body max-w-xl mx-auto">Kepuasan pelanggan adalah prioritas kami. Inilah apa yang mereka katakan mengenai pengalaman bekerja sama dengan kami.</p>
+            <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
         </div>
 
         <div class="swiper mySwiper">
@@ -179,12 +180,13 @@
             <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Network & Trust</h4>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 font-title">Partner Bisnis Kami</h2>
             <p class="text-gray-500 mt-4 font-body max-w-xl mx-auto">Kami bekerja sama dengan berbagai vendor dan instansi terkemuka untuk memberikan layanan terbaik bagi Anda.</p>
+            <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
         </div>
 
         <div class="relative flex overflow-x-hidden group">
             <div class="flex animate-marquee whitespace-nowrap py-12 items-center">
                 @foreach($partners as $partner)
-                <div class="mx-8 w-40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <div class="mx-8 w-60 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
                     <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-12 object-contain mx-auto">
                 </div>
                 @endforeach
@@ -192,7 +194,7 @@
 
             <div class="absolute top-0 flex animate-marquee2 whitespace-nowrap py-12 items-center">
                 @foreach($partners as $partner)
-                <div class="mx-8 w-40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <div class="mx-8 w-60 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-500">
                     <img src="{{ asset('storage/' . $partner->logo_path) }}" alt="{{ $partner->name }}" class="h-12 object-contain mx-auto">
                 </div>
                 @endforeach
@@ -203,9 +205,10 @@
 
 <section id="team" class="py-24 bg-black overflow-hidden" data-aos="fade-up">
     <div class="container mx-auto px-6 text-center">
-        <div class="mb-20">
-            <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">Meet the Experts</h4>
-            <h2 class="text-4xl md:text-5xl font-bold text-white font-title">Our Team</h2>
+        <div class="text-center mb-12">
+            <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Experience & Skills</h4>
+            <h2 class="text-3xl md:text-4xl font-bold text-white font-title">Tim Ahli Kami</h2>
+            <p class="text-gray-400 mt-4 font-body max-w-xl mx-auto">Didukung oleh tenaga profesional yang berdedikasi untuk memberikan solusi teknis terbaik bagi setiap kebutuhan Anda.</p>
             <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
         </div>
 
@@ -254,11 +257,11 @@
 
 <section id="contact" class="py-24 bg-white" data-aos="fade-up">
     <div class="container mx-auto px-6">
-        <div class="text-center mb-20">
-            <h4 class="text-brand-blue font-bold tracking-[0.3em] uppercase text-xs mb-3 font-title">Get In Touch</h4>
-            <h2 class="text-4xl md:text-5xl font-bold text-black font-title">Hubungi Kami</h2>
-            <div class="w-16 h-1 bg-brand-blue mx-auto mt-6"></div>
-            <p class="text-gray-500 mt-6 font-body max-w-2xl mx-auto italic">Siap meningkatkan keamanan dan konektivitas Anda? Tim kami siap membantu memberikan solusi terbaik.</p>
+        <div class="text-center mb-12">
+            <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Get In Touch</h4>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 font-title">Hubungi Kami</h2>
+            <p class="text-gray-500 mt-4 font-body max-w-xl mx-auto">Siap meningkatkan keamanan dan konektivitas Anda? Tim kami siap membantu memberikan solusi terbaik.</p>
+            <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
         </div>
 
         <div class="flex flex-col lg:flex-row gap-12 items-stretch">
