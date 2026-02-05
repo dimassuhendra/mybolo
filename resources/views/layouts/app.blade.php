@@ -23,6 +23,11 @@
             --font-body: 'Domine', serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
         body {
             font-family: var(--font-body);
         }
@@ -78,12 +83,10 @@
         }
 
         /* Konfigurasi Flip Card */
-        /* Container Utama Kartu */
         .flip-card {
             background-color: transparent;
             perspective: 1000px;
             height: 450px;
-            /* Tentukan tinggi pasti agar tidak goyang */
         }
 
         .flip-card-inner {
@@ -104,13 +107,11 @@
         .flip-card-front,
         .flip-card-back {
             position: absolute;
-            /* Kunci posisi agar menumpuk di titik yang sama */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             -webkit-backface-visibility: hidden;
-            /* Sembunyikan sisi belakang saat tidak menghadap user */
             backface-visibility: hidden;
             border-radius: 1.5rem;
             overflow: hidden;
@@ -156,7 +157,6 @@
         }
 
         /* Style Partners Section */
-        /* Keyframes untuk Infinite Scroll */
         @keyframes marquee {
             0% {
                 transform: translateX(0%);
@@ -191,7 +191,6 @@
             animation-play-state: paused;
         }
 
-        /* Section Our Team */
         /* Transisi halus untuk semua elemen */
         .team-card {
             backface-visibility: hidden;
@@ -206,12 +205,10 @@
             transform: translateY(0);
         }
 
-        /* Class untuk menghilangkan Navbar saat scroll lewat Hero */
         .nav-hidden {
             transform: translateY(-100%);
             opacity: 0;
             pointer-events: none;
-            /* Agar link tidak bisa diklik saat hilang */
         }
 
         .logo-bw {
@@ -224,6 +221,32 @@
             filter: grayscale(0%);
             opacity: 1;
         }
+
+        /* Navbar muncul dengan style Putih */
+        .nav-sticky-active {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
+        }
+
+        /* Mengubah warna teks link menjadi hitam saat bg putih */
+        .nav-sticky-active .nav-link {
+            color: #1f2937 !important;
+        }
+
+        /* Mengubah warna hamburger bar menjadi hitam saat bg putih */
+        .nav-sticky-active #bar1,
+        .nav-sticky-active #bar2,
+        .nav-sticky-active #bar3 {
+            background-color: #1f2937 !important;
+        }
+
+        /* Filter untuk membuat logo menjadi hitam (jika logo asli berwarna/putih) */
+        .logo-dark-mode {
+            filter: brightness(0);
+        }
     </style>
 </head>
 
@@ -231,7 +254,7 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#home">
-                <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-14 transition-all duration-300" id="nav-logo">
+                <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-14 transition-all duration-500" id="nav-logo">
             </a>
 
             <div class="hidden md:flex items-center space-x-8 font-medium tracking-wide">
@@ -283,20 +306,36 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
+        let lastScroll = 0;
         const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('nav-logo');
         const heroSection = document.getElementById('home');
 
-        window.onscroll = () => {
-            // Ambil tinggi section hero
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             const heroHeight = heroSection.offsetHeight;
 
-            // Jika scroll sudah melebihi tinggi hero (dikurangi sedikit buffer 100px)
-            if (window.scrollY > (heroHeight - 100)) {
+            // 1. Logika di dalam area HERO
+            if (currentScroll <= heroHeight) {
+                navbar.classList.remove('nav-hidden', 'nav-sticky-active');
+                navLogo.classList.remove('logo-dark-mode');
+                lastScroll = currentScroll;
+                return;
+            }
+
+            // 2. Logika di LUAR area HERO
+            if (currentScroll > lastScroll) {
+                // Scroll ke BAWAH -> Sembunyikan Navbar
                 navbar.classList.add('nav-hidden');
             } else {
+                // Scroll ke ATAS -> Munculkan Navbar dengan BG Putih
                 navbar.classList.remove('nav-hidden');
+                navbar.classList.add('nav-sticky-active');
+                navLogo.classList.add('logo-dark-mode');
             }
-        };
+
+            lastScroll = currentScroll;
+        });
 
         // 2. Toggle Mobile Menu
         menuBtn.addEventListener('click', () => {
