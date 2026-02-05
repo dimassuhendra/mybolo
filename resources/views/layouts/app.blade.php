@@ -292,9 +292,52 @@
         </div>
     </footer>
 
+    <button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-brand-blue text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:bg-blue-600 hover:-translate-y-2 group">
+        <i class="fas fa-arrow-up transition-transform group-hover:scale-110"></i>
+    </button>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Tombol kembali keatas -------------------------------------------------------------------------------
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const heroHeight = heroSection.offsetHeight;
+
+            // --- Logika Navbar yang sudah ada ---
+            if (currentScroll <= heroHeight) {
+                navbar.classList.remove('nav-hidden', 'nav-sticky-active');
+                navLogo.classList.remove('logo-dark-mode');
+
+                // Sembunyikan tombol Back to Top saat di area Hero
+                backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            } else {
+                // Tampilkan tombol Back to Top saat di luar Hero
+                backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+
+                if (currentScroll > lastScroll) {
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    navbar.classList.remove('nav-hidden');
+                    navbar.classList.add('nav-sticky-active');
+                    navLogo.classList.add('logo-dark-mode');
+                }
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Fungsi saat tombol diklik
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Akhir dari tombol kembali keatas ------------------------------------------------------------------------------
+
         AOS.init({
             duration: 1000, // Durasi animasi (1 detik)
             once: true, // Animasi hanya jalan sekali saat scroll ke bawah
