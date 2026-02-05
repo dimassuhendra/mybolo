@@ -33,7 +33,7 @@
                 <span class="text-white-500">Keamanan Tanpa Celah.</span>
             </h1>
             <p class="text-lg md:text-2xl mb-10 text-gray-300">
-                Teknologi Arindama Andra menyediakan solusi High-Speed Internet, Sistem Keamanan CCTV, dan Pelacakan GPS profesional.
+                MyBolo menyediakan solusi High-Speed Internet, Sistem Keamanan CCTV, dan Pelacakan GPS profesional.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="#services" class="bg-brand-blue hover:bg-white text-white hover:text-black font-bold px-8 py-4 rounded-md transition duration-300">
@@ -137,7 +137,7 @@
         <div class="text-center mb-12">
             <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Testimonials</h4>
             <h2 class="text-3xl md:text-4xl font-bold text-white font-title">Kepercayaan Klien</h2>
-            <p class="text-white mt-4 font-body max-w-xl mx-auto">Kepuasan pelanggan adalah prioritas kami. Inilah apa yang mereka katakan mengenai pengalaman bekerja sama dengan kami.</p>
+            <p class="text-gray-400 mt-4 font-body max-w-xl mx-auto">Kepuasan pelanggan adalah prioritas kami. Inilah apa yang mereka katakan mengenai pengalaman bekerja sama dengan kami.</p>
             <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
         </div>
 
