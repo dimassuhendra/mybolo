@@ -247,37 +247,146 @@
         .logo-dark-mode {
             filter: brightness(0);
         }
+
+        /* Update Hamburger Color Logic */
+        #menu-btn .w-7 {
+            transition: all 0.3s ease;
+            background-color: white;
+            /* Default di Hero */
+        }
+
+        /* Saat navbar putih, hamburger jadi hitam */
+        .nav-sticky-active #menu-btn .w-7 {
+            background-color: #1f2937;
+        }
+
+        /* Saat menu terbuka, hamburger tetap putih karena BG menu biasanya gelap */
+        .open #menu-btn .w-7 {
+            background-color: white !important;
+        }
+
+        /* Hamburger Animation (Lebih rapi) */
+        .open #bar1 {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .open #bar2 {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .open #bar3 {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Perbaikan Mobile Menu Overlay */
+        #mobile-menu {
+            padding-top: 5rem;
+            background: linear-gradient(to bottom, #1e3a8a, #00AEEF);
+            /* Gradient agar lebih mewah */
+            z-index: 40;
+            /* Di bawah tombol close tapi di atas konten */
+        }
+
+        .mobile-link {
+            @apply text-white/80 hover:text-white transition-all duration-300 text-xl tracking-widest uppercase font-semibold;
+        }
+
+        /* Sidebar Drawer Style */
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            /* Lebar menu samping */
+            height: 100vh;
+            background: white;
+            /* Background Putih agar bersih */
+            z-index: 100;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Backdrop gelap saat menu buka */
+        #menu-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 90;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        #menu-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Styling Link di Mobile */
+        .mobile-link {
+            @apply text-gray-800 font-semibold text-lg py-4 border-b border-gray-100 flex items-center justify-between;
+            font-family: var(--font-title);
+        }
+
+        .mobile-link i {
+            @apply text-brand-blue text-sm;
+        }
+
+        /* Warna hamburger saat menu terbuka harus tetap gelap */
+        .open #bar1,
+        .open #bar2,
+        .open #bar3 {
+            background-color: #1f2937 !important;
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 leading-relaxed">
+    <div id="menu-backdrop"></div>
+
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#home">
+            <a href="#home" class="z-[110]">
                 <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-14 transition-all duration-500" id="nav-logo">
             </a>
 
-            <div class="hidden md:flex items-center space-x-8 font-medium tracking-wide">
+            <div class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="nav-link text-white hover:text-brand-blue transition">Home</a>
                 <a href="#services" class="nav-link text-white hover:text-brand-blue transition">Layanan</a>
                 <a href="#team" class="nav-link text-white hover:text-brand-blue transition">Tentang Kami</a>
-                <a href="#contact" class="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition shadow-lg">
+                <a href="#contact" class="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition shadow-lg">Hubungi Kami</a>
+            </div>
+
+            <button id="menu-btn" class="block md:hidden focus:outline-none z-[110] p-2 bg-black/5 rounded-lg">
+                <div class="w-6 h-0.5 mb-1.5 bg-white transition-all" id="bar1"></div>
+                <div class="w-6 h-0.5 mb-1.5 bg-white transition-all" id="bar2"></div>
+                <div class="w-6 h-0.5 bg-white transition-all" id="bar3"></div>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="translate-x-full md:hidden">
+            <div class="mt-12 flex flex-col">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Menu Utama</p>
+                <a href="#home" class="mobile-link">Home <i class="fas fa-chevron-right"></i></a>
+                <a href="#services" class="mobile-link">Layanan <i class="fas fa-chevron-right"></i></a>
+                <a href="#team" class="mobile-link">Tentang Kami <i class="fas fa-chevron-right"></i></a>
+                <a href="#contact" class="mt-8 bg-brand-blue text-white text-center py-4 rounded-xl font-bold shadow-lg shadow-blue-200">
                     Hubungi Kami
                 </a>
             </div>
 
-            <button id="menu-btn" class="block md:hidden focus:outline-none z-50">
-                <div class="w-7 h-1 bg-white mb-1 transition-all duration-300 rounded" id="bar1"></div>
-                <div class="w-7 h-1 bg-white mb-1 transition-all duration-300 rounded" id="bar2"></div>
-                <div class="w-7 h-1 bg-white transition-all duration-300 rounded" id="bar3"></div>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="fixed inset-0 bg-blue-900 translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8 text-2xl font-bold text-white">
-            <a href="#home" class="mobile-link">Home</a>
-            <a href="#services" class="mobile-link">Layanan</a>
-            <a href="#about" class="mobile-link">Tentang Kami</a>
-            <a href="#contact" class="bg-brand-blue px-8 py-3 rounded-full mobile-link">Hubungi Kami</a>
+            <div class="mt-auto pb-10">
+                <p class="text-xs text-gray-400 mb-2">Ikuti Kami</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -355,28 +464,27 @@
         const heroSection = document.getElementById('home');
 
         window.addEventListener('scroll', () => {
+            // JANGAN jalankan logika sembunyi navbar jika menu mobile sedang terbuka
+            if (menuBtn.classList.contains('open')) return;
+
             const currentScroll = window.pageYOffset;
             const heroHeight = heroSection.offsetHeight;
 
-            // 1. Logika di dalam area HERO
             if (currentScroll <= heroHeight) {
                 navbar.classList.remove('nav-hidden', 'nav-sticky-active');
                 navLogo.classList.remove('logo-dark-mode');
-                lastScroll = currentScroll;
-                return;
-            }
-
-            // 2. Logika di LUAR area HERO
-            if (currentScroll > lastScroll) {
-                // Scroll ke BAWAH -> Sembunyikan Navbar
-                navbar.classList.add('nav-hidden');
+                backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
             } else {
-                // Scroll ke ATAS -> Munculkan Navbar dengan BG Putih
-                navbar.classList.remove('nav-hidden');
-                navbar.classList.add('nav-sticky-active');
-                navLogo.classList.add('logo-dark-mode');
-            }
+                backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
 
+                if (currentScroll > lastScroll) {
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    navbar.classList.remove('nav-hidden');
+                    navbar.classList.add('nav-sticky-active');
+                    navLogo.classList.add('logo-dark-mode');
+                }
+            }
             lastScroll = currentScroll;
         });
 
@@ -384,19 +492,18 @@
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('open');
             mobileMenu.classList.toggle('translate-x-full');
-            // Kunci scroll body saat menu terbuka
             document.body.classList.toggle('overflow-hidden');
-        });
 
-        // 3. Tutup menu saat link diklik (untuk mobile)
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuBtn.classList.remove('open');
-                mobileMenu.classList.add('translate-x-full');
-                document.body.classList.remove('overflow-hidden');
-            });
-        });
+            // Opsional: Paksa navbar muncul saat menu dibuka
+            navbar.classList.remove('nav-hidden');
 
+            // Ganti filter logo saat menu terbuka agar tetap putih/terlihat
+            if (menuBtn.classList.contains('open')) {
+                navLogo.classList.remove('logo-dark-mode');
+            } else if (window.pageYOffset > heroSection.offsetHeight) {
+                navLogo.classList.add('logo-dark-mode');
+            }
+        });
         document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.slide');
             let currentSlide = 0;
@@ -433,6 +540,45 @@
                 },
             },
         });
+        const menuBackdrop = document.getElementById('menu-backdrop');
+
+        function toggleMenu() {
+            menuBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('translate-x-full');
+            menuBackdrop.classList.toggle('active');
+            document.body.classList.toggle('overflow-hidden');
+
+            // Pastikan warna bar hamburger menyesuaikan
+            if (menuBtn.classList.contains('open')) {
+                // Saat menu buka, bar jadi hitam karena background drawer putih
+                document.querySelectorAll('#menu-btn div').forEach(bar => bar.style.backgroundColor = '#1f2937');
+            } else {
+                // Kembalikan ke logika scroll jika menu tutup
+                updateNavbarColor();
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        menuBackdrop.addEventListener('click', toggleMenu); // Klik area luar untuk tutup
+
+        // Tutup menu saat link diklik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Tambahkan fungsi pembantu untuk cek warna navbar
+        function updateNavbarColor() {
+            const currentScroll = window.pageYOffset;
+            const heroHeight = heroSection.offsetHeight;
+            const isWhiteBg = currentScroll > (heroHeight - 100);
+
+            document.querySelectorAll('#menu-btn div').forEach(bar => {
+                bar.style.backgroundColor = (isWhiteBg && !menuBtn.classList.contains('open')) ? '#1f2937' : 'white';
+            });
+        }
+
+        // Panggil di event scroll Anda juga
+        window.addEventListener('scroll', updateNavbarColor);
     </script>
 
 </body>
