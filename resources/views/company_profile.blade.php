@@ -150,7 +150,9 @@
         </div>
     </section>
 
-    <section id="testimonials" class="bg-black py-20 text-white">
+    <section id="testimonials" class="bg-black py-20 text-white relative overflow-hidden">
+        @include('partials.bunga-sakura') <!-- Efek bunga sakura -->
+        
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Testimonials</h4>
@@ -196,7 +198,8 @@
             </path>
         </svg>
     </div>
-    <section id="partners" class="py-20 bg-gray-50 overflow-hidden" data-aos="fade-up">
+
+    <section id="partners" class="py-20 bg-gray-50 relative overflow-hidden" data-aos="fade-up">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Network & Trust
@@ -208,6 +211,7 @@
             </div>
 
             <div class="relative flex overflow-x-hidden group">
+                <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
                 <div class="flex animate-marquee whitespace-nowrap py-12 items-center">
                     @foreach ($partners as $partner)
                         <div
@@ -217,6 +221,7 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
 
                 <div class="absolute top-0 flex animate-marquee2 whitespace-nowrap py-12 items-center">
                     @foreach ($partners as $partner)
