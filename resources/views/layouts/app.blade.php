@@ -520,6 +520,7 @@
 
         // Script Testimonial Section
         var swiper = new Swiper(".mySwiper", {
+            autoHeight: true, // Tambahkan ini agar wrapper membungkus konten
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
