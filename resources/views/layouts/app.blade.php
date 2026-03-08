@@ -9,18 +9,18 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
-
-        /* Konfigurasi Font Global */
         :root {
             --font-title: 'Plus Jakarta Sans', sans-serif;
             --font-body: 'Domine', serif;
+            --brand-blue: #00AEEF;
         }
 
         html {
@@ -30,6 +30,7 @@
 
         body {
             font-family: var(--font-body);
+            background-color: #ffffff;
         }
 
         h1,
@@ -45,118 +46,45 @@
         }
 
         .bg-brand-blue {
-            background-color: #00AEEF;
+            background-color: var(--brand-blue);
         }
 
         .text-brand-blue {
-            color: #00AEEF;
+            color: var(--brand-blue);
         }
 
         /* Navbar Scrolled Logic */
-        .nav-scrolled {
-            @apply bg-white/90 backdrop-blur-md shadow-lg py-3;
+        .nav-sticky-active {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
         }
 
-        .nav-scrolled .nav-link {
-            @apply text-gray-800;
+        .nav-sticky-active .nav-link {
+            color: #1f2937 !important;
         }
 
-        .nav-scrolled #bar1,
-        .nav-scrolled #bar2,
-        .nav-scrolled #bar3 {
-            @apply bg-gray-800;
-        }
-
-        /* Hamburger Animation */
-        .open #bar1 {
-            transform: translateY(8px) rotate(45deg);
-            background-color: white !important;
-        }
-
-        .open #bar2 {
+        .nav-hidden {
+            transform: translateY(-100%);
             opacity: 0;
         }
 
-        .open #bar3 {
-            transform: translateY(-8px) rotate(-45deg);
-            background-color: white !important;
-        }
-
-        /* Konfigurasi Flip Card */
-        .flip-card {
-            background-color: transparent;
-            perspective: 1000px;
-            height: 450px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        /* Saat Hover, hanya bagian inner yang berputar */
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        /* Sisi Depan & Belakang */
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 1.5rem;
-            overflow: hidden;
-        }
-
-        /* Sisi Belakang */
-        .flip-card-back {
-            background-color: #00AEEF;
-            color: white;
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            z-index: 2;
-        }
-
-        /* Sisi Depan */
-        .flip-card-front {
-            z-index: 1;
-        }
-
-        /* Efek Timbul pada Teks Depan */
-        .glass-text {
+        /* Hero Switcher UI */
+        .hero-indicator {
+            width: 40px;
+            height: 3px;
             background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Style Testimonial Section */
-        .swiper-pagination-bullet {
-            background: #fff !important;
-            opacity: 0.5;
+        .hero-nav.active .hero-indicator {
+            width: 80px;
+            background: var(--brand-blue);
         }
 
-        .swiper-pagination-bullet-active {
-            opacity: 1;
-            width: 30px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        /* Style Partners Section */
+        /* Custom Marquee */
         @keyframes marquee {
             0% {
                 transform: translateX(0%);
@@ -167,150 +95,31 @@
             }
         }
 
-        @keyframes marquee2 {
-            0% {
-                transform: translateX(100%);
-            }
-
-            100% {
-                transform: translateX(0%);
-            }
-        }
-
         .animate-marquee {
-            animation: marquee 30s linear infinite;
+            animation: marquee 40s linear infinite;
         }
 
-        .animate-marquee2 {
-            animation: marquee2 30s linear infinite;
+        /* Bento Grid Helper */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
-        /* Pause animasi saat di-hover agar user bisa melihat logo dengan jelas */
-        .group:hover .animate-marquee,
-        .group:hover .animate-marquee2 {
-            animation-play-state: paused;
-        }
-
-        /* Transisi halus untuk semua elemen */
-        .team-card {
-            backface-visibility: hidden;
-        }
-
-        .team-card * {
-            transition: all 0.5s ease;
-        }
-
-        #navbar {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(0);
-        }
-
-        .nav-hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .logo-bw {
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-
-        .logo-bw:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-
-        /* Navbar muncul dengan style Putih */
-        .nav-sticky-active {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            padding-top: 0.75rem !important;
-            padding-bottom: 0.75rem !important;
-        }
-
-        /* Mengubah warna teks link menjadi hitam saat bg putih */
-        .nav-sticky-active .nav-link {
-            color: #1f2937 !important;
-        }
-
-        /* Mengubah warna hamburger bar menjadi hitam saat bg putih */
-        .nav-sticky-active #bar1,
-        .nav-sticky-active #bar2,
-        .nav-sticky-active #bar3 {
-            background-color: #1f2937 !important;
-        }
-
-        /* Filter untuk membuat logo menjadi hitam (jika logo asli berwarna/putih) */
-        .logo-dark-mode {
-            filter: brightness(0);
-        }
-
-        /* Update Hamburger Color Logic */
-        #menu-btn .w-7 {
-            transition: all 0.3s ease;
-            background-color: white;
-            /* Default di Hero */
-        }
-
-        /* Saat navbar putih, hamburger jadi hitam */
-        .nav-sticky-active #menu-btn .w-7 {
-            background-color: #1f2937;
-        }
-
-        /* Saat menu terbuka, hamburger tetap putih karena BG menu biasanya gelap */
-        .open #menu-btn .w-7 {
-            background-color: white !important;
-        }
-
-        /* Hamburger Animation (Lebih rapi) */
-        .open #bar1 {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .open #bar2 {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-
-        .open #bar3 {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        /* Perbaikan Mobile Menu Overlay */
-        #mobile-menu {
-            padding-top: 5rem;
-            background: linear-gradient(to bottom, #1e3a8a, #00AEEF);
-            /* Gradient agar lebih mewah */
-            z-index: 40;
-            /* Di bawah tombol close tapi di atas konten */
-        }
-
-        .mobile-link {
-            @apply text-white/80 hover:text-white transition-all duration-300 text-xl tracking-widest uppercase font-semibold;
-        }
-
-        /* Sidebar Drawer Style */
+        /* Mobile Menu */
         #mobile-menu {
             position: fixed;
             top: 0;
             right: 0;
-            width: 280px;
-            /* Lebar menu samping */
+            width: 300px;
             height: 100vh;
             background: white;
-            /* Background Putih agar bersih */
             z-index: 100;
             padding: 2rem;
-            display: flex;
-            flex-direction: column;
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Backdrop gelap saat menu buka */
         #menu-backdrop {
             position: fixed;
             inset: 0;
@@ -327,65 +136,69 @@
             pointer-events: auto;
         }
 
-        /* Styling Link di Mobile */
-        .mobile-link {
-            @apply text-gray-800 font-semibold text-lg py-4 border-b border-gray-100 flex items-center justify-between;
-            font-family: var(--font-title);
+        /* Progress Bar Base Styles */
+        /* Animasi heroProgress dicabut agar bisa dikontrol dinamis oleh JS di Blade */
+        .hero-nav .progress-container {
+            width: 80px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            margin-top: 8px;
         }
 
-        .mobile-link i {
-            @apply text-brand-blue text-sm;
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--brand-blue);
+            /* Transisi dikontrol oleh JavaScript di company_profile */
         }
 
-        /* Warna hamburger saat menu terbuka harus tetap gelap */
-        .open #bar1,
-        .open #bar2,
-        .open #bar3 {
-            background-color: #1f2937 !important;
+        .bento-mask {
+            clip-path: inset(0 0 0 0 round 2rem);
         }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 leading-relaxed">
+<body class="antialiased">
     <div id="menu-backdrop"></div>
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#home" class="z-[110]">
-                <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-14 transition-all duration-500" id="nav-logo">
+                <img src="{{ asset('img/mybolo.png') }}" alt="Logo" class="h-10 md:h-14 transition-all"
+                    id="nav-logo">
             </a>
 
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="nav-link text-white hover:text-brand-blue transition">Home</a>
-                <a href="#services" class="nav-link text-white hover:text-brand-blue transition">Layanan</a>
-                <a href="#team" class="nav-link text-white hover:text-brand-blue transition">Tentang Kami</a>
-                <a href="#contact" class="bg-brand-blue text-white px-6 py-2 rounded-full hover:bg-blue-600 transition shadow-lg">Hubungi Kami</a>
+            <div class="hidden md:flex items-center space-x-10">
+                <a href="#home"
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Home</a>
+                <a href="#services"
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Layanan</a>
+                <a href="#team"
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Tentang</a>
+                <a href="#contact"
+                    class="bg-brand-blue text-white px-8 py-3 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">HUBUNGI
+                    KAMI</a>
             </div>
 
-            <button id="menu-btn" class="block md:hidden focus:outline-none z-[110] p-2 bg-black/5 rounded-lg">
-                <div class="w-6 h-0.5 mb-1.5 bg-white transition-all" id="bar1"></div>
-                <div class="w-6 h-0.5 mb-1.5 bg-white transition-all" id="bar2"></div>
-                <div class="w-6 h-0.5 bg-white transition-all" id="bar3"></div>
+            <button id="menu-btn" class="md:hidden z-[110] p-2">
+                <div class="w-7 h-0.5 mb-1.5 bg-white transition-all" id="bar1"></div>
+                <div class="w-7 h-0.5 mb-1.5 bg-white transition-all" id="bar2"></div>
+                <div class="w-7 h-0.5 bg-white transition-all" id="bar3"></div>
             </button>
         </div>
 
-        <div id="mobile-menu" class="translate-x-full md:hidden">
-            <div class="mt-12 flex flex-col">
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Menu Utama</p>
-                <a href="#home" class="mobile-link">Home <i class="fas fa-chevron-right"></i></a>
-                <a href="#services" class="mobile-link">Layanan <i class="fas fa-chevron-right"></i></a>
-                <a href="#team" class="mobile-link">Tentang Kami <i class="fas fa-chevron-right"></i></a>
-                <a href="#contact" class="mt-8 bg-brand-blue text-white text-center py-4 rounded-xl font-bold shadow-lg shadow-blue-200">
-                    Hubungi Kami
-                </a>
-            </div>
-
-            <div class="mt-auto pb-10">
-                <p class="text-xs text-gray-400 mb-2">Ikuti Kami</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600"><i class="fab fa-whatsapp"></i></a>
-                </div>
+        <div id="mobile-menu" class="translate-x-full md:hidden flex flex-col">
+            <div class="mt-12 space-y-6">
+                <p class="text-xs font-black text-gray-300 tracking-[0.3em] uppercase">Navigation</p>
+                <a href="#home" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Home</a>
+                <a href="#services"
+                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Layanan</a>
+                <a href="#team"
+                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Tentang</a>
+                <a href="#contact"
+                    class="block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-10">Hubungi Kami</a>
             </div>
         </div>
     </nav>
@@ -394,193 +207,92 @@
         @yield('content')
     </main>
 
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6 text-center">
-            <hr class="border-gray-800 mb-6">
-            <p class="text-sm opacity-50">&copy; 2026 MyBolo. All Rights Reserved.</p>
+    <footer class="bg-slate-900 text-white py-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
+            <div>
+                <img src="{{ asset('img/mybolo.png') }}" class="h-12 mb-6 brightness-0 invert">
+                <p class="text-slate-400 leading-relaxed">{{ $settings['address'] ?? '' }}</p>
+            </div>
+            <div class="md:text-center">
+                <h4 class="font-bold mb-6 uppercase tracking-widest">Quick Links</h4>
+                <div class="flex flex-col space-y-4 text-slate-400">
+                    <a href="#home">Home</a>
+                    <a href="#services">Layanan</a>
+                    <a href="#team">Tentang Kami</a>
+                </div>
+            </div>
+            <div class="md:text-right">
+                <h4 class="font-bold mb-6 uppercase tracking-widest">Connect</h4>
+                <p class="text-slate-400 mb-4">{{ $settings['phone'] ?? '' }}</p>
+                <div class="flex md:justify-end space-x-4">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-brand-blue transition"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-brand-blue transition"><i
+                            class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div
+            class="container mx-auto px-6 mt-20 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 tracking-[0.5em] uppercase">
+            &copy; 2026 MYBOLO.ID — Premium IT Solutions
         </div>
     </footer>
-
-    <button id="backToTop" class="fixed bottom-8 right-8 z-50 bg-brand-blue text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center opacity-0 translate-y-10 pointer-events-none transition-all duration-500 hover:bg-blue-600 hover:-translate-y-2 group">
-        <i class="fas fa-arrow-up transition-transform group-hover:scale-110"></i>
-    </button>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Tombol kembali keatas -------------------------------------------------------------------------------
-        const backToTopBtn = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const heroHeight = heroSection.offsetHeight;
-
-            // --- Logika Navbar yang sudah ada ---
-            if (currentScroll <= heroHeight) {
-                navbar.classList.remove('nav-hidden', 'nav-sticky-active');
-                navLogo.classList.remove('logo-dark-mode');
-
-                // Sembunyikan tombol Back to Top saat di area Hero
-                backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-            } else {
-                // Tampilkan tombol Back to Top saat di luar Hero
-                backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-
-                if (currentScroll > lastScroll) {
-                    navbar.classList.add('nav-hidden');
-                } else {
-                    navbar.classList.remove('nav-hidden');
-                    navbar.classList.add('nav-sticky-active');
-                    navLogo.classList.add('logo-dark-mode');
-                }
-            }
-            lastScroll = currentScroll;
-        });
-
-        // Fungsi saat tombol diklik
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Akhir dari tombol kembali keatas ------------------------------------------------------------------------------
-
         AOS.init({
-            duration: 1000, // Durasi animasi (1 detik)
-            once: true, // Animasi hanya jalan sekali saat scroll ke bawah
-            offset: 200, // Animasi baru jalan setelah scroll 200px
+            duration: 1000,
+            once: true
         });
 
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        let lastScroll = 0;
         const navbar = document.getElementById('navbar');
         const navLogo = document.getElementById('nav-logo');
-        const heroSection = document.getElementById('home');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('menu-backdrop');
+        let lastScroll = 0;
 
         window.addEventListener('scroll', () => {
-            // JANGAN jalankan logika sembunyi navbar jika menu mobile sedang terbuka
-            if (menuBtn.classList.contains('open')) return;
-
             const currentScroll = window.pageYOffset;
-            const heroHeight = heroSection.offsetHeight;
+            const isScrolled = currentScroll > 100;
 
-            if (currentScroll <= heroHeight) {
-                navbar.classList.remove('nav-hidden', 'nav-sticky-active');
-                navLogo.classList.remove('logo-dark-mode');
-                backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            if (isScrolled) {
+                navbar.classList.add('nav-sticky-active');
+                navLogo.style.filter = 'brightness(0)';
+                document.querySelectorAll('#menu-btn div').forEach(b => b.style.backgroundColor = '#1f2937');
             } else {
-                backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                navbar.classList.remove('nav-sticky-active');
+                navLogo.style.filter = 'none';
+                document.querySelectorAll('#menu-btn div').forEach(b => b.style.backgroundColor = 'white');
+            }
 
-                if (currentScroll > lastScroll) {
-                    navbar.classList.add('nav-hidden');
-                } else {
-                    navbar.classList.remove('nav-hidden');
-                    navbar.classList.add('nav-sticky-active');
-                    navLogo.classList.add('logo-dark-mode');
-                }
+            if (currentScroll > lastScroll && currentScroll > 500) {
+                navbar.classList.add('nav-hidden');
+            } else {
+                navbar.classList.remove('nav-hidden');
             }
             lastScroll = currentScroll;
         });
 
-        // 2. Toggle Mobile Menu
         menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('open');
             mobileMenu.classList.toggle('translate-x-full');
-            document.body.classList.toggle('overflow-hidden');
-
-            // Opsional: Paksa navbar muncul saat menu dibuka
-            navbar.classList.remove('nav-hidden');
-
-            // Ganti filter logo saat menu terbuka agar tetap putih/terlihat
-            if (menuBtn.classList.contains('open')) {
-                navLogo.classList.remove('logo-dark-mode');
-            } else if (window.pageYOffset > heroSection.offsetHeight) {
-                navLogo.classList.add('logo-dark-mode');
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            let currentSlide = 0;
-
-            function nextSlide() {
-                slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
-            }
-
-            // Ganti slide setiap 5 detik
-            setInterval(nextSlide, 5000);
-        });
-
-        // Script Testimonial Section
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2
-                },
-                1024: {
-                    slidesPerView: 3
-                },
-            },
-        });
-        const menuBackdrop = document.getElementById('menu-backdrop');
-
-        function toggleMenu() {
+            backdrop.classList.toggle('active');
             menuBtn.classList.toggle('open');
-            mobileMenu.classList.toggle('translate-x-full');
-            menuBackdrop.classList.toggle('active');
-            document.body.classList.toggle('overflow-hidden');
-
-            // Pastikan warna bar hamburger menyesuaikan
             if (menuBtn.classList.contains('open')) {
-                // Saat menu buka, bar jadi hitam karena background drawer putih
-                document.querySelectorAll('#menu-btn div').forEach(bar => bar.style.backgroundColor = '#1f2937');
+                document.getElementById('bar1').style.transform = 'translateY(8px) rotate(45deg)';
+                document.getElementById('bar2').style.opacity = '0';
+                document.getElementById('bar3').style.transform = 'translateY(-8px) rotate(-45deg)';
             } else {
-                // Kembalikan ke logika scroll jika menu tutup
-                updateNavbarColor();
+                document.getElementById('bar1').style.transform = 'none';
+                document.getElementById('bar2').style.opacity = '1';
+                document.getElementById('bar3').style.transform = 'none';
             }
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-        menuBackdrop.addEventListener('click', toggleMenu); // Klik area luar untuk tutup
-
-        // Tutup menu saat link diklik
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
         });
-
-        // Tambahkan fungsi pembantu untuk cek warna navbar
-        function updateNavbarColor() {
-            const currentScroll = window.pageYOffset;
-            const heroHeight = heroSection.offsetHeight;
-            const isWhiteBg = currentScroll > (heroHeight - 100);
-
-            document.querySelectorAll('#menu-btn div').forEach(bar => {
-                bar.style.backgroundColor = (isWhiteBg && !menuBtn.classList.contains('open')) ? '#1f2937' : 'white';
-            });
-        }
-
-        // Panggil di event scroll Anda juga
-        window.addEventListener('scroll', updateNavbarColor);
+        backdrop.addEventListener('click', () => menuBtn.click());
     </script>
-
 </body>
 
 </html>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HeroController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TeamController;
@@ -31,6 +32,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Dashboard Utama dengan statistik dinamis
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/hero', [HeroController::class, 'index'])->name('hero.index');
+    Route::post('/hero', [HeroController::class, 'store'])->name('hero.store');
+    Route::put('/hero/{heroSlider}', [HeroController::class, 'update'])->name('hero.update');
+    Route::delete('/hero/{heroSlider}', [HeroController::class, 'destroy'])->name('hero.destroy');
 
     Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
     Route::post('/services', [ServiceController::class, 'store'])->name('services.store');

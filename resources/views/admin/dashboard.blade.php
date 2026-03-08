@@ -23,7 +23,7 @@
 
         .bg-dashboard {
             background-image: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)),
-            url('{{ asset("img/2.jpg") }}');
+                url('{{ asset('img/2.jpg') }}');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -33,7 +33,8 @@
 
 <body class="bg-dashboard min-h-screen text-gray-100 antialiased">
 
-    <nav class="sticky top-0 z-50 px-8 py-4 flex justify-between items-center glass-card border-b border-white/10 mx-6 mt-4 rounded-2xl shadow-2xl">
+    <nav
+        class="sticky top-0 z-50 px-8 py-4 flex justify-between items-center glass-card border-b border-white/10 mx-6 mt-4 rounded-2xl shadow-2xl">
         <div class="flex items-center gap-4">
             <img src="{{ asset('img/logo.png') }}" alt="Logo MyBolo" class="h-10 w-auto object-contain drop-shadow-md">
 
@@ -55,7 +56,8 @@
             <div class="h-8 w-[1px] bg-slate-200"></div>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="group flex items-center gap-2 bg-red-50 hover:bg-red-500 text-red-600 hover:text-white px-4 py-2 rounded-xl transition-all duration-300 font-bold text-sm shadow-sm">
+                <button type="submit"
+                    class="group flex items-center gap-2 bg-red-50 hover:bg-red-500 text-red-600 hover:text-white px-4 py-2 rounded-xl transition-all duration-300 font-bold text-sm shadow-sm">
                     <span>Logout</span>
                     <i class="fa-solid fa-right-from-bracket group-hover:translate-x-1 transition-transform"></i>
                 </button>
@@ -67,111 +69,161 @@
         <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
                 <h1 class="text-4xl font-extrabold tracking-tight text-white">
-                    Selamat Datang, <span class="text-blue-400 uppercase">{{ explode(' ', auth()->user()->name)[0] }}!</span>
+                    Selamat Datang, <span
+                        class="text-blue-400 uppercase">{{ explode(' ', auth()->user()->name)[0] }}!</span>
                 </h1>
-                <p class="text-blue-100/60 mt-2 font-medium">Panel kendali ekosistem digital Teknologi Arindama Andra.</p>
+                <p class="text-blue-100/60 mt-2 font-medium">Panel kendali ekosistem digital Teknologi Arindama Andra.
+                </p>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+            <div
+                class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div
+                    class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
                     <i class="fa-solid fa-images text-7xl text-blue-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-blue-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <div
+                    class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-blue-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-desktop"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Hero <span class="text-blue-600">Slider</span></h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">Ubah visual utama, headline, dan promosi yang muncul pertama kali di mata pengunjung.</p>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Hero <span class="text-blue-600">Slider</span>
+                </h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Ubah visual utama, headline, dan promosi yang
+                    muncul pertama kali di mata pengunjung.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-black bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['sliders'] }} Item</span>
-                    <a href="#" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-blue-600 transition-all shadow-lg shadow-slate-900/10">
+                    <span
+                        class="text-[10px] font-black bg-blue-50 text-blue-700 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['sliders'] }}
+                        Item</span>
+                    <a href="{{ route('hero.index') }}"
+                        class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-blue-600 transition-all shadow-lg shadow-slate-900/10">
                         Edit Section <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+            <div
+                class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div
+                    class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
                     <i class="fa-solid fa-server text-7xl text-emerald-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <div
+                    class="w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-gears"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Services <span class="text-emerald-600">Portal</span></h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">Kustomisasi detail paket Internet, spesifikasi CCTV, dan fitur GPS Tracking terbaru.</p>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Services <span
+                        class="text-emerald-600">Portal</span></h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Kustomisasi detail paket Internet, spesifikasi
+                    CCTV, dan fitur GPS Tracking terbaru.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-black bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['services'] }} Layanan</span>
-                    <a href="{{ route('services.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-emerald-600 transition-all shadow-lg shadow-slate-900/10">
+                    <span
+                        class="text-[10px] font-black bg-emerald-50 text-emerald-700 border border-emerald-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['services'] }}
+                        Layanan</span>
+                    <a href="{{ route('services.index') }}"
+                        class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-emerald-600 transition-all shadow-lg shadow-slate-900/10">
                         Update <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+            <div
+                class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div
+                    class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
                     <i class="fa-solid fa-quote-right text-7xl text-amber-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-amber-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <div
+                    class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-amber-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-quote-left"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Klien & <span class="text-amber-600">Review</span></h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">Moderasi kata-kata klien dan tampilkan kepercayaan publik di halaman depan.</p>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Klien & <span
+                        class="text-amber-600">Review</span></h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Moderasi kata-kata klien dan tampilkan
+                    kepercayaan publik di halaman depan.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-black bg-amber-50 text-amber-700 border border-amber-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['testimonials'] }} Feedback</span>
-                    <a href="{{ route('testimonials.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-amber-600 transition-all shadow-lg shadow-slate-900/10">
+                    <span
+                        class="text-[10px] font-black bg-amber-50 text-amber-700 border border-amber-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['testimonials'] }}
+                        Feedback</span>
+                    <a href="{{ route('testimonials.index') }}"
+                        class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-amber-600 transition-all shadow-lg shadow-slate-900/10">
                         Moderate <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+            <div
+                class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div
+                    class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
                     <i class="fa-solid fa-handshake text-7xl text-indigo-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <div
+                    class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-handshake-angle"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Partner<span class="text-indigo-600">ship</span></h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">Manajemen logo kolaborasi. Tambahkan vendor baru seperti Telkom atau PGN.</p>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Partner<span class="text-indigo-600">ship</span>
+                </h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Manajemen logo kolaborasi. Tambahkan vendor baru
+                    seperti Telkom atau PGN.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['partners'] }} Brand</span>
-                    <a href="{{ route('partners.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-indigo-600 transition-all shadow-lg shadow-slate-900/10">
+                    <span
+                        class="text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['partners'] }}
+                        Brand</span>
+                    <a href="{{ route('partners.index') }}"
+                        class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-indigo-600 transition-all shadow-lg shadow-slate-900/10">
                         Manage <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+            <div
+                class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div
+                    class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
                     <i class="fa-solid fa-id-card text-7xl text-violet-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-violet-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-violet-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <div
+                    class="w-14 h-14 bg-violet-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-violet-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-user-group"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Team <span class="text-violet-600">Experts</span></h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">Perbarui daftar staf ahli, jabatan, dan foto profil tim manajemen Anda.</p>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">Team <span
+                        class="text-violet-600">Experts</span></h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Perbarui daftar staf ahli, jabatan, dan foto
+                    profil tim manajemen Anda.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-black bg-violet-50 text-violet-700 border border-violet-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['teams'] }} Member</span>
-                    <a href="{{ route('teams.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-violet-600 transition-all shadow-lg shadow-slate-900/10">
+                    <span
+                        class="text-[10px] font-black bg-violet-50 text-violet-700 border border-violet-100 px-3 py-1 rounded-full uppercase tracking-widest">{{ $stats['teams'] }}
+                        Member</span>
+                    <a href="{{ route('teams.index') }}"
+                        class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-violet-600 transition-all shadow-lg shadow-slate-900/10">
                         Update <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-rose-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
-                <div class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
+            <div
+                class="glass-card p-8 rounded-[2rem] border border-white/20 hover:scale-[1.02] hover:shadow-2xl hover:shadow-rose-500/20 transition-all duration-500 group relative overflow-hidden text-slate-800">
+                <div
+                    class="absolute -top-2 -right-2 p-6 opacity-10 group-hover:opacity-25 group-hover:-rotate-12 transition-all duration-500">
                     <i class="fa-solid fa-gears text-7xl text-rose-600"></i>
                 </div>
-                <div class="w-14 h-14 bg-rose-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-rose-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
+                <div
+                    class="w-14 h-14 bg-rose-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-rose-500/30 mb-6 group-hover:rotate-12 transition-transform duration-500">
                     <i class="fa-solid fa-headset"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">System <span class="text-rose-600">Settings</span></h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">Ubah alamat maps, nomor telepon kantor, dan koordinat WhatsApp admin.</p>
+                <h3 class="text-2xl font-extrabold mb-2 tracking-tight">System <span
+                        class="text-rose-600">Settings</span></h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">Ubah alamat maps, nomor telepon kantor, dan
+                    koordinat WhatsApp admin.</p>
                 <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-black bg-rose-50 text-rose-700 border border-rose-100 px-3 py-1 rounded-full uppercase tracking-widest">Global Config</span>
-                    <a href="{{ route('settings.index') }}" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-slate-900/10">
+                    <span
+                        class="text-[10px] font-black bg-rose-50 text-rose-700 border border-rose-100 px-3 py-1 rounded-full uppercase tracking-widest">Global
+                        Config</span>
+                    <a href="{{ route('settings.index') }}"
+                        class="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold text-sm inline-flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-slate-900/10">
                         Configure <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
@@ -186,7 +238,8 @@
                     Maintained by <span class="text-blue-400">Digital Infrastructure Division</span>
                 </p> -->
                 <p class="text-white/30 text-xs font-medium tracking-widest mt-1">
-                    &copy; 2026 <span class="text-white/60">MyBolo</span> is a registered trademark of <span class="text-white/60">PT Teknologi Arindama Andra</span>
+                    &copy; 2026 <span class="text-white/60">MyBolo</span> is a registered trademark of <span
+                        class="text-white/60">PT Teknologi Arindama Andra</span>
                 </p>
                 <div class="flex items-center gap-3 mt-4 opacity-30 text-[9px] uppercase tracking-[0.2em] text-white">
                     <span>v2.4.0 Production</span>
