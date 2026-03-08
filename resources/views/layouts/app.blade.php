@@ -13,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -53,7 +54,7 @@
             color: var(--brand-blue);
         }
 
-        /* Navbar Scrolled Logic */
+        /* Navbar Logic */
         .nav-sticky-active {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -69,41 +70,6 @@
         .nav-hidden {
             transform: translateY(-100%);
             opacity: 0;
-        }
-
-        /* Hero Switcher UI */
-        .hero-indicator {
-            width: 40px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hero-nav.active .hero-indicator {
-            width: 80px;
-            background: var(--brand-blue);
-        }
-
-        /* Custom Marquee */
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .animate-marquee {
-            animation: marquee 40s linear infinite;
-        }
-
-        /* Bento Grid Helper */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
         }
 
         /* Mobile Menu */
@@ -135,29 +101,9 @@
             opacity: 1;
             pointer-events: auto;
         }
-
-        /* Progress Bar Base Styles */
-        /* Animasi heroProgress dicabut agar bisa dikontrol dinamis oleh JS di Blade */
-        .hero-nav .progress-container {
-            width: 80px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: var(--brand-blue);
-            /* Transisi dikontrol oleh JavaScript di company_profile */
-        }
-
-        .bento-mask {
-            clip-path: inset(0 0 0 0 round 2rem);
-        }
     </style>
+
+    @stack('styles')
 </head>
 
 <body class="antialiased">
@@ -208,46 +154,21 @@
     </main>
 
     <footer class="bg-slate-900 text-white py-20">
-        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
-            <div>
-                <img src="{{ asset('img/mybolo.png') }}" class="h-12 mb-6 brightness-0 invert">
-                <p class="text-slate-400 leading-relaxed">{{ $settings['address'] ?? '' }}</p>
-            </div>
-            <div class="md:text-center">
-                <h4 class="font-bold mb-6 uppercase tracking-widest">Quick Links</h4>
-                <div class="flex flex-col space-y-4 text-slate-400">
-                    <a href="#home">Home</a>
-                    <a href="#services">Layanan</a>
-                    <a href="#team">Tentang Kami</a>
-                </div>
-            </div>
-            <div class="md:text-right">
-                <h4 class="font-bold mb-6 uppercase tracking-widest">Connect</h4>
-                <p class="text-slate-400 mb-4">{{ $settings['phone'] ?? '' }}</p>
-                <div class="flex md:justify-end space-x-4">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-brand-blue transition"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center hover:bg-brand-blue transition"><i
-                            class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div
-            class="container mx-auto px-6 mt-20 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 tracking-[0.5em] uppercase">
+        <div class="container mx-auto px-6 text-center text-xs text-slate-500 tracking-[0.5em] uppercase">
             &copy; 2026 MYBOLO.ID — Premium IT Solutions
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         AOS.init({
             duration: 1000,
             once: true
         });
 
+        // Navbar & Mobile Menu Logic
         const navbar = document.getElementById('navbar');
         const navLogo = document.getElementById('nav-logo');
         const menuBtn = document.getElementById('menu-btn');
@@ -261,11 +182,11 @@
 
             if (isScrolled) {
                 navbar.classList.add('nav-sticky-active');
-                navLogo.style.filter = 'brightness(0)';
+                if (navLogo) navLogo.style.filter = 'brightness(0)';
                 document.querySelectorAll('#menu-btn div').forEach(b => b.style.backgroundColor = '#1f2937');
             } else {
                 navbar.classList.remove('nav-sticky-active');
-                navLogo.style.filter = 'none';
+                if (navLogo) navLogo.style.filter = 'none';
                 document.querySelectorAll('#menu-btn div').forEach(b => b.style.backgroundColor = 'white');
             }
 
@@ -293,6 +214,8 @@
         });
         backdrop.addEventListener('click', () => menuBtn.click());
     </script>
+
+    @stack('scripts')
 </body>
 
 </html>

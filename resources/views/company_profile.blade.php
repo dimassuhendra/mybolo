@@ -125,48 +125,13 @@
         </div>
     </section>
 
-    <section class="py-32 bg-slate-50 border-y border-slate-100">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center mb-16">
-                <h2 class="text-4xl font-black tracking-tighter">RELASI & DOKUMEN</h2>
-                <div class="flex space-x-4">
-                    <button
-                        class="doc-prev p-4 rounded-full border border-slate-200 hover:bg-brand-blue hover:text-white transition shadow-sm"><i
-                            class="fas fa-chevron-left"></i></button>
-                    <button
-                        class="doc-next p-4 rounded-full border border-slate-200 hover:bg-brand-blue hover:text-white transition shadow-sm"><i
-                            class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-
-            <div class="swiper docSwiper overflow-visible">
-                <div class="swiper-wrapper">
-                    @foreach ($services as $s)
-                        <div class="swiper-slide">
-                            <div
-                                class="bg-white p-12 rounded-[2.5rem] h-80 flex flex-col justify-between border border-transparent hover:border-brand-blue transition-all group shadow-sm hover:shadow-xl">
-                                <div>
-                                    <span
-                                        class="text-xs font-black text-brand-blue tracking-widest uppercase mb-4 block">Official
-                                        PDF</span>
-                                    <h4
-                                        class="text-2xl font-bold tracking-tight leading-none group-hover:text-brand-blue transition-colors">
-                                        Quotation {{ $s->title }}</h4>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <p class="text-[10px] font-black text-slate-300 tracking-tighter uppercase">Available
-                                        for Download</p>
-                                    <div
-                                        class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
-                                        <i class="fa-solid fa-download"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+    <section class="bg-white py-12">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-slate-800">Our Partners</h2>
+            <p class="text-slate-500">Bekerja sama dengan institusi terpercaya</p>
         </div>
+
+        @include('sections.partner', ['partners' => $partners])
     </section>
 
     <section id="team" class="py-32 bg-black">
@@ -190,6 +155,9 @@
     </section>
 
     <script>
+        // ==============================================
+        // Js untuk section Hero
+        // ==============================================
         const items = document.querySelectorAll('.hero-item');
         const navs = document.querySelectorAll('.hero-nav');
         const bars = document.querySelectorAll('.progress-bar');
