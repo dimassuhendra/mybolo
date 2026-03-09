@@ -82,29 +82,99 @@
     </section>
 
     <section id="partners" class="bg-white py-12">
-        <div class="text-center mb-16">
-            <span class="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
-                Trusted Network
-            </span>
-
-            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-                Our <span class="text-brand-blue">Partners.</span>
-            </h2>
-
-            <div class="flex justify-center">
-                <p class="text-slate-500 max-w-xl text-lg font-light leading-relaxed">
-                    Bekerja sama dengan institusi terpercaya untuk menghadirkan solusi digital standar global.
-                </p>
-            </div>
-
-            <div class="w-12 h-1 bg-brand-blue mx-auto mt-8"></div>
-        </div>
-
         @include('sections.partner', ['partners' => $partners])
     </section>
 
-    <section id="team" class="py-32 bg-black">
+    <section id="team" class="py-24 bg-black overflow-hidden" data-aos="fade-up">
         @include('sections.team')
+    </section>
+
+    <section id="contact" class="py-24 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Get In Touch</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 font-title">Hubungi Kami</h2>
+                <p class="text-gray-500 mt-4 font-body max-w-xl mx-auto">Siap meningkatkan keamanan dan konektivitas Anda?
+                    Tim kami siap membantu memberikan solusi terbaik.</p>
+                <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-stretch">
+                <div class="w-full lg:w-2/5 grid grid-cols-1 gap-4">
+
+                    <div
+                        class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                        <div
+                            class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Lokasi
+                                Kantor</h4>
+                            <p
+                                class="text-gray-600 text-sm font-body leading-relaxed group-hover:text-gray-300 transition-colors">
+                                {{ $settings['address'] }}</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                        <div
+                            class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">
+                                Telepon / WhatsApp</h4>
+                            <p class="text-gray-600 text-sm font-body group-hover:text-gray-300 transition-colors">
+                                {{ $settings['phone'] }}</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                        <div
+                            class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Email
+                                Support</h4>
+                            <p class="text-gray-600 text-sm font-body group-hover:text-gray-300 transition-colors">
+                                {{ $settings['email'] }}</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-start gap-5 transition-all duration-500 hover:bg-black hover:border-black shadow-sm hover:shadow-2xl">
+                        <div
+                            class="w-14 h-14 bg-white text-brand-blue rounded-lg flex items-center justify-center text-2xl transition-all duration-500 group-hover:bg-brand-blue group-hover:text-black group-hover:rotate-[360deg]">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Jam
+                                Operasional</h4>
+                            <p
+                                class="text-gray-600 text-sm font-body font-bold group-hover:text-gray-300 transition-colors">
+                                {{ $settings['working_hours'] }}</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div
+                    class="w-full lg:w-3/5 min-h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-50 relative group">
+                    <iframe src="{{ $settings['maps_url'] }}"
+                        class="w-full h-full border-0 grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div
+                        class="absolute inset-0 bg-brand-blue/5 pointer-events-none group-hover:opacity-0 transition-opacity">
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </section>
 
     <script>

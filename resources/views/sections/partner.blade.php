@@ -1,3 +1,11 @@
+<div class="text-center mb-12">
+    <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Network & Trust</h4>
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 font-title">Partner Bisnis Kami</h2>
+    <p class="text-gray-500 mt-4 font-body max-w-xl mx-auto">Kami bekerja sama dengan berbagai vendor dan instansi
+        terkemuka untuk memberikan layanan terbaik bagi Anda.</p>
+    <div class="w-20 h-1.5 bg-brand-blue mx-auto mt-6 rounded-full"></div>
+</div>
+
 <div class="container mx-auto px-6 md:px-16 py-10 overflow-hidden">
     <div id="partner-swiper" class="swiper partnerSwiper !overflow-visible">
         <div class="swiper-wrapper">
