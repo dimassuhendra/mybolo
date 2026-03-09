@@ -77,7 +77,7 @@
         @include('sections.service')
     </section>
 
-    <section class="bg-white py-12">
+    <section id="partners" class="bg-white py-12">
         <div class="text-center mb-16">
             <span class="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
                 Trusted Network

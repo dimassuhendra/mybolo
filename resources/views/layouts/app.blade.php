@@ -120,7 +120,9 @@
                 <a href="#home"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Home</a>
                 <a href="#services"
-                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Layanan</a>
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Service</a>
+                <a href="#partners"
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Partner</a>
                 <a href="#team"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Tentang</a>
                 <a href="#contact"
@@ -140,7 +142,9 @@
                 <p class="text-xs font-black text-gray-300 tracking-[0.3em] uppercase">Navigation</p>
                 <a href="#home" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Home</a>
                 <a href="#services"
-                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Layanan</a>
+                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Service</a>
+                <a href="#partners"
+                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Partner</a>
                 <a href="#team"
                     class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Tentang</a>
                 <a href="#contact"
