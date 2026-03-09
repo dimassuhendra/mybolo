@@ -74,84 +74,33 @@
     </section>
 
     <section id="services" class="py-32 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row gap-16 mb-24 items-end">
-                <h2 class="text-5xl md:text-8xl font-black tracking-tighter leading-none text-slate-900">WHAT WE <br><span
-                        class="text-brand-blue">DELIVER.</span></h2>
-                <div class="flex-1 border-l-2 border-slate-100 pl-8 pb-2">
-                    <p class="text-slate-500 max-w-sm font-body italic text-lg">"Kami tidak hanya memasang kabel, kami
-                        membangun fondasi digital bisnis Anda."</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto">
-                @foreach ($services as $index => $service)
-                    @php
-                        // Logic Layout: 1 kotak besar, sisanya variasi lebar
-                        $colSpan = $index == 0 ? 'md:col-span-8' : ($index == 1 ? 'md:col-span-4' : 'md:col-span-6');
-                        $bgClass =
-                            $index == 0
-                                ? 'bg-slate-900 text-white'
-                                : ($index == 1
-                                    ? 'bg-brand-blue text-white'
-                                    : 'bg-slate-50 text-slate-900');
-                    @endphp
-
-                    <div
-                        class="{{ $colSpan }} min-h-[400px] rounded-[3rem] p-12 relative overflow-hidden group transition-all duration-700 hover:shadow-2xl {{ $bgClass }}">
-                        <div class="relative z-10 flex flex-col h-full justify-between">
-                            <div>
-                                <div
-                                    class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 {{ $index <= 1 ? 'bg-white/10' : 'bg-brand-blue/10 text-brand-blue' }}">
-                                    <i class="fa-solid {{ $service->icon }} text-2xl"></i>
-                                </div>
-                                <h3 class="text-3xl font-bold tracking-tighter mb-4">{{ $service->title }}</h3>
-                                <p class="opacity-60 font-body leading-relaxed max-w-sm">{{ $service->short_description }}
-                                </p>
-                            </div>
-
-                            <div class="pt-10">
-                                <a href="#"
-                                    class="inline-flex items-center text-[10px] font-black tracking-[0.4em] uppercase border-b-2 border-current pb-2 group-hover:gap-6 transition-all">
-                                    VIEW DETAILS <i class="fa-solid fa-arrow-right-long ml-4"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <i
-                            class="fa-solid {{ $service->icon }} absolute -right-12 -bottom-12 text-[15rem] opacity-[0.03] group-hover:rotate-12 transition-transform duration-1000"></i>
-                    </div>
-                @endforeach
-            </div>
-        </div>
+        @include('sections.service')
     </section>
 
     <section class="bg-white py-12">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-slate-800">Our Partners</h2>
-            <p class="text-slate-500">Bekerja sama dengan institusi terpercaya</p>
+        <div class="text-center mb-16">
+            <span class="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
+                Trusted Network
+            </span>
+
+            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+                Our <span class="text-brand-blue">Partners.</span>
+            </h2>
+
+            <div class="flex justify-center">
+                <p class="text-slate-500 max-w-xl text-lg font-light leading-relaxed">
+                    Bekerja sama dengan institusi terpercaya untuk menghadirkan solusi digital standar global.
+                </p>
+            </div>
+
+            <div class="w-12 h-1 bg-brand-blue mx-auto mt-8"></div>
         </div>
 
         @include('sections.partner', ['partners' => $partners])
     </section>
 
     <section id="team" class="py-32 bg-black">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black text-white tracking-widest mb-24 uppercase">THE CORE SQUAD.</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-16">
-                @foreach ($teams as $t)
-                    <div class="group">
-                        <div
-                            class="relative w-32 h-32 md:w-44 md:h-44 mx-auto mb-8 overflow-hidden rounded-full border-2 border-white/10 p-2 group-hover:border-brand-blue transition-all duration-700">
-                            <img src="{{ asset('storage/' . $t->image_path) }}"
-                                class="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100">
-                        </div>
-                        <h4 class="text-white font-bold text-xl">{{ $t->name }}</h4>
-                        <p class="text-brand-blue text-[10px] font-black tracking-[0.3em] mt-2 uppercase">
-                            {{ $t->role }}</p>
-                    </div>
-                @endforeach
-            </div>
-        </div>
+        @include('sections.team')
     </section>
 
     <script>
