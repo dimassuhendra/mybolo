@@ -101,6 +101,19 @@
             opacity: 1;
             pointer-events: auto;
         }
+
+        /* Style Testimonial Section */
+        .swiper-pagination-bullet {
+            background: #fff !important;
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            width: 30px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
     </style>
 
     @stack('styles')
@@ -261,6 +274,29 @@
             }
         });
         backdrop.addEventListener('click', () => menuBtn.click());
+
+        // Script Testimonial Section
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 3
+                },
+            },
+        });
     </script>
 
     @stack('scripts')

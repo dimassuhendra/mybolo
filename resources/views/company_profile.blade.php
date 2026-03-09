@@ -77,6 +77,10 @@
         @include('sections.service')
     </section>
 
+    <section id="testimonials" class="bg-black py-24 text-white">
+        @include('sections.testimonial')
+    </section>
+
     <section id="partners" class="bg-white py-12">
         <div class="text-center mb-16">
             <span class="text-brand-blue font-bold tracking-[0.2em] uppercase text-xs mb-3 block">
