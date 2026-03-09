@@ -73,7 +73,7 @@
         </div>
     </section>
 
-    <section id="services" class="py-32 bg-white">
+    <section id="services" class="py-32 bg-white overflow-hidden relative" data-aos="fade-up">
         @include('sections.service')
     </section>
 
