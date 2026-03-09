@@ -17,21 +17,21 @@
                             src="{{ $slide->video_url }}?autoplay=1&mute=1&loop=1&playlist={{ Str::afterLast($slide->video_url, '/') }}&controls=0&enablejsapi=1">
                         </iframe>
                     @else
-                        <img src="{{ asset('storage/' . $slide->image_path) }}" class="w-full h-full object-cover">
+                        <img src="{{ asset('storage/' . $slide->image_path) }}" class="w-full h-full object-content">
                     @endif
 
                     <div
-                        class="container mx-auto px-6 h-full flex items-center relative z-20 {{ !$slide->video_url ? 'justify-center text-center' : '' }}">
-                        <div class="{{ $slide->video_url ? 'max-w-4xl' : 'max-w-3xl' }}" data-aos="fade-up">
+                        class="container mx-auto px-6 h-full flex items-center relative z-20 {{ !$slide->video_url ? 'justify-start text-left' : '' }}">
+                        <div class="{{ $slide->video_url ? 'max-w-4xl' : 'max-w-3xl' }} text-left" data-aos="fade-up">
+                            {{-- Pastikan ada class text-left di pembungkus ini --}}
 
-                            {{-- Perbaikan: Memastikan label navigasi muncul di atas jika video --}}
                             @if ($slide->video_url && $slide->nav_label)
                                 <span class="text-brand-blue font-black tracking-[0.4em] text-xs uppercase mb-6 block">
                                     {{ $slide->nav_label }}
                                 </span>
                             @endif
 
-                            {{-- Menampilkan Judul (Title) --}}
+                            {{-- Judul (Title) --}}
                             @if ($slide->title)
                                 <h1
                                     class="{{ $slide->video_url ? 'text-6xl md:text-[100px] leading-[0.85]' : 'text-5xl md:text-7xl mb-6 leading-tight italic' }} font-black text-white tracking-tighter">
@@ -39,17 +39,19 @@
                                 </h1>
                             @endif
 
-                            {{-- Menampilkan Deskripsi (Subtitle) --}}
+                            {{-- Deskripsi (Subtitle) --}}
                             @if ($slide->subtitle)
                                 <p
-                                    class="{{ $slide->video_url ? 'text-slate-400 mt-10 text-xl max-w-xl' : 'text-white/70 text-xl font-light' }} font-body leading-relaxed mx-auto">
+                                    class="{{ $slide->video_url ? 'text-slate-400 mt-10 text-xl max-w-xl' : 'text-white/70 text-xl font-light' }} font-body leading-relaxed">
+                                    {{-- PERBAIKAN: Hapus 'mx-auto' di sini agar tidak lari ke tengah --}}
                                     {{ $slide->subtitle }}
                                 </p>
                             @endif
                         </div>
                     </div>
                 </div>
-            @endforeach
+        </div>
+        @endforeach
         </div>
 
         {{-- Navigasi Bawah --}}
