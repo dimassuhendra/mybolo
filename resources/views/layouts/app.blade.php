@@ -134,13 +134,14 @@
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Home</a>
                 <a href="#services"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Service</a>
+                <a href="#testimonials"
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Testimonials</a>
                 <a href="#partners"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Partner</a>
                 <a href="#team"
-                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Tentang</a>
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Teams</a>
                 <a href="#contact"
-                    class="bg-brand-blue text-white px-8 py-3 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">HUBUNGI
-                    KAMI</a>
+                    class="bg-brand-blue text-white px-8 py-3 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">CONTACT</a>
             </div>
 
             <button id="menu-btn" class="md:hidden z-[110] p-2">
@@ -156,12 +157,14 @@
                 <a href="#home" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Home</a>
                 <a href="#services"
                     class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Service</a>
+                <a href="#testimonials"
+                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Testimonials</a>
                 <a href="#partners"
                     class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Partner</a>
                 <a href="#team"
-                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Tentang</a>
+                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Teams</a>
                 <a href="#contact"
-                    class="block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-10">Hubungi Kami</a>
+                    class="block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-10">Contact</a>
             </div>
         </div>
     </nav>
