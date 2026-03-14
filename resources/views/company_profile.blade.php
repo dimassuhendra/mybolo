@@ -5,74 +5,116 @@
         <div id="hero-master" class="h-full w-full">
             @foreach ($sliders as $index => $slide)
                 <div class="hero-item absolute inset-0 {{ $index == 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }} transition-all duration-1000 ease-in-out"
-                    data-duration="{{ $slide->duration * 1000 }}"> {{-- Durasi dari DB dikonversi ke milidetik --}}
+                    data-duration="{{ $slide->duration * 1000 }}">
 
-                    <div
-                        class="absolute inset-0 {{ $slide->video_url ? 'bg-gradient-to-r from-black via-black/40 to-transparent' : 'bg-brand-blue/90 mix-blend-multiply' }} z-10">
+                    {{-- Background Media Container --}}
+                    <div class="absolute inset-0 z-0 overflow-hidden">
+                        <div class="absolute inset-0 w-full h-full flex items-center justify-center">
+                            @if ($slide->video_url)
+                                {{-- PENYESUAIAN LOGIKA FULL SCREEN --}}
+                                <iframe class="pointer-events-none absolute grayscale brightness-[0.4]"
+                                    style="
+                                    width: 100vw; 
+                                    height: 56.25vw; /* Aspek rasio 16:9 */
+                                    min-height: 150vh; /* Memastikan tinggi melebihi layar HP */
+                                    min-width: 205vh;  /* Memastikan lebar melebihi layar HP */
+                                    object-fit: cover;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%) scale(1.1); /* Zoom untuk buang border hitam */
+                                "
+                                    src="{{ $slide->video_url }}?autoplay=1&mute=1&loop=1&playlist={{ Str::afterLast($slide->video_url, '/') }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
+                                    frameborder="0" allow="autoplay; encrypted-media">
+                                </iframe>
+                            @else
+                                {{-- Image menggunakan object-cover agar konsisten full screen --}}
+                                <img src="{{ asset('storage/' . $slide->image_path) }}"
+                                    class="w-full h-full object-cover object-center" alt="Hero Image">
+                            @endif
+                        </div>
+
+                        {{-- Overlay Layer --}}
+                        <div
+                            class="absolute inset-0 {{ $slide->video_url ? 'bg-indigo-950/60' : 'bg-brand-blue/80' }} mix-blend-multiply z-10">
+                        </div>
+                        {{-- Opsional: Tambahkan gradient jika ingin teks lebih terbaca seperti kode sebelumnya --}}
+                        @if ($slide->video_url)
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-15">
+                            </div>
+                        @endif
                     </div>
 
-                    @if ($slide->video_url)
-                        <iframe
-                            class="absolute w-full h-full object-cover scale-[1.5] pointer-events-none grayscale brightness-[0.4]"
-                            src="{{ $slide->video_url }}?autoplay=1&mute=1&loop=1&playlist={{ Str::afterLast($slide->video_url, '/') }}&controls=0&enablejsapi=1">
-                        </iframe>
-                    @else
-                        <img src="{{ asset('storage/' . $slide->image_path) }}" class="w-full h-full object-content">
-                    @endif
-
-                    <div
-                        class="container mx-auto px-6 h-full flex items-center relative z-20 {{ !$slide->video_url ? 'justify-start text-left' : '' }}">
-                        <div class="{{ $slide->video_url ? 'max-w-4xl' : 'max-w-3xl' }} text-left" data-aos="fade-up">
-                            {{-- Pastikan ada class text-left di pembungkus ini --}}
-
-                            @if ($slide->video_url && $slide->nav_label)
-                                <span class="text-brand-blue font-black tracking-[0.4em] text-xs uppercase mb-6 block">
+                    {{-- Content --}}
+                    <div class="container mx-auto px-6 h-full flex items-center relative z-20">
+                        <div class="w-full max-w-4xl text-left" data-aos="fade-up">
+                            @if ($slide->nav_label)
+                                <span
+                                    class="text-brand-blue font-black tracking-[0.4em] text-[10px] md:text-xs uppercase mb-4 md:mb-6 block">
                                     {{ $slide->nav_label }}
                                 </span>
                             @endif
 
-                            {{-- Judul (Title) --}}
                             @if ($slide->title)
                                 <h1
-                                    class="{{ $slide->video_url ? 'text-6xl md:text-[100px] leading-[0.85]' : 'text-5xl md:text-7xl mb-6 leading-tight italic' }} font-black text-white tracking-tighter">
+                                    class="{{ $slide->video_url ? 'text-4xl md:text-[100px] leading-[0.9]' : 'text-4xl md:text-7xl mb-6 leading-tight italic' }} font-black text-white tracking-tighter uppercase">
                                     {!! $slide->title !!}
                                 </h1>
                             @endif
 
-                            {{-- Deskripsi (Subtitle) --}}
                             @if ($slide->subtitle)
                                 <p
-                                    class="{{ $slide->video_url ? 'text-slate-400 mt-10 text-xl max-w-xl' : 'text-white/70 text-xl font-light' }} font-body leading-relaxed">
-                                    {{-- PERBAIKAN: Hapus 'mx-auto' di sini agar tidak lari ke tengah --}}
+                                    class="{{ $slide->video_url ? 'text-slate-300 mt-6 md:mt-10 text-lg md:text-xl max-w-xl' : 'text-white/80 text-lg md:text-xl font-light mt-4' }} font-body leading-relaxed">
                                     {{ $slide->subtitle }}
                                 </p>
                             @endif
                         </div>
                     </div>
                 </div>
-        </div>
-        @endforeach
+            @endforeach
         </div>
 
         {{-- Navigasi Bawah --}}
-        <div class="absolute bottom-20 left-0 w-full z-30">
-            <div class="container mx-auto px-6 flex items-center space-x-12">
-                @foreach ($sliders as $index => $slide)
-                    <button onclick="changeHero({{ $index }})"
-                        class="hero-nav {{ $index == 0 ? 'active' : '' }} group flex flex-col items-start">
-                        <span
-                            class="text-[10px] font-black text-white tracking-widest opacity-40 group-[.active]:opacity-100 transition-all">
-                            {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }} {{ strtoupper($slide->nav_label) }}
-                        </span>
-                        <div class="progress-container h-[2px] w-32 bg-white/20 mt-2 overflow-hidden">
-                            {{-- Perbaikan: Transition duration diatur di sini --}}
-                            <div class="progress-bar h-full bg-brand-blue w-0 transition-all linear"
-                                style="transition-duration: {{ $index == 0 ? $slide->duration . 's' : '0s' }}"></div>
-                        </div>
-                    </button>
-                @endforeach
+        {{-- Navigasi Bawah --}}
+        <div class="absolute bottom-8 md:bottom-20 left-0 w-full z-30">
+            <div class="container mx-auto px-6">
+                {{-- 
+            Grid System: 
+            - grid-cols-2 atau grid-cols-3 sesuai jumlah slide di mobile agar rapi.
+            - md:flex agar kembali ke tampilan memanjang di laptop.
+        --}}
+                <div
+                    class="flex flex-row md:flex-row items-center justify-start gap-4 md:space-x-12 overflow-x-auto no-scrollbar pb-4 md:pb-0">
+                    @foreach ($sliders as $index => $slide)
+                        <button onclick="changeHero({{ $index }})"
+                            class="hero-nav {{ $index == 0 ? 'active' : '' }} group flex flex-col items-start focus:outline-none min-w-[120px] md:min-w-0 flex-shrink-0">
+
+                            <span
+                                class="text-[8px] md:text-[10px] font-black text-white tracking-widest opacity-40 group-[.active]:opacity-100 transition-all uppercase whitespace-nowrap">
+                                {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }} {{ $slide->nav_label }}
+                            </span>
+
+                            <div class="progress-container h-[2px] w-full md:w-32 bg-white/20 mt-2 overflow-hidden">
+                                {{-- Lebar bar (w-full) akan mengikuti lebar tombol min-w-[120px] di mobile --}}
+                                <div class="progress-bar h-full bg-brand-blue w-0 transition-all linear"
+                                    style="transition-duration: {{ $index == 0 ? $slide->duration . 's' : '0s' }}"></div>
+                            </div>
+                        </button>
+                    @endforeach
+                </div>
             </div>
         </div>
+
+        {{-- Tambahkan CSS ini di file master atau bagian @push('css') agar scrollbar tidak muncul tapi tetap bisa di-swipe --}}
+        <style>
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        </style>
     </section>
 
     <section id="services" class="py-32 bg-white overflow-hidden relative" data-aos="fade-up">
