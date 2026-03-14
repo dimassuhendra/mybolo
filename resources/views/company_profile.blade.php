@@ -116,6 +116,9 @@
                             <p
                                 class="text-gray-600 text-sm font-body leading-relaxed group-hover:text-gray-300 transition-colors">
                                 {{ $settings['address'] }}</p>
+                            <p
+                                class="text-gray-600 text-sm font-body leading-relaxed group-hover:text-gray-300 transition-colors">
+                                {{ $settings['company_name'] }}</p>
                         </div>
                     </div>
 
