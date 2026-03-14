@@ -47,13 +47,6 @@
                     {{-- Content --}}
                     <div class="container mx-auto px-6 h-full flex items-center relative z-20">
                         <div class="w-full max-w-4xl text-left" data-aos="fade-up">
-                            @if ($slide->nav_label)
-                                <span
-                                    class="text-brand-blue font-black tracking-[0.4em] text-[10px] md:text-xs uppercase mb-4 md:mb-6 block">
-                                    {{ $slide->nav_label }}
-                                </span>
-                            @endif
-
                             @if ($slide->title)
                                 <h1
                                     class="{{ $slide->video_url ? 'text-4xl md:text-[100px] leading-[0.9]' : 'text-4xl md:text-7xl mb-6 leading-tight italic' }} font-black text-white tracking-tighter uppercase">
