@@ -27,24 +27,29 @@
                                     frameborder="0" allow="autoplay; encrypted-media">
                                 </iframe>
                             @else
-                                {{-- IMAGE WITH ART DIRECTION (Responsive Images) --}}
-                                <picture>
-                                    {{-- Source untuk Mobile (Layar < 640px) --}}
-                                    @if ($slide->image_mobile_path)
-                                        <source media="(max-width: 639px)"
-                                            srcset="{{ asset('storage/' . $slide->image_mobile_path) }}">
-                                    @endif
+                                {{-- Container ini harus dipastikan memenuhi seluruh layar --}}
+                                <div class="absolute inset-0 w-full h-full">
+                                    <picture class="w-full h-full">
+                                        {{-- Source Mobile: Pastikan class h-full diterapkan --}}
+                                        @if ($slide->image_mobile_path)
+                                            <source media="(max-width: 639px)"
+                                                srcset="{{ asset('storage/' . $slide->image_mobile_path) }}"
+                                                class="w-full h-full">
+                                        @endif
 
-                                    {{-- Source untuk Tablet (Layar 640px - 1024px) --}}
-                                    @if ($slide->image_tablet_path)
-                                        <source media="(max-width: 1024px)"
-                                            srcset="{{ asset('storage/' . $slide->image_tablet_path) }}">
-                                    @endif
+                                        {{-- Source Tablet --}}
+                                        @if ($slide->image_tablet_path)
+                                            <source media="(max-width: 1024px)"
+                                                srcset="{{ asset('storage/' . $slide->image_tablet_path) }}"
+                                                class="w-full h-full">
+                                        @endif
 
-                                    {{-- Default Image (Desktop / Fallback) --}}
-                                    <img src="{{ asset('storage/' . $slide->image_path) }}"
-                                        class="w-full h-full object-cover object-center" alt="Hero Image">
-                                </picture>
+                                        {{-- Image Utama: Kuncinya ada di h-full dan object-cover --}}
+                                        <img src="{{ asset('storage/' . $slide->image_path) }}"
+                                            class="w-full h-full object-cover object-center"
+                                            style="min-height: 100vh; min-width: 100vw;" alt="Hero Image">
+                                    </picture>
+                                </div>
                             @endif
                         </div>
 
@@ -113,6 +118,19 @@
             .no-scrollbar {
                 -ms-overflow-style: none;
                 scrollbar-width: none;
+            }
+
+            picture {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+
+            /* Memastikan gambar selalu memenuhi layar tanpa celah */
+            .hero-item img {
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
             }
         </style>
     </section>
