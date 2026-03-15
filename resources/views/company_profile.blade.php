@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('content')
-    <section id="home" class="relative h-screen w-full bg-black overflow-hidden">
+@section('content') 
+    <section id="home" class="relative h-screen w-full overflow-hidden">
         <div id="hero-master" class="h-full w-full">
             @foreach ($sliders as $index => $slide)
                 <div class="hero-item absolute inset-0 {{ $index == 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }} transition-all duration-1000 ease-in-out"
@@ -12,7 +12,7 @@
                         <div class="absolute inset-0 w-full h-full flex items-center justify-center">
                             @if ($slide->video_url)
                                 {{-- PENYESUAIAN LOGIKA FULL SCREEN --}}
-                                <iframe class="pointer-events-none absolute grayscale brightness-[0.4]"
+                                <iframe class="pointer-events-none absolute grayscale brightness-[0.9]"
                                     style="
                                     width: 100vw; 
                                     height: 56.25vw; /* Aspek rasio 16:9 */
@@ -49,14 +49,14 @@
                         <div class="w-full max-w-4xl text-left" data-aos="fade-up">
                             @if ($slide->title)
                                 <h1
-                                    class="{{ $slide->video_url ? 'text-4xl md:text-[100px] leading-[0.9]' : 'text-4xl md:text-7xl mb-6 leading-tight italic' }} font-black text-white tracking-tighter uppercase">
+                                    class="{{ $slide->video_url ? 'text-4xl md:text-[40px] leading-[0.9]' : 'text-4xl md:text-7xl mb-6 leading-tight italic' }} font-black text-white tracking-tighter uppercase">
                                     {!! $slide->title !!}
                                 </h1>
                             @endif
 
                             @if ($slide->subtitle)
                                 <p
-                                    class="{{ $slide->video_url ? 'text-slate-300 mt-6 md:mt-10 text-lg md:text-xl max-w-xl' : 'text-white/80 text-lg md:text-xl font-light mt-4' }} font-body leading-relaxed">
+                                    class="{{ $slide->video_url ? 'text-slate-300 mt-6 md:mt-10 text-md md:text-xl max-w-xl' : 'text-white/80 text-lg md:text-xl font-light mt-4' }} font-body leading-relaxed">
                                     {{ $slide->subtitle }}
                                 </p>
                             @endif
@@ -66,7 +66,6 @@
             @endforeach
         </div>
 
-        {{-- Navigasi Bawah --}}
         {{-- Navigasi Bawah --}}
         <div class="absolute bottom-8 md:bottom-20 left-0 w-full z-30">
             <div class="container mx-auto px-6">
