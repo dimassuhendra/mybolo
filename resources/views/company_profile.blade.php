@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content') 
+@section('content')
     <section id="home" class="relative h-screen w-full overflow-hidden">
         <div id="hero-master" class="h-full w-full">
             @foreach ($sliders as $index => $slide)
@@ -16,20 +16,35 @@
                                     style="
                                     width: 100vw; 
                                     height: 56.25vw; /* Aspek rasio 16:9 */
-                                    min-height: 150vh; /* Memastikan tinggi melebihi layar HP */
-                                    min-width: 205vh;  /* Memastikan lebar melebihi layar HP */
+                                    min-height: 150vh; 
+                                    min-width: 205vh; 
                                     object-fit: cover;
                                     top: 50%;
                                     left: 50%;
-                                    transform: translate(-50%, -50%) scale(1.1); /* Zoom untuk buang border hitam */
+                                    transform: translate(-50%, -50%) scale(1.1);
                                 "
                                     src="{{ $slide->video_url }}?autoplay=1&mute=1&loop=1&playlist={{ Str::afterLast($slide->video_url, '/') }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
                                     frameborder="0" allow="autoplay; encrypted-media">
                                 </iframe>
                             @else
-                                {{-- Image menggunakan object-cover agar konsisten full screen --}}
-                                <img src="{{ asset('storage/' . $slide->image_path) }}"
-                                    class="w-full h-full object-cover object-center" alt="Hero Image">
+                                {{-- IMAGE WITH ART DIRECTION (Responsive Images) --}}
+                                <picture>
+                                    {{-- Source untuk Mobile (Layar < 640px) --}}
+                                    @if ($slide->image_mobile_path)
+                                        <source media="(max-width: 639px)"
+                                            srcset="{{ asset('storage/' . $slide->image_mobile_path) }}">
+                                    @endif
+
+                                    {{-- Source untuk Tablet (Layar 640px - 1024px) --}}
+                                    @if ($slide->image_tablet_path)
+                                        <source media="(max-width: 1024px)"
+                                            srcset="{{ asset('storage/' . $slide->image_tablet_path) }}">
+                                    @endif
+
+                                    {{-- Default Image (Desktop / Fallback) --}}
+                                    <img src="{{ asset('storage/' . $slide->image_path) }}"
+                                        class="w-full h-full object-cover object-center" alt="Hero Image">
+                                </picture>
                             @endif
                         </div>
 
@@ -37,7 +52,7 @@
                         <div
                             class="absolute inset-0 {{ $slide->video_url ? 'bg-indigo-950/60' : 'bg-brand-blue/80' }} mix-blend-multiply z-10">
                         </div>
-                        {{-- Opsional: Tambahkan gradient jika ingin teks lebih terbaca seperti kode sebelumnya --}}
+
                         @if ($slide->video_url)
                             <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-15">
                             </div>
@@ -69,13 +84,8 @@
         {{-- Navigasi Bawah --}}
         <div class="absolute bottom-8 md:bottom-20 left-0 w-full z-30">
             <div class="container mx-auto px-6">
-                {{-- 
-            Grid System: 
-            - grid-cols-2 atau grid-cols-3 sesuai jumlah slide di mobile agar rapi.
-            - md:flex agar kembali ke tampilan memanjang di laptop.
-        --}}
                 <div
-                    class="flex flex-row md:flex-row items-center justify-start gap-4 md:space-x-12 overflow-x-auto no-scrollbar pb-4 md:pb-0">
+                    class="flex flex-row items-center justify-start gap-4 md:space-x-12 overflow-x-auto no-scrollbar pb-4 md:pb-0">
                     @foreach ($sliders as $index => $slide)
                         <button onclick="changeHero({{ $index }})"
                             class="hero-nav {{ $index == 0 ? 'active' : '' }} group flex flex-col items-start focus:outline-none min-w-[120px] md:min-w-0 flex-shrink-0">
@@ -86,7 +96,6 @@
                             </span>
 
                             <div class="progress-container h-[2px] w-full md:w-32 bg-white/20 mt-2 overflow-hidden">
-                                {{-- Lebar bar (w-full) akan mengikuti lebar tombol min-w-[120px] di mobile --}}
                                 <div class="progress-bar h-full bg-brand-blue w-0 transition-all linear"
                                     style="transition-duration: {{ $index == 0 ? $slide->duration . 's' : '0s' }}"></div>
                             </div>
@@ -96,7 +105,6 @@
             </div>
         </div>
 
-        {{-- Tambahkan CSS ini di file master atau bagian @push('css') agar scrollbar tidak muncul tapi tetap bisa di-swipe --}}
         <style>
             .no-scrollbar::-webkit-scrollbar {
                 display: none;

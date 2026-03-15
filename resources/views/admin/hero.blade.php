@@ -95,8 +95,19 @@
 
                         <div class="flex-grow">
                             <div class="flex justify-between items-start">
-                                <span
-                                    class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{{ $slide->nav_label }}</span>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{{ $slide->nav_label }}</span>
+                                    {{-- Device Availability Indicators --}}
+                                    <div class="flex gap-2 mt-1">
+                                        <i class="fa-solid fa-desktop text-[9px] {{ $slide->image_path ? 'text-emerald-500' : 'text-slate-300' }}"
+                                            title="Desktop Ready"></i>
+                                        <i class="fa-solid fa-tablet-screen-button text-[9px] {{ $slide->image_tablet_path ? 'text-emerald-500' : 'text-slate-300' }}"
+                                            title="Tablet Ready"></i>
+                                        <i class="fa-solid fa-mobile-screen text-[9px] {{ $slide->image_mobile_path ? 'text-emerald-500' : 'text-slate-300' }}"
+                                            title="Mobile Ready"></i>
+                                    </div>
+                                </div>
                                 <div class="flex gap-2">
                                     <button
                                         @click="openModal = true; editMode = true; currentSlide = {{ json_encode($slide) }}"
@@ -145,7 +156,7 @@
             </div>
 
             <form :action="editMode ? '/admin/hero/' + currentSlide.id : '{{ route('hero.store') }}'" method="POST"
-                enctype="multipart/form-data" class="p-8 space-y-5">
+                enctype="multipart/form-data" class="p-8 space-y-5 max-h-[70vh] overflow-y-auto no-scrollbar">
                 @csrf
                 <template x-if="editMode"><input type="hidden" name="_method" value="PUT"></template>
 
@@ -153,7 +164,7 @@
                     <div class="col-span-1">
                         <label
                             class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Judul
-                            Utama (Opsional)</label>
+                            Utama</label>
                         <input type="text" name="title" x-model="currentSlide.title"
                             class="w-full bg-slate-50 border-transparent focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 p-4 rounded-2xl outline-none transition-all font-bold text-slate-700 shadow-inner"
                             placeholder="Contoh: ULTRA CONNECT">
@@ -161,7 +172,7 @@
                     <div class="col-span-1">
                         <label
                             class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Label
-                            Navigasi (Wajib)</label>
+                            Navigasi</label>
                         <input type="text" name="nav_label" x-model="currentSlide.nav_label" required
                             class="w-full bg-slate-50 border-transparent focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 p-4 rounded-2xl outline-none transition-all font-bold text-slate-700 shadow-inner"
                             placeholder="Contoh: SOLUTIONS">
@@ -171,7 +182,7 @@
                 <div>
                     <label
                         class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Deskripsi
-                        / Subtitle (Opsional)</label>
+                        / Subtitle</label>
                     <textarea name="subtitle" x-model="currentSlide.subtitle" rows="2"
                         class="w-full bg-slate-50 border-transparent focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 p-4 rounded-2xl outline-none transition-all font-bold text-slate-700 shadow-inner"
                         placeholder="Teks deskripsi di bawah judul..."></textarea>
@@ -181,7 +192,7 @@
                     <div class="col-span-1">
                         <label
                             class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Durasi
-                            (Detik)</label>
+                            (s)</label>
                         <input type="number" name="duration" x-model="currentSlide.duration" required
                             class="w-full bg-slate-50 border-transparent focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 p-4 rounded-2xl outline-none transition-all font-bold text-slate-700 shadow-inner">
                     </div>
@@ -195,12 +206,43 @@
                     </div>
                 </div>
 
-                <div>
-                    <label
-                        class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1">Unggah
-                        Gambar (Jika Bukan Video)</label>
-                    <div class="px-4 py-3 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
-                        <input type="file" name="image" class="text-[10px] text-slate-400 cursor-pointer">
+                <div class="space-y-4 pt-2">
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Unggah
+                        Aset Visual (Art Direction)</label>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="space-y-2">
+                            <span class="text-[9px] font-bold text-slate-500 ml-1">Desktop (16:9)</span>
+                            <div class="px-3 py-2 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200">
+                                <input type="file" name="image"
+                                    class="text-[10px] text-slate-400 cursor-pointer w-full">
+                            </div>
+                            <template x-if="editMode && currentSlide.image_path">
+                                <p class="text-[8px] text-emerald-600 font-bold italic">* File Desktop Ada</p>
+                            </template>
+                        </div>
+
+                        <div class="space-y-2">
+                            <span class="text-[9px] font-bold text-slate-500 ml-1">Tablet (4:3)</span>
+                            <div class="px-3 py-2 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200">
+                                <input type="file" name="image_tablet"
+                                    class="text-[10px] text-slate-400 cursor-pointer w-full">
+                            </div>
+                            <template x-if="editMode && currentSlide.image_tablet_path">
+                                <p class="text-[8px] text-emerald-600 font-bold italic">* File Tablet Ada</p>
+                            </template>
+                        </div>
+
+                        <div class="space-y-2">
+                            <span class="text-[9px] font-bold text-slate-500 ml-1">Mobile (9:16)</span>
+                            <div class="px-3 py-2 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200">
+                                <input type="file" name="image_mobile"
+                                    class="text-[10px] text-slate-400 cursor-pointer w-full">
+                            </div>
+                            <template x-if="editMode && currentSlide.image_mobile_path">
+                                <p class="text-[8px] text-emerald-600 font-bold italic">* File Mobile Ada</p>
+                            </template>
+                        </div>
                     </div>
                 </div>
 

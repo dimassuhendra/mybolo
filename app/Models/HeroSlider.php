@@ -8,6 +8,8 @@ class HeroSlider extends Model
 {
     protected $fillable = [
         'image_path',
+        'image_tablet_path',
+        'image_mobile_path',
         'video_url',
         'duration',
         'title',
