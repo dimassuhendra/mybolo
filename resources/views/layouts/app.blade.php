@@ -428,8 +428,8 @@
 
         // Script untuk Translate Page
         window.gtranslateSettings = {
-            "default_language": "en",
-            "languages": ["id", "en", "th"],
+            "default_language": "id",
+            "languages": ["id", "en"],
             "wrapper_selector": ".gtranslate_wrapper",
             "flag_size": 24, // Ukuran bendera (pixel)
             "flag_style": "3d", // Pilihan: '3d', 'flat', 'shiny'
