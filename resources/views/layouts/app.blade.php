@@ -79,11 +79,13 @@
             right: 0;
             width: 300px;
             height: 100vh;
+            /* Pastikan menggunakan unit vh yang benar */
             background: white;
             z-index: 100;
             padding: 2rem;
             box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Hapus display flex !important dari sini */
         }
 
         #menu-backdrop {
@@ -100,6 +102,20 @@
         #menu-backdrop.active {
             opacity: 1;
             pointer-events: auto;
+        }
+
+        #menu-btn.open #bar1 {
+            transform: translateY(8px) rotate(45deg);
+            background-color: #1f2937 !important;
+        }
+
+        #menu-btn.open #bar2 {
+            opacity: 0;
+        }
+
+        #menu-btn.open #bar3 {
+            transform: translateY(-8px) rotate(-45deg);
+            background-color: #1f2937 !important;
         }
 
         /* Style Testimonial Section */
@@ -175,41 +191,38 @@
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Testimonials</a>
                 <a href="#partners"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Partner</a>
-                {{-- <a href="#team"
-                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Teams</a> --}}
                 <a href="#contact"
                     class="bg-brand-blue text-white px-5 py-1 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">CONTACT</a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <div class="gtranslate_wrapper"></div>
-                </div>
+
+                <div class="gtranslate_wrapper"></div>
             </div>
 
-            <button id="menu-btn" class="md:hidden z-[110]">
-                <div class="w-6 h-0.5 mb-1 bg-white transition-all" id="bar1"></div>
-                <div class="w-6 h-0.5 mb-1 bg-white transition-all" id="bar2"></div>
-                <div class="w-6 h-0.5 bg-white transition-all" id="bar3"></div>
+            <button id="menu-btn" class="md:hidden z-[110] relative p-2">
+                <div class="w-6 h-0.5 mb-1.5 bg-white transition-all duration-300" id="bar1"></div>
+                <div class="w-6 h-0.5 mb-1.5 bg-white transition-all duration-300" id="bar2"></div>
+                <div class="w-6 h-0.5 bg-white transition-all duration-300" id="bar3"></div>
             </button>
         </div>
 
-        <div id="mobile-menu" class="translate-x-full md:hidden flex flex-col">
-            <div class="mt-12 space-y-6">
-                <p class="text-xs font-black text-gray-300 tracking-[0.3em] uppercase">Navigation</p>
-                <a href="#home" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Home</a>
+        <div id="mobile-menu"
+            class="fixed top-0 right-0 w-[300px] h-full bg-white translate-x-full z-[100] p-8 shadow-2xl overflow-y-auto">
+            <div class="mt-16 space-y-6 flex flex-col">
+                <p class="text-xs font-black text-gray-400 tracking-[0.3em] uppercase mb-4">Navigation</p>
+
+                <a href="#home"
+                    class="mobile-link block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Home</a>
                 <a href="#services"
-                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Service</a>
+                    class="mobile-link block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Service</a>
                 <a href="#testimonials"
-                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Testimonials</a>
+                    class="mobile-link block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Testimonials</a>
                 <a href="#partners"
-                    class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Partner</a>
-                {{-- <a href="#team" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Teams</a> --}}
+                    class="mobile-link block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Partner</a>
+
                 <a href="#contact"
-                    class="block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-10">Contact</a>
-                <div id="mobile-menu" ...>
-                    <div class="mt-12 space-y-6">
-                        <div class="flex justify-center pt-6">
-                            <div class="gtranslate_wrapper"></div>
-                        </div>
-                    </div>
+                    class="mobile-link block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-6">Contact</a>
+
+                <div class="flex justify-center pt-8">
+                    <div class="gtranslate_wrapper"></div>
                 </div>
             </div>
         </div>
@@ -351,21 +364,43 @@
             lastScroll = currentScroll;
         });
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('translate-x-full');
-            backdrop.classList.toggle('active');
-            menuBtn.classList.toggle('open');
-            if (menuBtn.classList.contains('open')) {
-                document.getElementById('bar1').style.transform = 'translateY(8px) rotate(45deg)';
-                document.getElementById('bar2').style.opacity = '0';
-                document.getElementById('bar3').style.transform = 'translateY(-8px) rotate(-45deg)';
+        // Toggle Menu Function
+        // Toggle Menu Function yang Lebih Stabil
+        const toggleMenu = () => {
+            const isMenuOpen = mobileMenu.classList.contains('translate-x-full');
+
+            if (isMenuOpen) {
+                // Buka Menu
+                mobileMenu.classList.remove('translate-x-full');
+                backdrop.classList.add('active');
+                menuBtn.classList.add('open');
+                document.body.style.overflow = 'hidden';
             } else {
-                document.getElementById('bar1').style.transform = 'none';
-                document.getElementById('bar2').style.opacity = '1';
-                document.getElementById('bar3').style.transform = 'none';
+                // Tutup Menu
+                mobileMenu.classList.add('translate-x-full');
+                backdrop.classList.remove('active');
+                menuBtn.classList.remove('open');
+                document.body.style.overflow = '';
             }
+        };
+
+        // Event Listeners
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
         });
-        backdrop.addEventListener('click', () => menuBtn.click());
+
+        backdrop.addEventListener('click', toggleMenu);
+
+        // Menutup menu saat link di klik
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                backdrop.classList.remove('active');
+                menuBtn.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
 
         // Script Testimonial Section
         var swiper = new Swiper(".mySwiper", {
