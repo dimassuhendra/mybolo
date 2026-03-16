@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="home" class="relative h-screen w-full overflow-hidden">
+    <section id="home" class="relative h-screen w-full overflow-hidden bg-black">
         <div id="hero-master" class="h-full w-full">
             @foreach ($sliders as $index => $slide)
-                <div class="hero-item absolute inset-0 {{ $index == 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }} transition-all duration-1000 ease-in-out"
+                {{-- Tambahkan class hidden lg:block jika slide ini BUKAN video agar gambar utamanya tidak render di mobile --}}
+                <div class="hero-item absolute inset-0 {{ $index == 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }} transition-all duration-1000 ease-in-out {{ !$slide->video_url ? 'hidden lg:block' : 'block' }}"
                     data-duration="{{ $slide->duration * 1000 }}">
 
                     {{-- Background Media Container --}}
@@ -14,21 +15,21 @@
                                 {{-- PENYESUAIAN LOGIKA FULL SCREEN --}}
                                 <iframe class="pointer-events-none absolute grayscale brightness-[0.9]"
                                     style="
-                                    width: 100vw; 
-                                    height: 56.25vw; /* Aspek rasio 16:9 */
-                                    min-height: 150vh; 
-                                    min-width: 205vh; 
-                                    object-fit: cover;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%) scale(1.1);
-                                "
+                                width: 100vw; 
+                                height: 56.25vw; /* Aspek rasio 16:9 */
+                                min-height: 150vh; 
+                                min-width: 205vh; 
+                                object-fit: cover;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%) scale(1.1);
+                            "
                                     src="{{ $slide->video_url }}?autoplay=1&mute=1&loop=1&playlist={{ Str::afterLast($slide->video_url, '/') }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
                                     frameborder="0" allow="autoplay; encrypted-media">
                                 </iframe>
                             @else
-                                {{-- Container ini harus dipastikan memenuhi seluruh layar --}}
-                                <div class="absolute inset-0 w-full h-full">
+                                {{-- Container ini harus dipastikan memenuhi seluruh layar (Hanya Desktop) --}}
+                                <div class="hidden lg:block absolute inset-0 w-full h-full">
                                     <picture class="w-full h-full">
                                         {{-- Source Mobile: Pastikan class h-full diterapkan --}}
                                         @if ($slide->image_mobile_path)
@@ -53,19 +54,20 @@
                             @endif
                         </div>
 
-                        {{-- Overlay Layer --}}
+                        {{-- Overlay Layer (Disembunyikan di Mobile/Tab, Tampil di Desktop) --}}
                         <div
-                            class="absolute inset-0 {{ $slide->video_url ? 'bg-indigo-950/60' : 'bg-brand-blue/80' }} mix-blend-multiply z-10">
+                            class="hidden lg:block absolute inset-0 {{ $slide->video_url ? 'bg-indigo-950/60' : 'bg-brand-blue/80' }} mix-blend-multiply z-10">
                         </div>
 
                         @if ($slide->video_url)
-                            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-15">
+                            <div
+                                class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-15">
                             </div>
                         @endif
                     </div>
 
-                    {{-- Content --}}
-                    <div class="container mx-auto px-6 h-full flex items-center relative z-20">
+                    {{-- Content (Disembunyikan di Mobile/Tab, Tampil di Desktop) --}}
+                    <div class="hidden lg:flex container mx-auto px-6 h-full items-center relative z-20">
                         <div class="w-full max-w-4xl text-left" data-aos="fade-up">
                             @if ($slide->title)
                                 <h1
@@ -86,8 +88,8 @@
             @endforeach
         </div>
 
-        {{-- Navigasi Bawah --}}
-        <div class="absolute bottom-8 md:bottom-20 left-0 w-full z-30">
+        {{-- Navigasi Bawah (Disembunyikan di Mobile/Tab, Tampil di Desktop) --}}
+        <div class="hidden lg:block absolute bottom-8 md:bottom-20 left-0 w-full z-30">
             <div class="container mx-auto px-6">
                 <div
                     class="flex flex-row items-center justify-start gap-4 md:space-x-12 overflow-x-auto no-scrollbar pb-4 md:pb-0">
@@ -126,7 +128,6 @@
                 height: 100%;
             }
 
-            /* Memastikan gambar selalu memenuhi layar tanpa celah */
             .hero-item img {
                 width: 100vw;
                 height: 100vh;
