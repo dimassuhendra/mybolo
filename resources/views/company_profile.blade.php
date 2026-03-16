@@ -198,7 +198,7 @@
                                 <span>: {{ $settings['phone'] }}</span>
 
                                 <span class="whitespace-nowrap">Contact Support 24/7</span>
-                                <span>: 0{{ $settings['whatsapp'] }}</span>
+                                <span>: +62821-3848-28887</span>
 
                             </div>
                         </div>
