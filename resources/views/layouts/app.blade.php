@@ -114,6 +114,43 @@
             border-radius: 5px;
             transition: all 0.3s;
         }
+
+        /* Style untuk button translate */
+        /* Merapikan pembungkus bendera */
+        .gtranslate_wrapper {
+            display: flex !important;
+            align-items: center;
+            gap: 12px;
+            /* Jarak antar bendera */
+            margin-left: 15px;
+        }
+
+        /* Efek hover agar lebih interaktif */
+        .gtranslate_wrapper a {
+            transition: transform 0.3s ease, filter 0.3s ease;
+            display: inline-block;
+            line-net-height: 0;
+        }
+
+        .gtranslate_wrapper a:hover {
+            transform: scale(1.2);
+            /* Membesar sedikit saat disentuh */
+            filter: brightness(1.1);
+        }
+
+        /* Sembunyikan tooltip/teks bawaan jika muncul */
+        .gt_selector {
+            display: none !important;
+        }
+
+        /* Menghilangkan sisa-sisa banner Google */
+        body {
+            top: 0 !important;
+        }
+
+        .skiptranslate iframe {
+            display: none !important;
+        }
     </style>
 
     @stack('styles')
@@ -142,6 +179,9 @@
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Teams</a> --}}
                 <a href="#contact"
                     class="bg-brand-blue text-white px-5 py-1 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">CONTACT</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="gtranslate_wrapper"></div>
+                </div>
             </div>
 
             <button id="menu-btn" class="md:hidden z-[110]">
@@ -164,6 +204,13 @@
                 {{-- <a href="#team" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Teams</a> --}}
                 <a href="#contact"
                     class="block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-10">Contact</a>
+                <div id="mobile-menu" ...>
+                    <div class="mt-12 space-y-6">
+                        <div class="flex justify-center pt-6">
+                            <div class="gtranslate_wrapper"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -342,8 +389,24 @@
                 },
             },
         });
-    </script>
 
+        // Script untuk Translate Page
+        window.gtranslateSettings = {
+            "default_language": "id",
+            "languages": ["id", "en"],
+            "wrapper_selector": ".gtranslate_wrapper",
+            "flag_size": 24, // Ukuran bendera (pixel)
+            "flag_style": "3d", // Pilihan: '3d', 'flat', 'shiny'
+            "alt_flags": {
+                "en": "usa"
+            },
+            "horizontal_position": "inline",
+            "switcher_open_direction": "bottom",
+            "native_language_names": true,
+            "detect_browser_language": true
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
     @stack('scripts')
 </body>
 
