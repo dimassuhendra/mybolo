@@ -190,9 +190,17 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">
-                                Telepon / WhatsApp</h4>
-                            <p class="text-gray-600 text-sm font-body group-hover:text-gray-300 transition-colors">
-                                {{ $settings['phone'] }}</p>
+                                Telepon</h4>
+                            <div
+                                class="grid grid-cols-[auto_1fr] gap-x-2 text-gray-600 text-sm font-body font-bold group-hover:text-gray-300 transition-colors">
+
+                                <span class="whitespace-nowrap">Phone</span>
+                                <span>: {{ $settings['phone'] }}</span>
+
+                                <span class="whitespace-nowrap">Contact Support 24/7</span>
+                                <span>: 0{{ $settings['whatsapp'] }}</span>
+
+                            </div>
                         </div>
                     </div>
 
@@ -217,11 +225,20 @@
                             <i class="fa-solid fa-clock"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-black font-title mb-1 group-hover:text-white transition-colors">Jam
-                                Operasional</h4>
-                            <p
-                                class="text-gray-600 text-sm font-body font-bold group-hover:text-gray-300 transition-colors">
-                                {{ $settings['working_hours'] }}</p>
+                            <h4 class="font-bold text-black font-title mb-2 group-hover:text-white transition-colors">
+                                Jam Operasional
+                            </h4>
+
+                            <div
+                                class="grid grid-cols-[auto_1fr] gap-x-2 text-gray-600 text-sm font-body font-bold group-hover:text-gray-300 transition-colors">
+
+                                <span class="whitespace-nowrap">Senin - Jumat</span>
+                                <span>: {{ $settings['working_hours'] }}</span>
+
+                                <span class="whitespace-nowrap">Sabtu</span>
+                                <span>: {{ $settings['working_hours_weekly'] }}</span>
+
+                            </div>
                         </div>
                     </div>
 
