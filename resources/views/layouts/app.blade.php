@@ -138,8 +138,8 @@
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Testimonials</a>
                 <a href="#partners"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Partner</a>
-                <a href="#team"
-                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Teams</a>
+                {{-- <a href="#team"
+                    class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Teams</a> --}}
                 <a href="#contact"
                     class="bg-brand-blue text-white px-5 py-1 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">CONTACT</a>
             </div>
@@ -161,7 +161,7 @@
                     class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Testimonials</a>
                 <a href="#partners"
                     class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Partner</a>
-                <a href="#team" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Teams</a>
+                {{-- <a href="#team" class="block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Teams</a> --}}
                 <a href="#contact"
                     class="block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-10">Contact</a>
             </div>
@@ -173,7 +173,7 @@
     </main>
 
     <footer class="bg-slate-900 text-white py-6">
-        <div class="container mx-auto px-6 flex justify-center items-center">
+        <div class="container mx-auto px-6 flex flex-col justify-center items-center">
 
             <div class="flex flex-wrap justify-center gap-6 md:gap-10">
 
@@ -213,6 +213,11 @@
                 </a>
 
             </div>
+
+            <div class="mt-6 text-sm text-slate-500 font-medium tracking-wide text-center">
+                &copy; 2026 Mybolo.id. All rights reserved.
+            </div>
+
         </div>
     </footer>
 

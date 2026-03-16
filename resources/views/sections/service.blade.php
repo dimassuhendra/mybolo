@@ -58,7 +58,7 @@
                     <div
                         class="absolute inset-0 bg-brand-blue/95 backdrop-blur-sm translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0 p-10 flex flex-col justify-center text-white z-30">
 
-                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['phone'] ?? '') }}"
+                        <a href="https://wa.me/6281384828887"
                             target="_blank"
                             class="inline-flex items-center justify-center gap-3 bg-white text-brand-blue font-black py-4 px-6 rounded-2xl transition-all hover:bg-black hover:text-white shadow-2xl active:scale-95">
                             <i class="fa-brands fa-whatsapp text-xl"></i>
