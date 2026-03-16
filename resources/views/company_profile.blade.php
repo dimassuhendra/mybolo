@@ -4,9 +4,9 @@
     <section id="home" class="relative h-screen w-full overflow-hidden bg-black">
         <div id="hero-master" class="h-full w-full">
             @foreach ($sliders as $index => $slide)
-                {{-- Tambahkan class hidden lg:block jika slide ini BUKAN video agar gambar utamanya tidak render di mobile --}}
-                <div class="hero-item absolute inset-0 {{ $index == 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }} transition-all duration-1000 ease-in-out {{ !$slide->video_url ? 'hidden lg:block' : 'block' }}"
-                    data-duration="{{ $slide->duration * 1000 }}">
+                {{-- Tambahkan hidden lg:block HANYA jika slide BUKAN video --}}
+                <div class="hero-item absolute inset-0 {{ $index == 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }} transition-all duration-1000 ease-in-out {{ !$slide->video_url ? 'hidden lg:block' : '' }}"
+                    data-duration="{{ $slide->duration * 1000 }}" data-is-video="{{ $slide->video_url ? 'true' : 'false' }}">
 
                     {{-- Background Media Container --}}
                     <div class="absolute inset-0 z-0 overflow-hidden">
@@ -28,10 +28,9 @@
                                     frameborder="0" allow="autoplay; encrypted-media">
                                 </iframe>
                             @else
-                                {{-- Container ini harus dipastikan memenuhi seluruh layar (Hanya Desktop) --}}
-                                <div class="hidden lg:block absolute inset-0 w-full h-full">
+                                <div class="absolute inset-0 w-full h-full">
                                     <picture class="w-full h-full">
-                                        {{-- Source Mobile: Pastikan class h-full diterapkan --}}
+                                        {{-- Source Mobile --}}
                                         @if ($slide->image_mobile_path)
                                             <source media="(max-width: 639px)"
                                                 srcset="{{ asset('storage/' . $slide->image_mobile_path) }}"
@@ -45,7 +44,7 @@
                                                 class="w-full h-full">
                                         @endif
 
-                                        {{-- Image Utama: Kuncinya ada di h-full dan object-cover --}}
+                                        {{-- Image Utama --}}
                                         <img src="{{ asset('storage/' . $slide->image_path) }}"
                                             class="w-full h-full object-cover object-center"
                                             style="min-height: 100vh; min-width: 100vw;" alt="Hero Image">
@@ -54,20 +53,19 @@
                             @endif
                         </div>
 
-                        {{-- Overlay Layer (Disembunyikan di Mobile/Tab, Tampil di Desktop) --}}
+                        {{-- Overlay Layer (Tetap Tampil di Semua Device) --}}
                         <div
-                            class="hidden lg:block absolute inset-0 {{ $slide->video_url ? 'bg-indigo-950/60' : 'bg-brand-blue/80' }} mix-blend-multiply z-10">
+                            class="absolute inset-0 {{ $slide->video_url ? 'bg-indigo-950/60' : 'bg-brand-blue/80' }} mix-blend-multiply z-10">
                         </div>
 
                         @if ($slide->video_url)
-                            <div
-                                class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-15">
+                            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-15">
                             </div>
                         @endif
                     </div>
 
-                    {{-- Content (Disembunyikan di Mobile/Tab, Tampil di Desktop) --}}
-                    <div class="hidden lg:flex container mx-auto px-6 h-full items-center relative z-20">
+                    {{-- Content (Tetap Tampil di Semua Device) --}}
+                    <div class="container mx-auto px-6 h-full flex items-center relative z-20">
                         <div class="w-full max-w-4xl text-left" data-aos="fade-up">
                             @if ($slide->title)
                                 <h1
@@ -88,14 +86,15 @@
             @endforeach
         </div>
 
-        {{-- Navigasi Bawah (Disembunyikan di Mobile/Tab, Tampil di Desktop) --}}
-        <div class="hidden lg:block absolute bottom-8 md:bottom-20 left-0 w-full z-30">
+        {{-- Navigasi Bawah --}}
+        <div class="absolute bottom-8 md:bottom-20 left-0 w-full z-30">
             <div class="container mx-auto px-6">
                 <div
                     class="flex flex-row items-center justify-start gap-4 md:space-x-12 overflow-x-auto no-scrollbar pb-4 md:pb-0">
                     @foreach ($sliders as $index => $slide)
+                        {{-- Tombol Navigasi juga disembunyikan di mobile jika ini slide gambar --}}
                         <button onclick="changeHero({{ $index }})"
-                            class="hero-nav {{ $index == 0 ? 'active' : '' }} group flex flex-col items-start focus:outline-none min-w-[120px] md:min-w-0 flex-shrink-0">
+                            class="hero-nav {{ $index == 0 ? 'active' : '' }} group flex-col items-start focus:outline-none min-w-[120px] md:min-w-0 flex-shrink-0 {{ !$slide->video_url ? 'hidden lg:flex' : 'flex' }}">
 
                             <span
                                 class="text-[8px] md:text-[10px] font-black text-white tracking-widest opacity-40 group-[.active]:opacity-100 transition-all uppercase whitespace-nowrap">
@@ -261,55 +260,119 @@
     </section>
 
     <script>
-        // ==============================================
-        // Js untuk section Hero
-        // ==============================================
-        const items = document.querySelectorAll('.hero-item');
-        const navs = document.querySelectorAll('.hero-nav');
-        const bars = document.querySelectorAll('.progress-bar');
-        let idx = 0;
-        let heroTimeout;
-
-        function changeHero(i) {
-            clearTimeout(heroTimeout);
-
-            items.forEach((el, index) => {
-                // Sembunyikan slide
-                el.style.opacity = '0';
-                el.style.zIndex = '0';
-                el.style.visibility = 'hidden'; // Tambahan agar teks benar-benar reset
-
-                navs[index].classList.remove('active');
-
-                // Reset Bar
-                bars[index].style.transition = 'none';
-                bars[index].style.width = '0%';
-            });
-
-            // Aktifkan slide terpilih
-            items[i].style.visibility = 'visible';
-            items[i].style.opacity = '1';
-            items[i].style.zIndex = '10';
-            navs[i].classList.add('active');
-
-            const durationMs = parseInt(items[i].getAttribute('data-duration')) || 5000;
-
-            // Jalankan Bar
-            setTimeout(() => {
-                bars[i].style.transition = `width ${durationMs}ms linear`;
-                bars[i].style.width = '100%';
-            }, 50);
-
-            idx = i;
-
-            heroTimeout = setTimeout(() => {
-                let next = (idx + 1) % items.length;
-                changeHero(next);
-            }, durationMs);
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
-            if (items.length > 0) changeHero(0);
+            const heroItems = document.querySelectorAll('.hero-item');
+            const heroNavs = document.querySelectorAll('.hero-nav');
+            let currentIndex = 0;
+            let heroTimeout;
+
+            // Fungsi untuk cek apakah device saat ini adalah mobile/tablet (< 1024px)
+            const isMobile = () => window.innerWidth < 1024;
+
+            // Fungsi cerdas untuk mencari index slide berikutnya yang "Boleh Tampil"
+            function getNextValidIndex(startIndex) {
+                let nextIndex = startIndex;
+                let attempts = 0;
+                const maxAttempts = heroItems.length; // Mencegah infinite loop
+
+                while (attempts < maxAttempts) {
+                    const isVideo = heroItems[nextIndex].getAttribute('data-is-video') === 'true';
+
+                    // Jika di desktop, semua slide boleh tampil.
+                    // Jika di mobile, HANYA video yang boleh tampil.
+                    if (!isMobile() || isVideo) {
+                        return nextIndex;
+                    }
+
+                    // Jika tidak valid, lompat ke index berikutnya
+                    nextIndex = (nextIndex + 1) % heroItems.length;
+                    attempts++;
+                }
+                return 0; // Fallback jika terjadi error
+            }
+
+            // Fungsi utama mengubah hero
+            window.changeHero = function(targetIndex) {
+                clearTimeout(heroTimeout);
+
+                // Cari index valid terdekat (melewati gambar jika di mobile)
+                const validIndex = getNextValidIndex(targetIndex);
+
+                // 1. Sembunyikan slide aktif saat ini
+                heroItems[currentIndex].classList.remove('opacity-100', 'z-10');
+                heroItems[currentIndex].classList.add('opacity-0', 'z-0');
+                if (heroNavs[currentIndex]) {
+                    heroNavs[currentIndex].classList.remove('active');
+                    const currentProgressBar = heroNavs[currentIndex].querySelector('.progress-bar');
+                    if (currentProgressBar) {
+                        currentProgressBar.style.width = '0';
+                        currentProgressBar.style.transitionDuration = '0s';
+                    }
+                }
+
+                // 2. Tampilkan slide baru yang valid
+                currentIndex = validIndex;
+                heroItems[currentIndex].classList.remove('opacity-0', 'z-0');
+                heroItems[currentIndex].classList.add('opacity-100', 'z-10');
+
+                const duration = parseInt(heroItems[currentIndex].getAttribute('data-duration')) || 5000;
+
+                if (heroNavs[currentIndex]) {
+                    heroNavs[currentIndex].classList.add('active');
+                    const newProgressBar = heroNavs[currentIndex].querySelector('.progress-bar');
+
+                    if (newProgressBar) {
+                        // Jeda sedikit agar CSS transition bekerja sempurna
+                        setTimeout(() => {
+                            newProgressBar.style.transitionDuration = `${duration}ms`;
+                            newProgressBar.style.width = '100%';
+                        }, 50);
+                    }
+                }
+
+                // 3. Set timer untuk slide berikutnya
+                heroTimeout = setTimeout(() => {
+                    let nextTarget = (currentIndex + 1) % heroItems.length;
+                    changeHero(nextTarget);
+                }, duration);
+            };
+
+            // --- INISIALISASI SAAT PERTAMA KALI HALAMAN DIMUAT ---
+
+            // Cek apakah slide pertama (index 0) adalah gambar dan user memakai HP.
+            // Jika iya, langsung paksa lompat ke slide video pertama tanpa menunggu.
+            let initialIndex = getNextValidIndex(0);
+
+            if (initialIndex !== 0) {
+                changeHero(initialIndex);
+            } else {
+                // Jika slide pertama valid (Video/Desktop), jalankan animasi progress bar awal
+                const duration = parseInt(heroItems[0].getAttribute('data-duration')) || 5000;
+                const firstProgressBar = heroNavs[0] ? heroNavs[0].querySelector('.progress-bar') : null;
+
+                if (firstProgressBar) {
+                    setTimeout(() => {
+                        firstProgressBar.style.transitionDuration = `${duration}ms`;
+                        firstProgressBar.style.width = '100%';
+                    }, 50);
+                }
+
+                heroTimeout = setTimeout(() => {
+                    changeHero(1);
+                }, duration);
+            }
+
+            // --- OPSIONAL: DETEKSI RESIZE LAYAR ---
+            // Jika user me-resize layar dari desktop ke mobile secara real-time
+            window.addEventListener('resize', () => {
+                if (isMobile()) {
+                    const isVideo = heroItems[currentIndex].getAttribute('data-is-video') === 'true';
+                    // Jika tiba-tiba layar jadi kecil dan slide aktif adalah gambar, langsung ganti ke video
+                    if (!isVideo) {
+                        changeHero((currentIndex + 1) % heroItems.length);
+                    }
+                }
+            });
         });
     </script>
 @endsection
