@@ -45,7 +45,7 @@
             @endforelse
         </div>
 
-        <div class="flex justify-end gap-4 mt-4 pr-2 relative z-20">
+        <div class="flex justify-center gap-4 mt-4 pr-2 relative z-20">
             <button type="button" class="btn-prev-partner group focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                     stroke="currentColor" class="w-6 h-6 transition-transform group-hover:-translate-x-1">
