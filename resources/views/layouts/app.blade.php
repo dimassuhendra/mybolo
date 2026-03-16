@@ -215,7 +215,7 @@
             </div>
 
             <div class="mt-6 text-sm text-slate-500 font-medium tracking-wide text-center">
-                &copy; 2026 Mybolo.id. All rights reserved.
+                &copy; 2026 Mybolo. All rights reserved.
             </div>
 
         </div>

@@ -147,9 +147,9 @@
         @include('sections.partner', ['partners' => $partners])
     </section>
 
-    <section id="team" class="py-24 bg-black overflow-hidden" data-aos="fade-up">
+    {{-- <section id="team" class="py-24 bg-black overflow-hidden" data-aos="fade-up">
         @include('sections.team')
-    </section>
+    </section> --}}
 
     <section id="contact" class="py-24 bg-white" data-aos="fade-up">
         <div class="container mx-auto px-6">
