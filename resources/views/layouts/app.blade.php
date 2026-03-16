@@ -137,6 +137,7 @@
             display: flex !important;
             align-items: center;
             gap: 12px;
+            justify-content: center; /* Agar rapi saat di menu mobile */
             /* Jarak antar bendera */
             margin-left: 15px;
         }
@@ -427,8 +428,8 @@
 
         // Script untuk Translate Page
         window.gtranslateSettings = {
-            "default_language": "id",
-            "languages": ["id", "en"],
+            "default_language": "en",
+            "languages": ["id", "en", "th"],
             "wrapper_selector": ".gtranslate_wrapper",
             "flag_size": 24, // Ukuran bendera (pixel)
             "flag_style": "3d", // Pilihan: '3d', 'flat', 'shiny'
