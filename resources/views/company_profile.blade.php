@@ -143,7 +143,7 @@
         @include('sections.testimonial')
     </section>
 
-    <section id="partners" class="bg-white py-12">
+    <section id="partners" class="bg-white pt-12 pb-2">
         @include('sections.partner', ['partners' => $partners])
     </section>
 
@@ -151,7 +151,7 @@
         @include('sections.team')
     </section> --}}
 
-    <section id="contact" class="py-24 bg-white" data-aos="fade-up">
+    <section id="contact" class="pt-2 pb-24 bg-white" data-aos="fade-up">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h4 class="text-brand-blue font-bold tracking-[0.2em] uppercase text-sm mb-2 font-title">Get In Touch</h4>
