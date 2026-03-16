@@ -175,7 +175,7 @@
 <body class="antialiased">
     <div id="menu-backdrop"></div>
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-6">
+    <nav id="navbar" class="fixed w-full z-[100] transition-all duration-500 py-4 px-6">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#home" class="z-[110]">
                 <img src="{{ asset('img/mybolo-new.png') }}" alt="Logo" class="h-6 md:h-8 transition-all"
