@@ -12,21 +12,13 @@
                     <div class="absolute inset-0 z-0 overflow-hidden">
                         <div class="absolute inset-0 w-full h-full flex items-center justify-center">
                             @if ($slide->video_url)
-                                {{-- PENYESUAIAN LOGIKA FULL SCREEN --}}
-                                <iframe class="pointer-events-none absolute grayscale brightness-[0.9]"
-                                    style="
-                                width: 100vw; 
-                                height: 56.25vw; /* Aspek rasio 16:9 */
-                                min-height: 150vh; 
-                                min-width: 205vh; 
-                                object-fit: cover;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%) scale(1.1);
-                            "
-                                    src="{{ $slide->video_url }}?autoplay=1&mute=1&loop=1&playlist={{ Str::afterLast($slide->video_url, '/') }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
-                                    frameborder="0" allow="autoplay; encrypted-media">
-                                </iframe>
+                                {{-- PEMANGGILAN VIDEO LOKAL --}}
+                                <video
+                                    class="pointer-events-none absolute inset-0 w-full h-full object-cover grayscale brightness-[0.9]"
+                                    autoplay loop muted playsinline>
+                                    <source src="{{ asset('vid/hero.mp4') }}" type="video/mp4">
+                                    Maaf, browser Anda tidak mendukung tag video.
+                                </video>
                             @else
                                 <div class="absolute inset-0 w-full h-full">
                                     <picture class="w-full h-full">
