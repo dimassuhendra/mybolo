@@ -137,7 +137,8 @@
             display: flex !important;
             align-items: center;
             gap: 12px;
-            justify-content: center; /* Agar rapi saat di menu mobile */
+            justify-content: center;
+            /* Agar rapi saat di menu mobile */
             /* Jarak antar bendera */
             margin-left: 15px;
         }
@@ -183,7 +184,8 @@
                     id="nav-logo">
             </a>
 
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden md:flex items-center space-x-4"> <!-- space-x dikurangi sedikit agar cukup -->
+                <!-- Nav Link Utama tetap terjaga urutannya -->
                 <a href="#home"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Home</a>
                 <a href="#services"
@@ -192,8 +194,18 @@
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Testimonials</a>
                 <a href="#partners"
                     class="nav-link text-white font-bold text-sm uppercase tracking-widest hover:text-brand-blue transition">Partner</a>
+
+                <!-- Secondary CTA: Berikan Testimoni (Style Outline) -->
+                <a href="{{ route('testimonial.create') }}"
+                    class="border-2 border-brand-blue text-brand-blue px-4 py-1 rounded-full font-bold text-xs hover:bg-brand-blue hover:text-white transition whitespace-nowrap">
+                    BERI TESTIMONI
+                </a>
+
+                <!-- Primary CTA: Contact -->
                 <a href="#contact"
-                    class="bg-brand-blue text-white px-5 py-1 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">CONTACT</a>
+                    class="bg-brand-blue text-white px-5 py-1.5 rounded-full font-bold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-400/20">
+                    CONTACT
+                </a>
 
                 <div class="gtranslate_wrapper"></div>
             </div>
@@ -207,9 +219,11 @@
 
         <div id="mobile-menu"
             class="fixed top-0 right-0 w-[300px] h-full bg-white translate-x-full z-[100] p-8 shadow-2xl overflow-y-auto">
+            <!-- Di dalam #mobile-menu -->
             <div class="mt-16 space-y-6 flex flex-col">
                 <p class="text-xs font-black text-gray-400 tracking-[0.3em] uppercase mb-4">Navigation</p>
 
+                <!-- Link Section tetap bersih -->
                 <a href="#home"
                     class="mobile-link block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Home</a>
                 <a href="#services"
@@ -219,8 +233,17 @@
                 <a href="#partners"
                     class="mobile-link block text-2xl font-bold text-gray-800 border-b border-gray-100 pb-4">Partner</a>
 
-                <a href="#contact"
-                    class="mobile-link block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold mt-6">Contact</a>
+                <div class="flex flex-col gap-3 mt-6">
+                    <!-- Contact tetap utama -->
+                    <a href="#contact"
+                        class="mobile-link block bg-brand-blue text-white text-center py-4 rounded-2xl font-bold shadow-lg shadow-blue-400/20">Contact</a>
+
+                    <!-- Berikan Testimoni sebagai opsi tambahan -->
+                    <a href="{{ route('testimonial.create') }}"
+                        class="mobile-link block border-2 border-brand-blue text-brand-blue text-center py-4 rounded-2xl font-bold">
+                        Berikan Testimoni
+                    </a>
+                </div>
 
                 <div class="flex justify-center pt-8">
                     <div class="gtranslate_wrapper"></div>
