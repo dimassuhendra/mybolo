@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirim Testimoni - MyBolo Ecosystem</title>
+    <title>Feedback - MyBolo Ecosystem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -13,186 +13,191 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)),
-            url('{{ asset("img/2.jpg") }}');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: #0f172a;
+            overflow-x: hidden;
         }
 
-        .wide-glass {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
         }
 
-        .input-focus-effect {
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-dark {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-dark:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #6366f1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+            transform: scale(1.01);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
             transition: all 0.3s ease;
         }
 
-        .input-focus-effect:focus {
-            border-color: #4f46e5;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+        .btn-gradient:hover:not(:disabled) {
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
         }
 
         [x-cloak] {
             display: none !important;
         }
-
-        /* Custom Scrollbar untuk area form */
-        .form-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .form-scroll::-webkit-scrollbar-thumb {
-            background-color: #e2e8f0;
-            border-radius: 10px;
-        }
     </style>
 </head>
 
-<body class="min-h-screen flex items-center justify-center p-4 md:p-8 lg:p-12">
+<body class="min-h-screen flex flex-col items-center justify-center p-6 lg:p-12">
+    <div class="bg-mesh"></div>
 
-    <div class="max-w-5xl w-full wide-glass rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[650px]"
-        x-data="{ 
-            rating: 5, 
-            hoverRating: 0, 
-            message: '',
-            get isMessageValid() { return this.message.length >= 10 }
-        }">
+    <!-- Navigation Header -->
+    <header class="w-full max-w-4xl flex justify-between items-center mb-10">
+        <div class="flex items-center gap-3">
+            <div
+                class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                <i class="fa-solid fa-cube text-white"></i>
+            </div>
+            <span class="text-white font-extrabold tracking-tighter text-xl">MyBolo <span
+                    class="text-indigo-400">Feedback</span></span>
+        </div>
+        <a href="/"
+            class="text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+            <i class="fa-solid fa-arrow-left-long"></i>
+            Kembali
+        </a>
+    </header>
 
-        <div class="w-full md:w-2/5 bg-indigo-600 p-10 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
-            <i class="fa-solid fa-quote-right absolute -right-4 -bottom-4 text-[12rem] opacity-10 rotate-12 pointer-events-none"></i>
+    <main class="w-full max-w-4xl" x-data="{
+        rating: 5,
+        message: '',
+        get isReady() { return this.message.length >= 10 }
+    }">
+        <div class="glass-card rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
 
-            <div class="relative z-10">
-                <div class="w-16 h-16 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center mb-8 border border-white/20 shadow-xl">
-                    <i class="fa-solid fa-heart text-amber-400 text-2xl animate-pulse"></i>
-                </div>
-                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4">
-                    Suara Anda Adalah <span class="text-amber-400 font-serif italic text-4xl md:text-5xl">Energi</span> Kami.
-                </h1>
-                <p class="text-indigo-100 text-sm leading-relaxed opacity-80 max-w-xs">
-                    Bantu kami meningkatkan kualitas layanan dengan berbagi pengalaman jujur Anda bersama MyBolo.
+            <!-- Left Info Panel -->
+            <div class="lg:w-1/3 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-white/10 bg-white/[0.02]">
+                <h2 class="text-white text-3xl font-black leading-tight mb-6">
+                    Bantu Kami <br><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Berkembang.</span>
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                    Setiap ulasan Anda adalah fondasi bagi pembaruan sistem MyBolo di masa mendatang.
                 </p>
             </div>
 
-            <div class="relative z-10 pt-12 md:pt-0">
-                <div class="flex items-center gap-3">
-                    <div class="flex -space-x-2">
-                        <div class="w-8 h-8 rounded-full border-2 border-indigo-600 bg-slate-300 shadow-sm"></div>
-                        <div class="w-8 h-8 rounded-full border-2 border-indigo-600 bg-slate-400 shadow-sm"></div>
-                        <div class="w-8 h-8 rounded-full border-2 border-indigo-600 bg-slate-500 shadow-sm"></div>
+            <!-- Form Section -->
+            <div class="lg:w-2/3 p-8 lg:p-12">
+                <form action="{{ route('testimonial.store') }}" method="POST" class="space-y-6">
+                    @csrf
+
+                    @if (session('success'))
+                        <div
+                            class="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-xl flex items-center gap-3 text-emerald-400 mb-6">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span class="text-xs font-bold uppercase tracking-wider">{{ session('success') }}</span>
+                        </div>
+                    @endif
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Identitas
+                                Anda</label>
+                            <input type="text" name="client_name" required placeholder="Nama Lengkap"
+                                value="{{ old('client_name') }}"
+                                class="input-dark w-full p-4 rounded-2xl outline-none text-white placeholder:text-slate-600 font-medium">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Email
+                                Aktif</label>
+                            <input type="email" name="email" required placeholder="name@company.com"
+                                value="{{ old('email') }}"
+                                class="input-dark w-full p-4 rounded-2xl outline-none text-white placeholder:text-slate-600 font-medium">
+                        </div>
                     </div>
-                    <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-200">Dipercaya oleh 500+ Klien</p>
-                </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Jabatan &
+                            Instansi</label>
+                        <input type="text" name="position" placeholder="Contoh: TAC Engineer - PT MyBolo"
+                            value="{{ old('position') }}"
+                            class="input-dark w-full p-4 rounded-2xl outline-none text-white placeholder:text-slate-600 font-medium">
+                    </div>
+
+                    <div class="space-y-4 py-2">
+                        <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Rating
+                            Kepuasan</label>
+                        <div class="flex items-center gap-6">
+                            <input type="hidden" name="stars" :value="rating">
+                            <div class="flex gap-2">
+                                <template x-for="i in 5">
+                                    <button type="button" @click="rating = i"
+                                        class="focus:outline-none transition-transform active:scale-75">
+                                        <i class="fa-solid fa-star text-2xl transition-all duration-300"
+                                            :class="rating >= i ? 'text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.4)]' :
+                                                'text-slate-700'"></i>
+                                    </button>
+                                </template>
+                            </div>
+                            <span
+                                class="text-[10px] font-black text-white bg-white/5 px-4 py-2 rounded-full border border-white/10 uppercase tracking-widest"
+                                x-text="rating == 5 ? 'Elite' : (rating >= 4 ? 'Great' : 'Good')"></span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-end px-1">
+                            <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Pesan
+                                Anda</label>
+                            <span class="text-[9px] font-bold tracking-widest transition-colors"
+                                :class="isReady ? 'text-emerald-400' : 'text-rose-400'">
+                                <span x-text="message.length"></span> / 10 Min
+                            </span>
+                        </div>
+                        <textarea name="body" rows="4" required minlength="10" x-model="message"
+                            placeholder="Tuliskan testimoni atau saran Anda di sini..."
+                            class="input-dark w-full p-5 rounded-3xl outline-none text-white placeholder:text-slate-600 font-medium leading-relaxed resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" :disabled="!isReady"
+                            class="btn-gradient w-full py-5 rounded-2xl text-white font-black uppercase tracking-[0.3em] text-xs flex items-center justify-center gap-3 disabled:opacity-30 disabled:cursor-not-allowed">
+                            Kirim Feedback
+                            <i class="fa-solid fa-paper-plane text-[10px]"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <div class="w-full md:w-3/5 p-8 md:p-12 lg:p-16 bg-white form-scroll overflow-y-auto">
-
-            <form action="{{ route('testimonial.store') }}" method="POST" class="space-y-6">
-                @csrf
-
-                @if(session('success'))
-                <div class="bg-emerald-50 border border-emerald-100 text-emerald-600 p-4 rounded-2xl flex items-center gap-3 mb-6 animate-bounce">
-                    <i class="fa-solid fa-check-circle"></i>
-                    <span class="text-[10px] font-black uppercase tracking-widest">{{ session('success') }}</span>
-                </div>
-                @endif
-
-                @if ($errors->any())
-                <div class="bg-rose-50 border border-rose-100 text-rose-600 p-4 rounded-2xl mb-6">
-                    <ul class="list-disc list-inside text-[10px] font-black uppercase tracking-tight">
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Nama Lengkap</label>
-                        <input type="text" name="client_name" required placeholder="John Doe" value="{{ old('client_name') }}"
-                            class="input-focus-effect w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl outline-none font-bold text-slate-700">
-                    </div>
-                    <div class="space-y-2">
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Email Aktif</label>
-                        <input type="email" name="email" required placeholder="john@example.com" value="{{ old('email') }}"
-                            class="input-focus-effect w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl outline-none font-bold text-slate-700">
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Instansi / Jabatan</label>
-                    <input type="text" name="position" placeholder="Contoh: Manager di PT Maju Mundur" value="{{ old('position') }}"
-                        class="input-focus-effect w-full bg-slate-50 border border-slate-200 p-4 rounded-2xl outline-none font-medium text-slate-600">
-                </div>
-
-                <div class="space-y-3">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1">Kualitas Layanan</label>
-                    <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                        <input type="hidden" name="stars" :value="rating">
-                        <div class="flex gap-2">
-                            <template x-for="i in 5">
-                                <button type="button"
-                                    @click="rating = i"
-                                    @mouseenter="hoverRating = i"
-                                    @mouseleave="hoverRating = 0"
-                                    class="transition-all duration-200 transform hover:scale-125 focus:outline-none">
-                                    <i class="fa-solid fa-star text-2xl transition-colors"
-                                        :class="(hoverRating || rating) >= i ? 'text-amber-400 drop-shadow-sm' : 'text-slate-200'"></i>
-                                </button>
-                            </template>
-                        </div>
-                        <span class="text-[10px] font-black text-amber-600 uppercase tracking-widest ml-auto"
-                            x-text="rating == 5 ? 'Sangat Puas' : (rating >= 4 ? 'Puas' : 'Cukup')"></span>
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <div class="flex justify-between items-center px-1">
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Pesan Testimoni</label>
-                        <span class="text-[9px] font-black tracking-widest uppercase"
-                            :class="isMessageValid ? 'text-emerald-500' : 'text-rose-400'">
-                            <span x-text="message.length"></span>/10 Karakter
-                        </span>
-                    </div>
-
-                    <textarea name="body" rows="4" required minlength="10" x-model="message"
-                        placeholder="Ceritakan pengalaman terbaik Anda..."
-                        class="input-focus-effect w-full bg-slate-50 border p-4 rounded-[1.5rem] outline-none font-medium text-slate-600 leading-relaxed transition-all"
-                        :class="message.length > 0 && !isMessageValid ? 'border-rose-300 ring-4 ring-rose-50' : 'border-slate-200'"></textarea>
-
-                    <p x-show="message.length > 0 && !isMessageValid" x-cloak x-transition
-                        class="text-[10px] text-rose-500 font-bold italic ml-1 flex items-center gap-1">
-                        <i class="fa-solid fa-circle-exclamation text-[8px]"></i>
-                        Minimal 10 karakter untuk dikirim.
-                    </p>
-                </div>
-
-                <div class="pt-4 flex flex-col sm:flex-row items-center gap-6">
-                    <button type="submit"
-                        :disabled="!isMessageValid"
-                        :class="!isMessageValid ? 'opacity-40 cursor-not-allowed bg-slate-400' : 'bg-slate-900 hover:bg-indigo-600 shadow-xl shadow-slate-900/20'"
-                        class="w-full sm:w-auto px-10 py-5 text-white font-black rounded-2xl transition-all transform active:scale-95 uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 group">
-                        <span>Kirim Sekarang</span>
-                        <i class="fa-solid fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                    </button>
-
-                    <div class="flex items-center gap-2 opacity-60">
-                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-tight">Privasi <br>Terjamin</span>
-                    </div>
-                </div>
-            </form>
-
-            <p class="mt-8 text-center md:text-left text-[9px] text-slate-300 font-medium uppercase tracking-[0.2em]">
-                &copy; 2026 MyBolo Ecosystem. All Rights Reserved.
+        <footer class="mt-8 flex flex-col md:flex-row justify-between items-center px-4 gap-4">
+            <p class="text-slate-600 text-[10px] font-bold uppercase tracking-widest">
+                &copy; 2026 MyBolo Ecosystem &bull; Security Infrastructure Enabled
             </p>
-        </div>
-    </div>
-
+            <div class="flex items-center gap-6 grayscale opacity-30">
+                <i class="fa-brands fa-laravel text-white text-xl"></i>
+                <i class="fa-brands fa-js text-white text-xl"></i>
+                <i class="fa-brands fa-php text-white text-xl"></i>
+            </div>
+        </footer>
+    </main>
 </body>
 
 </html>
