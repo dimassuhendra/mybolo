@@ -82,16 +82,22 @@ class LogUserActivity
         $token = env('TELEGRAM_ADMIN_BOT_TOKEN');
         $chatId = env('TELEGRAM_ADMIN_CHAT_ID');
 
-        if (!$token || !$chatId) return;
+        \Log::info("Mencoba kirim ke Telegram..."); // Tambahkan ini
 
         try {
-            Http::timeout(3)->post("https://api.telegram.org/bot{$token}/sendMessage", [
+            $response = Http::timeout(10)->post("https://api.telegram.org/bot{$token}/sendMessage", [
                 'chat_id' => $chatId,
                 'text' => $message,
                 'parse_mode' => 'Markdown'
             ]);
+
+            if (!$response->successful()) {
+                \Log::error("Gagal kirim: " . $response->body());
+            } else {
+                \Log::info("Pesan berhasil terkirim!");
+            }
         } catch (\Exception $e) {
-            // Aman
+            \Log::error("Error Telegram: " . $e->getMessage());
         }
     }
 }
