@@ -26,7 +26,10 @@ class LogUserActivity
         $user = Auth::check() ? 'Admin: ' . Auth::user()->name : 'Pengunjung Publik (Guest)';
 
         $method = $request->method();
-        $ip = $request->ip();
+        
+        $ip = $request->header('X-Forwarded-For')
+            ? trim(explode(',', $request->header('X-Forwarded-For'))[0])
+            : $request->ip();
 
         // 3. Terjemahkan Aktivitas berdasarkan Nama Route
         $routeName = $request->route() ? $request->route()->getName() : null;
