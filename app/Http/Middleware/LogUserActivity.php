@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Jenssegers\Agent\Agent;
 
 class LogUserActivity
 {
@@ -16,37 +17,33 @@ class LogUserActivity
 
     public function terminate(Request $request, $response)
     {
-        // 1. Abaikan assets statis
         if (preg_match('/\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$/i', $request->path())) {
             return;
         }
 
-        // 2. Identifikasi Pengunjung
-        // Jika login tampilkan nama admin, jika tidak tampilkan sebagai 'Pengunjung Publik'
-        $user = Auth::check() ? 'Admin: ' . Auth::user()->name : 'Pengunjung Publik (Guest)';
+        $agent = new Agent();
 
-        $method = $request->method();
-        
-        $ip = $request->header('X-Forwarded-For')
-            ? trim(explode(',', $request->header('X-Forwarded-For'))[0])
-            : $request->ip();
+        // Mengambil info perangkat secara mendetail
+        $device = $agent->device(); // Contoh: iPhone, Nexus, Asus
+        $platform = $agent->platform(); // Contoh: Windows, OS X, AndroidOS
+        $browser = $agent->browser(); // Contoh: Chrome, Safari, Firefox
 
-        // 3. Terjemahkan Aktivitas berdasarkan Nama Route
+        // Merangkai nama perangkat agar enak dibaca
+        $deviceInfo = $platform . ' - ' . $browser;
+        if ($agent->isMobile() || $agent->isTablet()) {
+            $deviceInfo = $device . ' (' . $platform . ') - ' . $browser;
+        }
+
+        $user = Auth::check() ? Auth::user()->name : 'Guest';
+        $ip = $request->ip();
         $routeName = $request->route() ? $request->route()->getName() : null;
         $aktivitas = $this->terjemahkanRoute($routeName, $request->path());
 
-        // 4. Susun Pesan
-        $message = "User: {$user}\n";
+        $message = "Log MyBolo Profile\n";
+        $message .= "User: {$user}\n";
+        $message .= "Perangkat: {$deviceInfo}\n"; // Hasil: Windows - Chrome atau iPhone (iOS) - Safari
         $message .= "Aktivitas: {$aktivitas}\n";
         $message .= "IP Address: {$ip}\n";
-
-        // 5. Tangkap data jika ada pengisian Testimoni (POST)
-        if ($method === 'POST' && !empty($request->all())) {
-            $payload = $request->except(['_token', 'password']);
-            $dataString = json_encode($payload, JSON_PRETTY_PRINT);
-
-            $message .= "\nData Masuk:\n```json\n{$dataString}\n```";
-        }
 
         $this->sendToTelegram($message);
     }
